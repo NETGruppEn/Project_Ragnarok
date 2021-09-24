@@ -1,11 +1,14 @@
 import { Routes } from "./routes/Routes";
 import { Navigations } from "./components/navigations/Navigations";
+import { PokemonProvider } from "./shared/provider/PokemonProvider";
 
 function App() {
   return (
-    <Routes>
-      <Navigations/>
-    </Routes>
+    <PokemonProvider>
+      <Routes>
+        <Navigations />
+      </Routes>
+    </PokemonProvider>
   );
 }
 

@@ -1,12 +1,11 @@
-import { useLocation } from "react-router"
+import { DisplayTodaysDate } from "../../components/displaydata/displaytodaysdate/DisplayTodaysDate"
 
 export const TodaysDateView = () =>{
 
-    const location = useLocation()
     return (
         <div>
             <h1>Todays date</h1>
-            <h2>{location.state.welcomeMessage} {location.state.date}</h2>
+            <DisplayTodaysDate/>
         </div>
     )
 }

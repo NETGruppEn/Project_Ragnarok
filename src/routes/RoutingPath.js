@@ -1,5 +1,5 @@
 const homeView = "/"
-const todaysDateView = "/todaysdate"
+const todaysDateView = "/todays-date"
 
 export default{
     homeView,

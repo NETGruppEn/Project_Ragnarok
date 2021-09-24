@@ -8,7 +8,7 @@ export const PokemonProvider = () => {
     const[serverData, setServerData] = useState()
     const[loading, setLoading] = useState(true)
 
-    const fetchDAta = async () =>{
+    const fetchData = async () =>{
         setLoading(true)
         try {
             const {data} = await PokemonAPIService.getHundredPokemon()
@@ -18,6 +18,10 @@ export const PokemonProvider = () => {
             console.log("Error with API: " + error)
         }
     }
+
+    useEffect(() => {
+        fetchData();
+      }, []);
 
     return (
         <div>

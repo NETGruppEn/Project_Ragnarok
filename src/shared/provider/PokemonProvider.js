@@ -9,10 +9,13 @@ export const PokemonProvider = () => {
     const[loading, setLoading] = useState(true)
 
     const fetchDAta = async () =>{
+        setLoading(true)
         try {
-            
+            const {data} = await PokemonAPIService.getHundredPokemon()
+            setServerData(data)
+            setLoading(false)
         } catch (error) {
-            
+            console.log("Error with API: " + error)
         }
     }
 

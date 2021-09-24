@@ -21,7 +21,7 @@ export const DisplayListOfPokemon = () => {
 
   return (
     <div>
-      <h2>{displayData}</h2>
+      {displayData()}
     </div>
   );
 };

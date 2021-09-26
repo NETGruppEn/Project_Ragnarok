@@ -6,7 +6,9 @@
 const homeView = "/";
 const todaysDateView = "/todays-date";
 
-export default {
+const RoutingPath = {
   homeView,
   todaysDateView,
 };
+
+export default RoutingPath;

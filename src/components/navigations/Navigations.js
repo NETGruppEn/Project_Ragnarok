@@ -5,9 +5,9 @@ import { DesktopNavigation } from "./desktopnavigation/DesktopNavigation";
  * @returns The component <DesktopNavigation/>.
  */
 export const Navigations = () => {
-    return (
-        <>
-         <DesktopNavigation/>   
-        </>
-    )
-}
+  return (
+    <>
+      <DesktopNavigation />
+    </>
+  );
+};

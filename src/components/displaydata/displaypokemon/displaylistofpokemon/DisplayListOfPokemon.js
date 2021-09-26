@@ -11,8 +11,8 @@ export const DisplayListOfPokemon = () => {
   const { loading, serverData } = useContext(PokemonContext);
 
   /**
-   * 
-   * @returns The component <DisplayLoading/> if loading is true. 
+   *
+   * @returns The component <DisplayLoading/> if loading is true.
    * If loading is false the serverData gets "mapped" and a numbered list of pokemon names are displayed.
    */
   const displayData = () => {
@@ -29,9 +29,5 @@ export const DisplayListOfPokemon = () => {
     );
   };
 
-  return (
-    <div>
-      {displayData()}
-    </div>
-  );
+  return <div>{displayData()}</div>;
 };

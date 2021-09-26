@@ -6,7 +6,7 @@ export const PokemonContext = createContext();
 /**
  * ! A PokemonContext is created with createContext().
  * PokemonProvider is a provider that fetch the data from the pokeapi with arrow function fetchData() and runs the funtion right before the component renders with useEffect.
- * serverData and laoding is set to useState(). 
+ * serverData and laoding is set to useState().
  * @param {children}
  * @returns PokemonContext provider with the global values serverData and loading so they can be reached from other components.
  */
@@ -34,7 +34,7 @@ export const PokemonProvider = ({ children }) => {
 
   /**
    * Then the fetchData() is called in the hook useEffect so the function will run right before the component renders.
- * ? Better way to explain useEffect in this case?
+   * ? Better way to explain useEffect in this case?
    */
   useEffect(() => {
     fetchData();

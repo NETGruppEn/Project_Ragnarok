@@ -11,7 +11,7 @@ import RoutingPath from "./RoutingPath";
  * Route uses RoutingPath so we dont have to hard code the path.
  * ! react router dom needs to be installed to work (npm install --save react-router-dom). Alredy installed on this project.
  * ! exact path = the URL needs to be an exact match.
- * ! path = the URL DONT need to be an exact match. 
+ * ! path = the URL DONT need to be an exact match.
  * @param {children}
  * @returns BrowserRouter, Switch and Route to TodaysDateView and HomeView.
  */
@@ -20,7 +20,11 @@ export const Routes = ({ children }) => {
     <BrowserRouter>
       {children}
       <Switch>
-        <Route exact path={RoutingPath.todaysDateView} component={TodaysDateView}/>
+        <Route
+          exact
+          path={RoutingPath.todaysDateView}
+          component={TodaysDateView}
+        />
         <Route path={RoutingPath.homeView} component={HomeView} />
       </Switch>
     </BrowserRouter>

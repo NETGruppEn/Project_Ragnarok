@@ -8,4 +8,7 @@ const getHundredPokemon = () => {
   return http.get("/pokemon?limit=100");
 };
 
-export default getHundredPokemon;
+/**
+ * ? Gets a warning when i use {} but when i remove them warning disappears but pokemon list doesent show up instead.
+ */
+export default {getHundredPokemon};

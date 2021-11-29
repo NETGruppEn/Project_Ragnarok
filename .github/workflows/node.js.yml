@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    environment: develop
+    environment: Develop
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,8 +32,9 @@ jobs:
       - name: Build
         run: npm run build --if-present
   
-  test: 
-    environment: develop
+  test:
+    needs: build
+    environment: Develop
     runs-on: ubuntu-latest
 
     strategy:

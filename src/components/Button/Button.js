@@ -8,7 +8,7 @@ import "./Button.css";
  * @param {string} onClick  A function that is responsible for the logic of the button behavior
  *                          For example: routing, search button ect
  * @param {string} color    Button's Color. Orange by default
- * @param {opject} props    The rest of the props.
+ * @param {object} props    The rest of the props.
  *                          ... - Destructuring assignment syntax. Makes it possible to
  *                          unpack values from arrays, or properties from objects, into distinct variables.
  *

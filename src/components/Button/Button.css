@@ -1,9 +1,7 @@
 .button {
   background-color: #ee6b2f;
   padding: 15px 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: inline-block;
   align-items: center;
   border-radius: 5px;
   color: #fff;

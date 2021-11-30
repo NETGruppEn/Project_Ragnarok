@@ -1,5 +1,7 @@
 HOME VIEW
 
+Header (Logo, line, pageTitle)
+
 SearchBar
 
 AdvancedSearch
@@ -14,9 +16,13 @@ PokémonCards
 
 TwelvePagination (clickable)
 
+Footer (Copyrights)
+
 -----------------------------------------------
 
 DETAILS VIEW
+
+Header (Logo, line, pageTitle)
 
 SinglePagination (clickable)
 
@@ -36,4 +42,6 @@ DetailsCard
 
 		Type (with graphic profile)
 
-Button
+ReturnButton
+
+Footer (Copyrights)

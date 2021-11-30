@@ -1,0 +1,39 @@
+HOME VIEW
+
+SearchBar
+
+AdvancedSearch
+
+PokémonCards
+
+	PokémonCard (clickable)
+	
+		CardTitle (Name, number, star)
+
+		Type (with graphic profile)
+
+TwelvePagination (clickable)
+
+-----------------------------------------------
+
+DETAILS VIEW
+
+SinglePagination (clickable)
+
+DetailsCard
+
+	CardTitle (Name, number, star)	
+
+	StatsContainer
+
+		Gauge (Name, value)
+
+	InfoContainer
+
+		Info (Title, info)
+
+	TypeContainer
+
+		Type (with graphic profile)
+
+Button

@@ -15,7 +15,6 @@ function App() {
     <PokemonProvider>
       <Routes>
         <Navigations />
-        <Footer />
       </Routes>
       <Footer />
     </PokemonProvider>

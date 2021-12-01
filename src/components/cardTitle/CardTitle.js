@@ -1,14 +1,11 @@
 import React from "react";
+import { capitalize } from "../../shared/global/Functions";
 
 const format = (id) => {
   return id < 10 ? "#00" + id : id < 100 ? "#0" + id : "#" + id;
-}
+};
 
-const capitalize = (name) => {
-  return name.charAt(0).toUpperCase() + name.slice(1);
-} 
-
-const CardTitle = ({id, name}) => {
+const CardTitle = ({ id, name }) => {
   return (
     <div>
       <p data-testid="id">{format(id)}</p>

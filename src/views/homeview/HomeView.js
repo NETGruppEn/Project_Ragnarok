@@ -1,4 +1,3 @@
-import Button from "../../components/Button/Button";
 import { DisplayListOfPokemon } from "../../components/displaydata/displaypokemon/displaylistofpokemon/DisplayListOfPokemon";
 
 /**

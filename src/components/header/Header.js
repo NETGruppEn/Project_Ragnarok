@@ -1,5 +1,6 @@
 import React from 'react'
 import pokeLogo from "../../shared/images/PokeLogo.png";
+import "./Header.css";
 
 /**
  * Basic header for pokemon react app
@@ -8,10 +9,10 @@ import pokeLogo from "../../shared/images/PokeLogo.png";
 const Header = () => {
     //TODO:  line, CSS
     return (
-        <div>
+        <div className ="pokeLogo">
             <img src={pokeLogo}
             alt="Pokemon logo"
-            className="pokeLogo"></img>        
+            className="image"></img>        
         </div>
     )
 }

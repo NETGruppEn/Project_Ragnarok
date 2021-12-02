@@ -1,0 +1,13 @@
+.pokeLogo{
+    width: 100%;
+    background-color: white;
+    border-bottom:5px solid gray;
+}
+
+.image{
+    width:65%;
+    margin: auto;
+    margin-bottom: 5%;
+    display: block;
+
+}

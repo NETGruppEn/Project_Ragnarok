@@ -14,7 +14,7 @@ const Gauge = ({ title, value }) => {
   // Number of bars - 15 pcs
   // Math.ceil -> rounds a number upwords (2.3 -> 3)
   const getValue = () => {
-    return Math.ceil((value * 15) / 250);
+    return Math.round(value / 16.66);
   };
 
   // Render all 15 bars

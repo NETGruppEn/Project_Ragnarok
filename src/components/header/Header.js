@@ -6,14 +6,20 @@ import "./Header.css";
  * Basic header for pokemon react app
  * @returns A pokemon picture
  */
-const Header = () => {
-    //TODO:  line, CSS
+const Header = ({label}) => {
     return (
+        [
         <div className ="pokeLogo">
             <img src={pokeLogo}
             alt="Pokemon logo"
             className="image"></img>        
-        </div>
+        </div>,
+        <div className ="thinGrayLine">
+        </div>,
+        <h1>
+            {label}
+        </h1>
+        ]
     )
 }
 

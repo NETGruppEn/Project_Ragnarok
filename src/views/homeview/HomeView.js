@@ -1,5 +1,5 @@
 import { DisplayListOfPokemon } from "../../components/displaydata/displaypokemon/displaylistofpokemon/DisplayListOfPokemon";
-import Head from "../../components/head/Head";
+import {Head} from "../../shared/global/Functions";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -8,7 +8,7 @@ import Head from "../../components/head/Head";
 export const HomeView = () => {
   return (
     [
-        Head("Home View"),
+        Head("Pokédex"),
     <div>
       <h1>List of Pokemon</h1>
       <DisplayListOfPokemon />

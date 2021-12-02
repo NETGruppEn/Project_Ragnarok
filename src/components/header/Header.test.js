@@ -1,9 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Header from "./Header";
+import logoImage from "../../shared/images/PokeLogo.png";
 
-// it("renders correctly with right title", () => {
-//     const div = document.createElement("div");
-//     render(<Header />, div);
-//     expect(screen.getByTestId("header").textContent).toBe(`© ${date.getFullYear()} Ragnarök inc`);
-// });
+it("renders an image", () => {
+    const Logo = Header;
+
+    expect(Logo.find("img").prop("src")).toEqual(logoImage);
+});

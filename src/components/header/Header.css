@@ -1,7 +1,6 @@
 .pokeLogo{
     width: 100%;
     background-color: white;
-    border-bottom:5px solid gray;
 }
 
 .image{
@@ -10,4 +9,8 @@
     margin-bottom: 5%;
     display: block;
 
+}
+
+.thinGrayLine{
+    border-bottom:1px solid lightgray;
 }

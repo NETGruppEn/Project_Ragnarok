@@ -1,5 +1,5 @@
 import { DisplayTodaysDate } from "../../components/displaydata/displaytodaysdate/DisplayTodaysDate";
-import Head from "../../components/head/Head";
+import {Head} from "../../shared/global/Functions";
 
 /**
  * TodaysDateView is a component that displays todays date.

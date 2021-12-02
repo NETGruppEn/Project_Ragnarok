@@ -1,4 +1,5 @@
 import { DisplayTodaysDate } from "../../components/displaydata/displaytodaysdate/DisplayTodaysDate";
+import Head from "../../components/head/Head";
 
 /**
  * TodaysDateView is a component that displays todays date.
@@ -6,9 +7,12 @@ import { DisplayTodaysDate } from "../../components/displaydata/displaytodaysdat
  */
 export const TodaysDateView = () => {
   return (
+    [
+      Head("Todays Date"),  
     <div>
       <h1>Todays date</h1>
       <DisplayTodaysDate />
     </div>
-  );
+    ]
+    );
 };

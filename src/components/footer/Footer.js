@@ -1,5 +1,9 @@
 import React from 'react'
 
+/**
+ * Footer
+ * @returns 
+ */
 const Footer = () => {
     const date = new Date();
     return (

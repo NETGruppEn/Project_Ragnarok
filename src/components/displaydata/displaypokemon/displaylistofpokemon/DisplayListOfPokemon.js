@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
+import PokemonCard from "../../../pokemoncard/PokemonCard";
 import { DisplayLoading } from "../../displayloading/DisplayLoading";
 
 /**
@@ -8,25 +9,41 @@ import { DisplayLoading } from "../../displayloading/DisplayLoading";
  * @returns Arrow function {displayData()}.
  */
 export const DisplayListOfPokemon = () => {
-  const { loading, serverData } = useContext(PokemonContext);
+  const [allPokemon] = useContext(PokemonContext);
+  const [pokemon, setPokemon] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const pokemonToShow = 12;
+
+  useEffect(() => {
+    if (pokemon.length < 1 && allPokemon.length >= pokemonToShow) {
+      getPokemonToShow();
+    }
+  })
+
+  /**
+   * Gets the pokémon to show from the list of all pokémon based on the offset.
+   */
+  const getPokemonToShow = () => {
+    setPokemon(allPokemon.slice(offset, offset + pokemonToShow));
+    setOffset(offset + pokemonToShow);
+  }
 
   /**
    *
-   * @returns The component <DisplayLoading/> if loading is true.
-   * If loading is false the serverData gets "mapped" and a numbered list of pokemon names are displayed.
+   * @returns The component <DisplayLoading/> if no pokemon has loaded.
+   * If some pokémon has been loaded, the pokémon cards are displayed.
+   *
    */
   const displayData = () => {
-    return loading ? (
-      <DisplayLoading />
-    ) : (
-      serverData?.results?.map((pokemon, i) => (
-        <div key={pokemon.name}>
-          <h3>
-            {i + 1}. {pokemon.name}
-          </h3>
-        </div>
-      ))
-    );
+    if (pokemon.length < 1) {
+      return (
+        <DisplayLoading />
+      )
+    }
+
+    return pokemon.map((pokemon, index) => (
+          <PokemonCard key={index} pokemon={pokemon} />
+      ));
   };
 
   return <div>{displayData()}</div>;

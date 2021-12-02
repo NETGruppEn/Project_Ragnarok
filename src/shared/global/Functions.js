@@ -1,3 +1,5 @@
+import { TYPE_COLORS, COLORS } from './Colors';
+
 /**
  * Switches the first letter to capital
  * @param {string} text The text to capitalize the first letter
@@ -8,82 +10,80 @@ export const capitalize = (text) => {
 };
 
 
-export const getColors = (name) => {
-  let colors = {
-    background: "",
-    color: "",
-  };
-  switch (name) {
+export const getColors = (type) => {
+  let colors = {};
+
+  switch (type) {
     case "bug":
-      colors.background = "var(--clr-type-bug)";
+      colors.background = TYPE_COLORS.bug;
       colors.color = "white";
       break;
     case "dragon":
-      colors.background = "var(--clr-type-dragon)";
+      colors.background = TYPE_COLORS.dragon;
       colors.color = "white";
       break;
     case "fairy":
-      colors.background = "var(--clr-type-fairy)";
-      colors.color = "black";
+      colors.background = TYPE_COLORS.fairy;
+      colors.color = COLORS.black;
       break;
     case "fire":
-      colors.background = "var(--clr-type-fire)";
+      colors.background = TYPE_COLORS.fire;
       colors.color = "white";
       break;
     case "ghost":
-      colors.background = "var(--clr-type-ghost)";
+      colors.background = TYPE_COLORS.ghost;
       colors.color = "white";
       break;
-    case "ground":
-      colors.background = "var(--clr-type-ground)";
-      colors.color = "var(--clr-black)";
+case "ground":
+      colors.background = TYPE_COLORS.ground;
+      colors.color = COLORS.black;
       break;
     case "normal":
-      colors.background = "var(--clr-type-normal";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.normal;
+      colors.color = COLORS.black;
       break;
     case "psychic":
-      colors.background = "var(--clr-type-psychic)";
+      colors.background = TYPE_COLORS.psychic;
       colors.color = "white";
       break;
     case "steel":
-      colors.background = "var(--clr-type-steel)";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.steel;
+      colors.color = COLORS.black;
       break;
     case "dark":
-      colors.background = "var(--clr-type-dark)";
+      colors.background = TYPE_COLORS.dark;
       colors.color = "white";
       break;
     case "electric":
-      colors.background = "var(--clr-type-electric)";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.electric;
+      colors.color = COLORS.black;
       break;
     case "fighting":
-      colors.background = "var(--clr-type-fighting)";
+      colors.background = TYPE_COLORS.fighting;
       colors.color = "white";
       break;
     case "flying":
-      colors.background = "var(--clr-type-flying)";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.flying;
+      colors.color = COLORS.black;
       break;
     case "grass":
-      colors.background = "var(--clr-type-grass)";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.grass;
+      colors.color = COLORS.black;
       break;
     case "ice":
-      colors.background = "var(--clr-type-ice)";
-      colors.color = "var(--clr-black)";
+      colors.background = TYPE_COLORS.ice;
+      colors.color = COLORS.black;
       break;
     case "poison":
-      colors.background = "var(--clr-type-poison)";
+      colors.background = TYPE_COLORS.poison;
       colors.color = "white";
       break;
     case "rock":
-      colors.background = "var(--clr-type-rock)";
+      colors.background = TYPE_COLORS.rock;
       colors.color = "white";
       break;
     case "water":
-      colors.background = "var(--clr-type-water)";
+      colors.background = TYPE_COLORS.water;
       colors.color = "white";
       break;
     default:

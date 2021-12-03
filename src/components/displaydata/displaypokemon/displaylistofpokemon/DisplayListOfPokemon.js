@@ -46,7 +46,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
       <PokemonCard
         key={index}
         pokemon={pokemon}
-        onClick={() => history.push(RoutingPath.detailsView, pokemon.id)}
+        onClick={() => history.push(RoutingPath.detailsView, pokemon)}
       />
     ));
   };

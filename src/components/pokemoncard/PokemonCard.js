@@ -6,7 +6,7 @@ import Type from "../type/Type";
 const PokemonCard = ({ pokemon, onClick, ...props }) => {
   return (
     <div onClick={onClick}>
-      <img src={pokemon.image} alt={pokemon.name} />
+      <img data-testid="img" src={pokemon.image} alt={pokemon.name} />
       <CardTitle id={pokemon.id} name={pokemon.name} />
       <Star
         isFavorite={pokemon.isFavorite}

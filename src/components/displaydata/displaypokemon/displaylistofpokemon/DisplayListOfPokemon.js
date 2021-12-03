@@ -11,8 +11,8 @@ import Button from "../../../button/Button";
  * The global values (loading) and (serverData) is used from PokemonContext.
  * @returns Arrow function {displayData()}.
  */
-export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
-  const [allPokemon] = useContext(PokemonContext);
+export const DisplayListOfPokemon = () => {
+  const {allPokemon, AMOUNT_OF_POKEMON} = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
   const pokemonToShow = 12;
@@ -52,7 +52,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
   };
 
   const getNextPokemon = () => {
-    if (offset + pokemonToShow < amountOfPokemon) {
+    if (offset + pokemonToShow < AMOUNT_OF_POKEMON) {
       setOffset(offset + pokemonToShow);
     } else {
       setOffset(0);
@@ -65,7 +65,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
     if (offset - pokemonToShow >= 0) {
       setOffset(offset - pokemonToShow);
     } else {
-      setOffset(amountOfPokemon - pokemonToShow);
+      setOffset(AMOUNT_OF_POKEMON - pokemonToShow);
     }
 
     setPokemon([]);

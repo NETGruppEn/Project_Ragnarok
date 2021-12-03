@@ -10,10 +10,9 @@ import Footer from "./components/footer/Footer";
  * @returns
  */
 function App() {
-  const amountOfPokemon = 898;
   return (
-    <PokemonProvider amountOfPokemon={amountOfPokemon}>
-      <Routes amountOfPokemon={amountOfPokemon}/>
+    <PokemonProvider>
+      <Routes />
       <Footer />
     </PokemonProvider>
   );

@@ -1,14 +1,17 @@
-import spinner from "../../../shared/images/spinner.gif";
+import './DisplayLoading.css';
 
 /**
  * DisplayLoading is a component that shows that something is loading when it is used.
  * @returns A loading text with a spinner gif.
  */
-export const DisplayLoading = () => {
+const DisplayLoading = () => {
   return (
     <div>
-      <h2>Loading.....</h2>
-      <img src={spinner} alt="Spinner" />
+      <h2>Loading...</h2>
+      <div className="spinner"/>
+      {/* <img src={spinner} alt="Spinner" /> */}
     </div>
   );
 };
+
+export default DisplayLoading;

@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import RoutingPath from "../../../../routes/RoutingPath";
 import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
 import PokemonCard from "../../../pokemoncard/PokemonCard";
 import { DisplayLoading } from "../../displayloading/DisplayLoading";
@@ -13,6 +15,7 @@ export const DisplayListOfPokemon = () => {
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
   const pokemonToShow = 12;
+  const history = useHistory();
 
   useEffect(() => {
     if (pokemon.length < 1 && allPokemon.length >= pokemonToShow) {
@@ -41,7 +44,7 @@ export const DisplayListOfPokemon = () => {
     }
 
     return pokemon.map((pokemon, index) => (
-          <PokemonCard key={index} pokemon={pokemon} />
+          <PokemonCard key={index} pokemon={pokemon} onClick={() => history.push(RoutingPath.detailsView, pokemon.id)} />
       ));
   };
 

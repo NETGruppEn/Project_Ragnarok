@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import DetailsView from "../views/detailsview/DetailsView";
 import { HomeView } from "../views/homeview/HomeView";
-import { TodaysDateView } from "../views/todaysdateview/TodaysDateView";
 import RoutingPath from "./RoutingPath";
 
 /**
@@ -20,11 +20,7 @@ export const Routes = ({ children }) => {
     <BrowserRouter>
       {children}
       <Switch>
-        <Route
-          exact
-          path={RoutingPath.todaysDateView}
-          component={TodaysDateView}
-        />
+        <Route exact path={RoutingPath.detailsView} component={DetailsView} />
         <Route path={RoutingPath.homeView} component={HomeView} />
       </Switch>
     </BrowserRouter>

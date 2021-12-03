@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-*,
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Press Start 2P", cursive;
-}
-
 :root {
   --clr-type-bug: #729f3f;
   --clr-type-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
@@ -29,4 +19,29 @@ body {
   --clr-type-rock: #a38c21;
   --clr-type-water: #4592c4;
   --clr-type-dark: #707070;
+}
+
+@font-face {
+  font-family: "Flexo-Regular";
+  src: url("../fonts/flexo/Flexo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Flexo-Medium";
+  src: url("../fonts/flexo/Flexo-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Flexo-Demi";
+  src: url("../fonts/flexo/Flexo-Demi.ttf");
+}
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Flexo-Regular";
 }

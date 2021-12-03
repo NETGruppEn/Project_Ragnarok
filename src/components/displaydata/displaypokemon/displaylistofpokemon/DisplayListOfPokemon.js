@@ -4,13 +4,14 @@ import RoutingPath from "../../../../routes/RoutingPath";
 import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
 import PokemonCard from "../../../pokemoncard/PokemonCard";
 import { DisplayLoading } from "../../displayloading/DisplayLoading";
+import Button from "../../../button/Button";
 
 /**
  * DisplayListOfPokemon is a component that displays a list of pokemons with the help of the arrow function {displayData()} when used.
  * The global values (loading) and (serverData) is used from PokemonContext.
  * @returns Arrow function {displayData()}.
  */
-export const DisplayListOfPokemon = () => {
+export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
   const [allPokemon] = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -18,17 +19,17 @@ export const DisplayListOfPokemon = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (pokemon.length < 1 && allPokemon.length >= pokemonToShow) {
+    if (pokemon.length < 1 && allPokemon.length >= offset + pokemonToShow) {
       getPokemonToShow();
     }
-  })
+  });
 
   /**
    * Gets the pokémon to show from the list of all pokémon based on the offset.
    */
   const getPokemonToShow = () => {
     setPokemon(allPokemon.slice(offset, offset + pokemonToShow));
-  }
+  };
 
   /**
    *
@@ -37,16 +38,44 @@ export const DisplayListOfPokemon = () => {
    *
    */
   const displayData = () => {
-    if (pokemon.length < 1) {
-      return (
-        <DisplayLoading />
-      )
+    if (pokemon.length < pokemonToShow) {
+      return <DisplayLoading />;
     }
 
     return pokemon.map((pokemon, index) => (
-          <PokemonCard key={index} pokemon={pokemon} onClick={() => history.push(RoutingPath.detailsView, pokemon.id)} />
-      ));
+      <PokemonCard
+        key={index}
+        pokemon={pokemon}
+        onClick={() => history.push(RoutingPath.detailsView, pokemon)}
+      />
+    ));
   };
 
-  return <div>{displayData()}</div>;
+  const getNextPokemon = () => {
+    if (offset + pokemonToShow < amountOfPokemon) {
+      setOffset(offset + pokemonToShow);
+    } else {
+      setOffset(0);
+    }
+
+    setPokemon([]);
+  };
+
+  const getPrevPokemon = () => {
+    if (offset - pokemonToShow >= 0) {
+      setOffset(offset - pokemonToShow);
+    } else {
+      setOffset(amountOfPokemon - pokemonToShow);
+    }
+
+    setPokemon([]);
+  };
+
+  return (
+    <div>
+      {displayData()}
+      <Button title="Prev" onClick={() => getPrevPokemon()} />
+      <Button title="Next" onClick={() => getNextPokemon()} />
+    </div>
+  );
 };

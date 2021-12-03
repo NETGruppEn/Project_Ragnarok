@@ -13,7 +13,7 @@ function App() {
   const amountOfPokemon = 898;
   return (
     <PokemonProvider amountOfPokemon={amountOfPokemon}>
-      <Routes />
+      <Routes amountOfPokemon={amountOfPokemon}/>
       <Footer />
     </PokemonProvider>
   );

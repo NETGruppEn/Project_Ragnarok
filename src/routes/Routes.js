@@ -15,13 +15,15 @@ import RoutingPath from "./RoutingPath";
  * @param {children}
  * @returns BrowserRouter, Switch and Route to TodaysDateView and HomeView.
  */
-export const Routes = ({ children }) => {
+export const Routes = ({ children, amountOfPokemon }) => {
   return (
     <BrowserRouter>
       {children}
       <Switch>
         <Route exact path={RoutingPath.detailsView} component={DetailsView} />
-        <Route path={RoutingPath.homeView} component={HomeView} />
+        <Route path={RoutingPath.homeView}>
+          <HomeView amountOfPokemon={amountOfPokemon} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

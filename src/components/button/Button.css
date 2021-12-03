@@ -10,5 +10,5 @@
 }
 
 .button:hover {
-  filter: brightness(85%);
+  background-color: #da471b;
 }

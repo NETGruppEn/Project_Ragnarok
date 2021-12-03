@@ -11,7 +11,18 @@ body {
 }
 
 :root {
-  --clr-type-bug: #729f3f;
+  /* --clr-grey: #a4a4a4;
+  --clr-grey-dark: #616161;
+  --clr-grey-light: #f2f2f2;
+  --clr-black: #313131;
+  --clr-green: #4dad5b;
+  --clr-green-hover: #369143;
+  --clr-blue: #30a7d7;
+  --clr-blue-hover: #1b82b1;
+  --clr-orange: #ee6b2f;
+  --clr-orange-hover: #da471b; */
+
+  /* --clr-type-bug: #729f3f;
   --clr-type-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
   --clr-type-fairy: #fdb9e9;
   --clr-type-fire: #fd7d24;
@@ -28,5 +39,5 @@ body {
   --clr-type-poison: #b97fc9;
   --clr-type-rock: #a38c21;
   --clr-type-water: #4592c4;
-  --clr-type-dark: #707070;
+  --clr-type-dark: #707070; */
 }

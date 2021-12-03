@@ -11,10 +11,11 @@ export const PokemonContext = createContext();
  * @param amountOfPokemon The amount of pokémon to fetch.
  * @returns PokemonContext provider with the global values serverData and loading so they can be reached from other components.
  */
-const PokemonProvider = ({ children, amountOfPokemon }) => {
+const PokemonProvider = ({ children }) => {
   const [serverData, setServerData] = useState([]);
   const [counter, setCounter] = useState(0);
   const [allPokemon, setAllPokemon] = useState([]);
+  const AMOUNT_OF_POKEMON = 898;
 
   /**
    * Then the fetchData() is called in the hook useEffect so the function will run right before the component renders.
@@ -43,7 +44,7 @@ const PokemonProvider = ({ children, amountOfPokemon }) => {
    */
   const fetchData = async () => {
     try {
-      const { data } = await PokemonAPIService.getRangeOfPokemon(amountOfPokemon);
+      const { data } = await PokemonAPIService.getRangeOfPokemon(AMOUNT_OF_POKEMON);
       setServerData(data.results);
       // setCounter(0);
     } catch (error) {
@@ -79,7 +80,7 @@ const PokemonProvider = ({ children, amountOfPokemon }) => {
   }
 
   return (
-    <PokemonContext.Provider value={[allPokemon, setAllPokemon]}>
+    <PokemonContext.Provider value={{allPokemon, AMOUNT_OF_POKEMON}}>
       {children}
     </PokemonContext.Provider>
   );

@@ -11,15 +11,15 @@ import Button from "../../../button/Button";
  * The global values (loading) and (serverData) is used from PokemonContext.
  * @returns Arrow function {displayData()}.
  */
-export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
-  const [allPokemon] = useContext(PokemonContext);
+export const DisplayListOfPokemon = () => {
+  const {allPokemon, AMOUNT_OF_POKEMON} = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
-  const pokemonToShow = 12;
+  const POKEMON_TO_SHOW = 12;
   const history = useHistory();
 
   useEffect(() => {
-    if (pokemon.length < 1 && allPokemon.length >= offset + pokemonToShow) {
+    if (pokemon.length < 1 && allPokemon.length >= offset + POKEMON_TO_SHOW) {
       getPokemonToShow();
     }
   });
@@ -28,7 +28,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
    * Gets the pokémon to show from the list of all pokémon based on the offset.
    */
   const getPokemonToShow = () => {
-    setPokemon(allPokemon.slice(offset, offset + pokemonToShow));
+    setPokemon(allPokemon.slice(offset, offset + POKEMON_TO_SHOW));
   };
 
   /**
@@ -38,7 +38,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
    *
    */
   const displayData = () => {
-    if (pokemon.length < pokemonToShow) {
+    if (pokemon.length < POKEMON_TO_SHOW) {
       return <DisplayLoading />;
     }
 
@@ -52,8 +52,8 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
   };
 
   const getNextPokemon = () => {
-    if (offset + pokemonToShow < amountOfPokemon) {
-      setOffset(offset + pokemonToShow);
+    if (offset + POKEMON_TO_SHOW < AMOUNT_OF_POKEMON) {
+      setOffset(offset + POKEMON_TO_SHOW);
     } else {
       setOffset(0);
     }
@@ -62,10 +62,10 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
   };
 
   const getPrevPokemon = () => {
-    if (offset - pokemonToShow >= 0) {
-      setOffset(offset - pokemonToShow);
+    if (offset - POKEMON_TO_SHOW >= 0) {
+      setOffset(offset - POKEMON_TO_SHOW);
     } else {
-      setOffset(amountOfPokemon - pokemonToShow);
+      setOffset(AMOUNT_OF_POKEMON - POKEMON_TO_SHOW);
     }
 
     setPokemon([]);

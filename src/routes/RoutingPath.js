@@ -4,11 +4,11 @@
  */
 
 const homeView = "/";
-const todaysDateView = "/todays-date";
+const detailsView = "/details";
 
 const RoutingPath = {
   homeView,
-  todaysDateView,
+  detailsView,
 };
 
 export default RoutingPath;

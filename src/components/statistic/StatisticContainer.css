@@ -1,0 +1,13 @@
+.stats-container {
+  background-color: #a4a4a4;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 550px;
+  font-family: "Ubuntu", Times, serif;
+}
+
+.stats-gauge-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}

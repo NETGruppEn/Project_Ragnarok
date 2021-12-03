@@ -25,7 +25,6 @@ export const DisplayListOfPokemon = () => {
    */
   const getPokemonToShow = () => {
     setPokemon(allPokemon.slice(offset, offset + pokemonToShow));
-    setOffset(offset + pokemonToShow);
   }
 
   /**

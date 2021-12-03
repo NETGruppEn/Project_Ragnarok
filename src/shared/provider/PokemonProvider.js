@@ -12,7 +12,7 @@ export const PokemonContext = createContext();
  * @returns PokemonContext provider with the global values serverData and loading so they can be reached from other components.
  */
 const PokemonProvider = ({ children, amountOfPokemon }) => {
-  const [serverData, setServerData] = useState();
+  const [serverData, setServerData] = useState([]);
   const [counter, setCounter] = useState(0);
   const [allPokemon, setAllPokemon] = useState([]);
 
@@ -29,7 +29,7 @@ const PokemonProvider = ({ children, amountOfPokemon }) => {
    * the sounter is updated.
    */
   useEffect(() => {
-    if (counter < serverData?.length) {
+    if (counter < serverData.length) {
       fetchPokemon(serverData[counter]);
     }
   }, [serverData, counter]);
@@ -45,7 +45,7 @@ const PokemonProvider = ({ children, amountOfPokemon }) => {
     try {
       const { data } = await PokemonAPIService.getRangeOfPokemon(amountOfPokemon);
       setServerData(data.results);
-      setCounter(0);
+      // setCounter(0);
     } catch (error) {
       console.log("Error with API: " + error);
     }
@@ -68,7 +68,7 @@ const PokemonProvider = ({ children, amountOfPokemon }) => {
           weight: data.weight,
           abilities: data.abilities,
         },
-        types: data.types, 
+        types: data.types 
       };
 
       setAllPokemon([...allPokemon, pokemon]);

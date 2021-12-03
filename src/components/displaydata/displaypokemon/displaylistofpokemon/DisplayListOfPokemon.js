@@ -19,7 +19,7 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
   const history = useHistory();
 
   useEffect(() => {
-    if (pokemon.length < 1 && allPokemon.length >= pokemonToShow) {
+    if (pokemon.length < 1 && allPokemon.length >= offset + pokemonToShow) {
       getPokemonToShow();
     }
   });

@@ -1,5 +1,6 @@
 import React from "react";
 import { capitalize } from "../../shared/global/Functions";
+import "./CardTitle.css";
 
 /**
  * Formats the input
@@ -17,9 +18,9 @@ const format = (id) => {
  */
 const CardTitle = ({ id, name }) => {
   return (
-    <div>
-      <p data-testid="id">{format(id)}</p>
-      <h3 data-testid="name">{capitalize(name)}</h3>
+    <div className="card-title">
+      <p className="id" data-testid="id">{format(id)}</p>
+      <h3 className="name" data-testid="name">{capitalize(name)}</h3>
     </div>
   );
 };

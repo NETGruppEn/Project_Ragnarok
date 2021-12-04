@@ -1,3 +1,21 @@
 .card {
-    cursor: pointer;
+  margin: 0 auto 3em;
+  width: 85.5%;
+  cursor: pointer;
+}
+
+.card-img {
+  background: var(--clr-gray-light);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.card-info {
+    display: flex;
+    width: 100%;
+}
+
+.card-types {
+    display: flex;
+    gap: 0.25em;
 }

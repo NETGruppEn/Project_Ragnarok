@@ -7,7 +7,6 @@ import { DisplayListOfPokemon } from "../../components/displaydata/displaypokemo
 export const HomeView = () => {
   return (
     <div>
-      <h1>List of Pokemon</h1>
       <DisplayListOfPokemon />
     </div>
   );

@@ -13,7 +13,7 @@ import './Star.css';
  */
 const Star = ({isFavorite, onClick, size}) => {
   return (
-    <FaStar data-testid="star" size={size} color={isFavorite ? "orange" : "lightgray"} onClick={onClick}/>
+    <FaStar className="star" data-testid="star" size={size} color={isFavorite ? "orange" : "lightgray"} onClick={onClick}/>
   );
 };
 

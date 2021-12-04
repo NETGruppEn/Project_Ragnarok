@@ -1,5 +1,5 @@
 .button {
-  background-color: #ee6b2f;
+  background-color: var(--clr-orange);
   padding: 15px 30px;
   display: inline-block;
   align-items: center;
@@ -10,5 +10,5 @@
 }
 
 .button:hover {
-  background-color: #da471b;
+  background-color: var(--clr-orange-hover);
 }

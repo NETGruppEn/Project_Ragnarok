@@ -5,6 +5,7 @@ import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
 import PokemonCard from "../../../pokemoncard/PokemonCard";
 import { DisplayLoading } from "../../displayloading/DisplayLoading";
 import Button from "../../../button/Button";
+import { COLORS } from "../../../../shared/global/Colors";
 
 /**
  * DisplayListOfPokemon is a component that displays a list of pokemons with the help of the arrow function {displayData()} when used.
@@ -74,8 +75,18 @@ export const DisplayListOfPokemon = () => {
   return (
     <div>
       {displayData()}
-      <Button title="Prev" onClick={() => getPrevPokemon()} />
-      <Button title="Next" onClick={() => getNextPokemon()} />
+      <Button
+        title="Prev"
+        onClick={() => getPrevPokemon()}
+        color={COLORS.blue}
+        onHover={COLORS.blueHover}
+      />
+      <Button
+        title="Next"
+        onClick={() => getNextPokemon()}
+        color={COLORS.blue}
+        onHover={COLORS.blueHover}
+      />
     </div>
   );
 };

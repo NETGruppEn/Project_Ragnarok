@@ -2,10 +2,11 @@ import React from "react";
 import CardTitle from "../cardTitle/CardTitle";
 import Star from "../star/Star";
 import Type from "../type/Type";
+import './PokemonCard.css';
 
 const PokemonCard = ({ pokemon, onClick, ...props }) => {
   return (
-    <div onClick={onClick}>
+    <div className="card" onClick={onClick}>
       <img data-testid="img" src={pokemon.image} alt={pokemon.name} />
       <CardTitle id={pokemon.id} name={pokemon.name} />
       <Star

@@ -14,7 +14,7 @@ import Header from "./components/header/Header";
 function App() {
   return (
     <PokemonProvider>
-      <Header label={document.title}/>
+      <Header />
       <Routes>
         <Navigations />
       </Routes>

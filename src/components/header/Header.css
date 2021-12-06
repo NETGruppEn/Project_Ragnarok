@@ -1,16 +1,7 @@
-.pokeLogo{
-    width: 100%;
-    background-color: white;
-}
-
 .image{
     width:65%;
     margin: auto;
     margin-bottom: 5%;
     display: block;
 
-}
-
-.thinGrayLine{
-    border-bottom:1px solid lightgray;
 }

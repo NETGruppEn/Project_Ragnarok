@@ -20,6 +20,8 @@ const Pagination12 = ({ offset, setOffset, POKEMON_TO_SHOW, setPokemon }) => {
   const showPrevPokemon = () => {
     if (offset - POKEMON_TO_SHOW >= 0) {
       setOffset(offset - POKEMON_TO_SHOW);
+    } else if (offset > 0) {
+      setOffset(0);
     } else {
       setOffset(AMOUNT_OF_POKEMON - POKEMON_TO_SHOW);
     }

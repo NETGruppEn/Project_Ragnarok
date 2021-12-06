@@ -14,7 +14,7 @@ import Pagination12 from "../../../pagination/pagination12/Pagination12";
 export const DisplayListOfPokemon = () => {
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState([]);
-  const [offset, setOffset] = useState(876);
+  const [offset, setOffset] = useState(0);
   const POKEMON_TO_SHOW = 12;
   const history = useHistory();
 

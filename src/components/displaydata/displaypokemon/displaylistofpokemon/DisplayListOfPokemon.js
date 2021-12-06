@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import RoutingPath from "../../../../routes/RoutingPath";
 import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
 import PokemonCard from "../../../pokemoncard/PokemonCard";
-import { DisplayLoading } from "../../displayloading/DisplayLoading";
+import DisplayLoading from "../../displayloading/DisplayLoading";
 import Pagination12 from "../../../pagination/pagination12/Pagination12";
 
 /**

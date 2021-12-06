@@ -1,10 +1,19 @@
+.loading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
 .spinner {
-    --size: 100px;
+    --size: 60px;
     background: url("https://assets.pokemon.com/static2/_ui/img/chrome/loaders/pokeball_gray.png")
       center center no-repeat;
     background-size: var(--size);
     width: var(--size);
     height: var(--size);
+    margin-top: 1.5em;
     animation: spinning 1s ease forwards infinite;
   }
   

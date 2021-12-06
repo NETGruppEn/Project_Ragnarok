@@ -1,17 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-*,
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Press Start 2P", cursive;
-}
-
 :root {
-  --clr-type-bug: #729f3f;
+  --clr-black: #313131;
+  --clr-gray-light: #f2f2f2;
+  --clr-gray: #a4a4a4;
+  --clr-gray-dark: #616161;
+  --clr-green: #4dad5b;
+  --clr-green-hover: #369143;
+  --clr-blue: #30a7d7;
+  --clr-blue-hover: #1b82b1;
+  --clr-orange: #ee6b2f;
+  --clr-orange-hover: #da471b;
+
+  /* --clr-type-bug: #729f3f;
   --clr-type-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
   --clr-type-fairy: #fdb9e9;
   --clr-type-fire: #fd7d24;
@@ -28,5 +29,30 @@ body {
   --clr-type-poison: #b97fc9;
   --clr-type-rock: #a38c21;
   --clr-type-water: #4592c4;
-  --clr-type-dark: #707070;
+  --clr-type-dark: #707070; */
+}
+
+@font-face {
+  font-family: "Flexo-Regular";
+  src: url("../fonts/flexo/Flexo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Flexo-Medium";
+  src: url("../fonts/flexo/Flexo-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Flexo-Demi";
+  src: url("../fonts/flexo/Flexo-Demi.ttf");
+}
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Flexo-Regular";
 }

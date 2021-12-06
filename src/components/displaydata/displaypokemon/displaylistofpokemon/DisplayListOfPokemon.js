@@ -3,42 +3,37 @@ import { useHistory } from "react-router";
 import RoutingPath from "../../../../routes/RoutingPath";
 import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
 import PokemonCard from "../../../pokemoncard/PokemonCard";
-import DisplayLoading from "../../displayloading/DisplayLoading";
-import Button from "../../../button/Button";
+import { DisplayLoading } from "../../displayloading/DisplayLoading";
+import Pagination12 from "../../../pagination/pagination12/Pagination12";
 
 /**
  * DisplayListOfPokemon is a component that displays a list of pokemons with the help of the arrow function {displayData()} when used.
  * The global values (loading) and (serverData) is used from PokemonContext.
  * @returns Arrow function {displayData()}.
  */
-export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
-  const [allPokemon] = useContext(PokemonContext);
+export const DisplayListOfPokemon = () => {
+  const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const pokemonToShow = 12;
+  const [offset, setOffset] = useState(876);
+  const POKEMON_TO_SHOW = 12;
   const history = useHistory();
 
   useEffect(() => {
-    if (pokemon.length < 1 && allPokemon.length >= offset + pokemonToShow) {
-      getPokemonToShow();
+    if (
+      pokemon.length < 1 &&
+      (allPokemon.length >= offset + POKEMON_TO_SHOW ||
+        allPokemon.length == AMOUNT_OF_POKEMON)
+    ) {
+      setPokemon(allPokemon.slice(offset, offset + POKEMON_TO_SHOW));
     }
   });
 
   /**
-   * Gets the pokémon to show from the list of all pokémon based on the offset.
-   */
-  const getPokemonToShow = () => {
-    setPokemon(allPokemon.slice(offset, offset + pokemonToShow));
-  };
-
-  /**
-   *
    * @returns The component <DisplayLoading/> if no pokemon has loaded.
    * If some pokémon has been loaded, the pokémon cards are displayed.
-   *
    */
   const displayData = () => {
-    if (pokemon.length < pokemonToShow) {
+    if (pokemon.length < 1) {
       return <DisplayLoading />;
     }
 
@@ -51,31 +46,15 @@ export const DisplayListOfPokemon = ({ amountOfPokemon }) => {
     ));
   };
 
-  const getNextPokemon = () => {
-    if (offset + pokemonToShow < amountOfPokemon) {
-      setOffset(offset + pokemonToShow);
-    } else {
-      setOffset(0);
-    }
-
-    setPokemon([]);
-  };
-
-  const getPrevPokemon = () => {
-    if (offset - pokemonToShow >= 0) {
-      setOffset(offset - pokemonToShow);
-    } else {
-      setOffset(amountOfPokemon - pokemonToShow);
-    }
-
-    setPokemon([]);
-  };
-
   return (
     <div>
       {displayData()}
-      <Button title="Prev" onClick={() => getPrevPokemon()} />
-      <Button title="Next" onClick={() => getNextPokemon()} />
+      <Pagination12
+        offset={offset}
+        setOffset={setOffset}
+        POKEMON_TO_SHOW={POKEMON_TO_SHOW}
+        setPokemon={setPokemon}
+      />
     </div>
   );
 };

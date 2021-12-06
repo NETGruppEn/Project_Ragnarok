@@ -4,11 +4,10 @@ import { DisplayListOfPokemon } from "../../components/displaydata/displaypokemo
  * Homeview is a component that displays a list of Pokemon.
  * @returns Titel and component <DisplayListOfPokemon/>
  */
-export const HomeView = ({ amountOfPokemon }) => {
+export const HomeView = () => {
   return (
     <div>
-      <h1>List of Pokemon</h1>
-      <DisplayListOfPokemon amountOfPokemon={amountOfPokemon} />
+      <DisplayListOfPokemon />
     </div>
   );
 };

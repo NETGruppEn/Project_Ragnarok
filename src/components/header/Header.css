@@ -1,7 +1,10 @@
-.image{
-    width:65%;
-    margin: auto;
-    margin-bottom: 5%;
-    display: block;
+.header {
+    display: flex;
+    flex-direction: column;
+}
 
+.header-image{
+    width: 10em;
+    align-self: center;
+    padding-block: 1em 2em;
 }

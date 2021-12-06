@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react";
 import pokeLogo from "../../shared/images/PokeLogo.png";
+import Line from "../line/Line";
 import "./Header.css";
 
 /**
@@ -7,13 +8,12 @@ import "./Header.css";
  * @returns A pokemon picture
  */
 const Header = () => {
-    return (
-        <div className ="header">
-            <img src={pokeLogo}
-            alt="Pokemon logo"
-            className="image"></img>        
-        </div>
-    )
-}
+  return (
+    <div className="header">
+      <img className="header-image" src={pokeLogo} alt="Pokemon logo" />
+      <Line />
+    </div>
+  );
+};
 
-export default Header
+export default Header;

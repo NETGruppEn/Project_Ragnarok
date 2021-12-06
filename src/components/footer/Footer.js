@@ -4,7 +4,7 @@ import Line from "../line/Line";
 
 /**
  * Footer
- * @returns
+ * @returns the copyrights and the current year
  */
 const Footer = () => {
   const date = new Date();

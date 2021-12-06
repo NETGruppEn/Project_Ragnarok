@@ -6,7 +6,7 @@ import './DisplayLoading.css';
  */
 const DisplayLoading = () => {
   return (
-    <div>
+    <div className="loading">
       <h2>Loading...</h2>
       <div className="spinner"/>
       {/* <img src={spinner} alt="Spinner" /> */}

@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
+import "./Footer.css";
+import Line from "../line/Line";
 
+/**
+ * Footer
+ * @returns
+ */
 const Footer = () => {
-    const date = new Date();
-    return (
-        <div>
-            <p data-testid="footer">© {date.getFullYear()} Ragnarök inc</p>
-        </div>
-    )
-}
+  const date = new Date();
+  return (
+    <div className="footer">
+      <Line />
+      <p className="footer-text" data-testid="footer">© {date.getFullYear()} Ragnarök inc</p>
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;

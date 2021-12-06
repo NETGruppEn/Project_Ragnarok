@@ -1,14 +1,23 @@
 import http from "../PokemonAPI";
 
-/**
- * getHundredPOkemon is an arrow function that gets the endpoint for a limit of 100 pokemon with the http from PokemonAPI.
- * @returns Endpoint for a limit of 100 pokemon.
- */
-const getHundredPokemon = () => {
-  return http.get("/pokemon?limit=100");
-};
+const PokemonAPIService = {};
 
 /**
- * ? Gets a warning when i use {} but when i remove them warning disappears but pokemon list doesent show up instead.
+ * @param limit   The number of pokemon to fetch as a number
+ * @param offset  Where to begin fetching pokemon as a number
+ * @returns The endpoint to get a range of pokemon
  */
-export default {getHundredPokemon};
+ PokemonAPIService.getRangeOfPokemon = (limit) => {
+  return http.get(`/pokemon?limit=${limit}`);
+}
+
+/**
+ * 
+ * @param identifier  The name or id of a pokémon
+ * @returns The endpoint to get a specific pokemon with more info
+ */
+ PokemonAPIService.getAPokemon = (identifier) => {
+  return http.get(`pokemon/${identifier}`);
+}
+
+export default PokemonAPIService;

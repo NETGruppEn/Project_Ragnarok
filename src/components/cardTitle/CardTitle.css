@@ -1,0 +1,14 @@
+.card-title {
+    padding-right: 8em;
+}
+
+.id {
+    font-weight: bold;
+    color: var(--clr-gray-dark);
+}
+
+.name {
+    color: var(--clr-black);
+    font-size: 1.25rem;
+    margin-bottom: 0.25em;
+}

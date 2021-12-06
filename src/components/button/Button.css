@@ -1,6 +1,6 @@
 .button {
-  background-color: #ee6b2f;
-  padding: 15px 30px;
+  background-color: var(--clr-orange);
+  padding: 8px 30px;
   display: inline-block;
   align-items: center;
   border-radius: 5px;
@@ -10,5 +10,5 @@
 }
 
 .button:hover {
-  filter: brightness(85%);
+  background-color: var(--clr-orange-hover);
 }

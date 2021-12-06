@@ -1,5 +1,6 @@
 import { DisplayListOfPokemon } from "../../components/displaydata/displaypokemon/displaylistofpokemon/DisplayListOfPokemon";
 import {Head} from "../../shared/global/Functions";
+import ViewTitle from "../../components/viewtitle/ViewTitle";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -10,7 +11,7 @@ export const HomeView = () => {
     [
         Head("Pokédex"),
     <div>
-      <h1>List of Pokemon</h1>
+      <ViewTitle title="Pokédex"/>
       <DisplayListOfPokemon />
     </div>
     ]

@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router";
 import Button from "../../components/button/Button";
+import ViewTitle from "../../components/viewtitle/ViewTitle";
 import RoutingPath from "../../routes/RoutingPath";
 import { COLORS } from "../../shared/global/Colors";
 
@@ -9,7 +10,7 @@ const DetailsView = () => {
   const history = useHistory();
   return (
     <div>
-      <h1>Details</h1>
+      <ViewTitle title="Details" />
       <p>{location.state?.name}</p>
       <Button
         title="Explore More Pokémon"

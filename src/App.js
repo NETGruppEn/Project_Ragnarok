@@ -2,6 +2,7 @@ import { Routes } from "./routes/Routes";
 import PokemonProvider from "./shared/provider/PokemonProvider";
 import "./shared/global/Global.css";
 import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 
 /**
  * <PokemonProvider> wraps <Routes> and <Navigation> so they can access is possible.
@@ -12,6 +13,7 @@ import Footer from "./components/footer/Footer";
 function App() {
   return (
     <PokemonProvider>
+      <Header />
       <Routes />
       <Footer />
     </PokemonProvider>

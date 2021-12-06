@@ -10,6 +10,15 @@ export const capitalize = (text) => {
 };
 
 
+/**
+ * 
+ * @param {label} string label of the page  
+ */
+
+ export const Head = (label) => {
+  document.title= label;
+ };
+
 export const getColors = (type) => {
   let colors = {};
 

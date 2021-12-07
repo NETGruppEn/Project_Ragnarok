@@ -10,7 +10,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="header">
-      <img className="header-image" src={pokeLogo} alt="Pokemon logo" />
+      <img className="header-image" src={pokeLogo} alt="Pokémon logo" data-testid="header-image" />
       <Line />
     </div>
   );

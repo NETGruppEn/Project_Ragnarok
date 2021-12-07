@@ -6,10 +6,9 @@ import DisplayData from "../../components/displaydata/DisplayData";
 import Pagination12 from "../../components/pagination/pagination12/Pagination12";
 
 /**
- * Homeview is a component that displays a list of Pokemon.
- * @returns Titel and component <DisplayListOfPokemon/>
+ * Displays 12 Pokémon cards from a list of Pokémon.
  */
-export const HomeView = () => {
+const HomeView = () => {
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [listOfPokemon, setListOfPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -39,3 +38,5 @@ export const HomeView = () => {
     </div>,
   ];
 };
+
+export default HomeView;

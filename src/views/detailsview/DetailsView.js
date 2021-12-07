@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
+import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import { useHistory, useLocation } from "react-router";
 import RoutingPath from "../../routes/RoutingPath";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayData from "../../components/displaydata/DisplayData";
 import Button from "../../components/button/Button";
-import { COLORS } from "../../shared/global/Colors";
-import { PokemonContext } from "../../shared/provider/PokemonProvider";
 
+/**
+ * Displays details about a specific Pokémon
+ */
 const DetailsView = () => {
   const { allPokemon } = useContext(PokemonContext);
   const [pokemon, setPokemon] = useState();
@@ -28,8 +30,6 @@ const DetailsView = () => {
       <Button
         title="Explore More Pokémon"
         onClick={() => history.push(RoutingPath.homeView)}
-        color={COLORS.orange}
-        onHover={COLORS.orangeHover}
       />
     </div>
   );

@@ -7,9 +7,7 @@ import DisplayLoading from "../../displayloading/DisplayLoading";
 import Pagination12 from "../../../pagination/pagination12/Pagination12";
 
 /**
- * DisplayListOfPokemon is a component that displays a list of pokemons with the help of the arrow function {displayData()} when used.
- * The global values (loading) and (serverData) is used from PokemonContext.
- * @returns Arrow function {displayData()}.
+ * Displays 12 Pokémon from a list of Pokémon
  */
 export const DisplayListOfPokemon = () => {
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);

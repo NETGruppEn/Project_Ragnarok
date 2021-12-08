@@ -1,8 +1,7 @@
 .card {
   margin: 0 auto 3em;
   width: 85.5%;
-  max-width: 26em;
-  /* cursor: pointer; */
+  max-width: 20em;
 }
 
 .card-img {

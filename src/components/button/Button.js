@@ -39,7 +39,7 @@ const Button = ({ title, onClick, color, onHover, ...props }) => {
     <div
       className="button"
       onClick={() => onClick()}
-      style={{ backgroundColor: color }}
+      style={{ background: color }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}

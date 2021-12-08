@@ -4,7 +4,7 @@ import { PokemonContext } from "../../../shared/provider/PokemonProvider";
 import Button from "../../button/Button";
 import "./Pagination12.css";
 
-const Pagination12 = ({ offset, setOffset, POKEMON_TO_SHOW, setPokemon }) => {
+const Pagination12 = ({ offset, setOffset, POKEMON_TO_SHOW, setListOfPokemon }) => {
   const { AMOUNT_OF_POKEMON } = useContext(PokemonContext);
 
   const showNextPokemon = () => {
@@ -14,7 +14,7 @@ const Pagination12 = ({ offset, setOffset, POKEMON_TO_SHOW, setPokemon }) => {
       setOffset(0);
     }
 
-    setPokemon([]);
+    setListOfPokemon([]);
   };
 
   const showPrevPokemon = () => {
@@ -26,7 +26,7 @@ const Pagination12 = ({ offset, setOffset, POKEMON_TO_SHOW, setPokemon }) => {
       setOffset(AMOUNT_OF_POKEMON - POKEMON_TO_SHOW);
     }
 
-    setPokemon([]);
+    setListOfPokemon([]);
   };
 
   return (

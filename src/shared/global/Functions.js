@@ -1,4 +1,4 @@
-import { TYPE_COLORS, COLORS } from './Colors';
+import { TYPE_COLORS, COLORS } from "./Colors";
 
 /**
  * Switches the first letter to capital
@@ -9,16 +9,19 @@ export const capitalize = (text) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
 
+/**
+ *
+ * @param {label} string label of the page
+ */
+export const Head = (label) => {
+  document.title = label;
+};
 
 /**
- * 
- * @param {label} string label of the page  
+ * Gets the css colors for the type component 
+ * @param {string} the name of the type 
+ * @returns an object with correct colors.
  */
-
- export const Head = (label) => {
-  document.title= label;
- };
-
 export const getColors = (type) => {
   let colors = {};
 
@@ -43,7 +46,7 @@ export const getColors = (type) => {
       colors.background = TYPE_COLORS.ghost;
       colors.color = "white";
       break;
-case "ground":
+    case "ground":
       colors.background = TYPE_COLORS.ground;
       colors.color = COLORS.black;
       break;
@@ -100,7 +103,7 @@ case "ground":
   }
 
   return colors;
-}
+};
 
 export const checkName = (name) => {
   if (name === "nidoran-f") {

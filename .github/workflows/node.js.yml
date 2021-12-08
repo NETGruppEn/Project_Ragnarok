@@ -11,7 +11,10 @@ on:
 
 jobs:
   build:
-    environment: Develop
+    if: github.event_name == 'push'
+    environment: 
+      name: Develop
+      url: https://github.com/NETGruppEn/Project_Ragnarok/tree/develop
     runs-on: ubuntu-latest
 
     strategy:
@@ -34,7 +37,6 @@ jobs:
   
   test:
     needs: build
-    environment: Develop
     runs-on: ubuntu-latest
 
     strategy:

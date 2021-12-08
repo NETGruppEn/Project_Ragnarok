@@ -1,33 +1,25 @@
-import { useContext } from "react";
-import { PokemonContext } from "../../../../shared/provider/PokemonProvider";
-import { DisplayLoading } from "../../displayloading/DisplayLoading";
+import React from "react";
+import PokemonCard from "../../../pokemoncard/PokemonCard";
+import { useHistory } from "react-router";
+import RoutingPath from "../../../../routes/RoutingPath";
 
 /**
- * DisplayListOfPokemon is a component that displays a list of pokemons with the help of the arrow function {displayData()} when used.
- * The global values (loading) and (serverData) is used from PokemonContext.
- * @returns Arrow function {displayData()}.
+ * Displays 12 Pokémon from a list of Pokémon
  */
-export const DisplayListOfPokemon = () => {
-  const { loading, serverData } = useContext(PokemonContext);
+const DisplayListOfPokemon = ({ listOfPokemon }) => {
+  const history = useHistory();
 
-  /**
-   *
-   * @returns The component <DisplayLoading/> if loading is true.
-   * If loading is false the serverData gets "mapped" and a numbered list of pokemon names are displayed.
-   */
-  const displayData = () => {
-    return loading ? (
-      <DisplayLoading />
-    ) : (
-      serverData?.results?.map((pokemon, i) => (
-        <div key={pokemon.name}>
-          <h3>
-            {i + 1}. {pokemon.name}
-          </h3>
-        </div>
-      ))
-    );
-  };
-
-  return <div>{displayData()}</div>;
+  return (
+    <div>
+      {listOfPokemon.map((pokemon, index) => (
+        <PokemonCard
+          key={index}
+          pokemon={pokemon}
+          //onClick={() => history.push(RoutingPath.detailsView, pokemon)}
+        />
+      ))}
+    </div>
+  );
 };
+
+export default DisplayListOfPokemon;

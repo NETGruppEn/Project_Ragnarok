@@ -1,0 +1,10 @@
+.type {
+    font-family: "Flexo-Medium";
+    text-align: center;
+    width: 38%;
+    border-radius: 3px;
+}
+
+.type-small {
+    max-width: 6.8em;
+}

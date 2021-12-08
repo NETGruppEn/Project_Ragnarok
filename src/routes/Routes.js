@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import HomeView from "../views/homeview/HomeView";
 import DetailsView from "../views/detailsview/DetailsView";
-import { HomeView } from "../views/homeview/HomeView";
 import RoutingPath from "./RoutingPath";
 
 /**

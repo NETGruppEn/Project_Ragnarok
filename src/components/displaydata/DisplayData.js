@@ -7,9 +7,9 @@ const DisplayData = ({ listOfPokemon, pokemon }) => {
     return <DisplayListOfPokemon listOfPokemon={listOfPokemon} />;
   }
 
-  if (pokemon) {
-    return <p>{pokemon.name}</p>;
-  }
+  // if (pokemon) {
+  //   return <p>{pokemon.name}</p>;
+  // }
 
   return <DisplayLoading />;
 };

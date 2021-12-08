@@ -15,7 +15,7 @@ const PokemonProvider = ({ children }) => {
   const [serverData, setServerData] = useState([]);
   const [counter, setCounter] = useState(0);
   const [allPokemon, setAllPokemon] = useState([]);
-  const AMOUNT_OF_POKEMON = 898;
+  const AMOUNT_OF_POKEMON = 151;
 
   /**
    * Then the fetchData() is called in the hook useEffect so the function will run right before the component renders.

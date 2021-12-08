@@ -15,7 +15,7 @@ const DisplayListOfPokemon = ({ listOfPokemon }) => {
         <PokemonCard
           key={index}
           pokemon={pokemon}
-          onClick={() => history.push(RoutingPath.detailsView, pokemon)}
+          //onClick={() => history.push(RoutingPath.detailsView, pokemon)}
         />
       ))}
     </div>

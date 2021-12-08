@@ -5,13 +5,16 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
   pull_request:
-    branches: [ main, staging ]
+    branches: [main, staging]
 
 jobs:
   build:
-    environment: develop
+    if: github.event_name == 'push'
+    environment: 
+      name: Develop
+      url: https://github.com/NETGruppEn/Project_Ragnarok/tree/develop
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,12 +23,57 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Install dependencies with a clean slate
+        run: npm install
+      - name: Build
+        run: npm run build --if-present
+  
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Install dependencies with a clean slate
+        run: npm install
+      - name: Run the tests
+        run: npm test
+  
+  stage:
+    if: github.base_ref == 'staging'
+    runs-on: ubuntu-latest
+    environment:
+      name: Staging
+      url: https://pokemonstage.netlify.app/
+    steps:
+      - name: Staging
+        run: echo "Staging"
+  
+  deploy:
+    if: github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://pokemonmain.netlify.app/
+    steps:
+      - name: Deploy
+        run: echo "Deploying"
+    

@@ -1,0 +1,14 @@
+.button {
+  background-color: var(--clr-orange);
+  padding: 8px 30px;
+  display: inline-block;
+  align-items: center;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--clr-orange-hover);
+}

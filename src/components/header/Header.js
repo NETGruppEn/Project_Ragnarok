@@ -5,14 +5,14 @@ import "./Header.css";
 
 /**
  * Basic header for pokemon react app
- * @returns A pokemon picture
+ * @returns A pokemon logo
  */
 const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <img className="header-image" src={pokeLogo} alt="Pokémon logo" data-testid="header-image" />
       <Line />
-    </div>
+    </header>
   );
 };
 

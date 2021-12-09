@@ -1,4 +1,5 @@
 .loading {
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -7,21 +8,21 @@
 }
 
 .spinner {
-    --size: 60px;
-    background: url("https://assets.pokemon.com/static2/_ui/img/chrome/loaders/pokeball_gray.png")
-      center center no-repeat;
-    background-size: var(--size);
-    width: var(--size);
-    height: var(--size);
-    margin-top: 1.5em;
-    animation: spinning 1s ease forwards infinite;
+  --size: 60px;
+  background: url("https://assets.pokemon.com/static2/_ui/img/chrome/loaders/pokeball_gray.png")
+    center center no-repeat;
+  background-size: var(--size);
+  width: var(--size);
+  height: var(--size);
+  margin-top: 1.5em;
+  animation: spinning 1s ease forwards infinite;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spinning {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
   }
+}

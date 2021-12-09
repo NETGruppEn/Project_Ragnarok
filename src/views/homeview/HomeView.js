@@ -7,6 +7,7 @@ import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
 import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
+import CircleButton from "../../components/button/CircleButton";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -45,7 +46,7 @@ const HomeView = () => {
 
   /**
    * Found the code for this function here https://stackoverflow.com/a/44422472
-   * If the button is clicked, then every time you scroll to the bottom of the 
+   * If the button is clicked, then every time you scroll to the bottom of the
    * screen, 12 more Pokémon gets added to the list of Pokémon
    */
   window.onscroll = function () {
@@ -62,7 +63,7 @@ const HomeView = () => {
   /**
    * Decides what kind of data to display
    * @returns Pokémon cards if the list of Pokémon is populated,
-   * otherwise a loading screen  
+   * otherwise a loading screen
    */
   const displayData = () => {
     if (listOfPokemon.length < 1) {
@@ -76,17 +77,20 @@ const HomeView = () => {
 
   return (
     <div>
+      {isHidden && <CircleButton />}
       {Head("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
       <div className="pokemon-cards">{displayData()}</div>
-      {!isHidden && (
-        <Button
-          title="Load more Pokémon"
-          onClick={() => handleClick()}
-          color={COLORS.blue}
-          onHover={COLORS.blueHover}
-        />
-      )}
+      <div className="home-view-btn-container">
+        {!isHidden && (
+          <Button
+            title="Load more Pokémon"
+            onClick={() => handleClick()}
+            color={COLORS.blue}
+            onHover={COLORS.blueHover}
+          />
+        )}
+      </div>
     </div>
   );
 };

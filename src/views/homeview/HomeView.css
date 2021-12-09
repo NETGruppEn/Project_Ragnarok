@@ -6,3 +6,9 @@
   flex-wrap: wrap;
   gap: 0.5em;
 }
+
+.home-view-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

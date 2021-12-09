@@ -59,3 +59,15 @@ html {
 body {
   font-family: "Flexo-Regular";
 }
+
+.container {
+  max-width: 100%;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}

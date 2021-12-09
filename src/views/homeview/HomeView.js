@@ -9,6 +9,7 @@ import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
 import { FaArrowUp } from "react-icons/fa";
 import useWindowDimensions from "../../shared/hooks/useWindowDimensions";
+import Search from "../../components/search/Search";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -40,7 +41,6 @@ const HomeView = () => {
       setShowPageUp(false);
     }
   };
-
 
   /**
    * When the button is clicked it gets hidden and loads 12 more Pokémon
@@ -115,7 +115,8 @@ const HomeView = () => {
       </div>
       {Head("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
-      <div className="pokemon-cards" id="cards">
+      <Search />
+      <div className="pokemon-cards container" id="cards">
         {displayData()}
       </div>
       <div className="home-view-btn-container">

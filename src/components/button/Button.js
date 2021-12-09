@@ -17,33 +17,41 @@ import "./Button.css";
  * * <Button title="Home" onClick={() => history.push('/')} />
  *
  */
-const Button = ({ title, onClick, color, onHover, ...props }) => {
-
+const Button = ({
+  title,
+  onClick,
+  color,
+  onHover,
+  children,
+  styles,
+  ...props
+}) => {
   /**
    * When the button is hovered over the background color will
    * be changed to the color onHover.
    */
   const handleMouseEnter = (event) => {
     event.target.style.background = onHover;
-  }
+  };
 
   /**
-   * When the mouse leaves the button the background color will 
+   * When the mouse leaves the button the background color will
    * be reset to the provided color.
    */
   const handleMouseLeave = (event) => {
     event.target.style.background = color;
-  }
+  };
 
   return (
     <div
       className="button"
       onClick={() => onClick()}
-      style={{ background: color }}
+      style={{ background: color, ...styles }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
     >
+      {children && <div className="button-icon">{children}</div>}
       {title}
     </div>
   );

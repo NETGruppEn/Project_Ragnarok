@@ -12,3 +12,10 @@
   display: flex;
   justify-content: center;
 }
+
+.btn-page-up {
+  position: fixed;
+  bottom: -8px;
+  right: -4px;
+  cursor: pointer;
+}

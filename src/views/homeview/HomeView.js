@@ -7,7 +7,7 @@ import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
 import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
-import CircleButton from "../../components/button/CircleButton";
+import { FaArrowUp } from "react-icons/fa";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -77,10 +77,30 @@ const HomeView = () => {
 
   return (
     <div>
-      {isHidden && <CircleButton />}
+      <div
+        className="btn-page-up"
+        style={{
+          transition: `transform 0.3s linear`,
+          transform: isHidden ? "translateY(0)" : "translateY(100%)",
+        }}
+      >
+        <Button
+          styles={{
+            borderRadius: `10px 0 0 0`,
+            opacity: 0.6,
+            border: `2px solid ${COLORS.black}`,
+            background: `${COLORS.gray}`,
+          }}
+          onClick={() => {}}
+        >
+          <FaArrowUp size="30" />
+        </Button>
+      </div>
       {Head("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
-      <div className="pokemon-cards">{displayData()}</div>
+      <div className="pokemon-cards" id="cards">
+        {displayData()}
+      </div>
       <div className="home-view-btn-container">
         {!isHidden && (
           <Button

@@ -15,7 +15,7 @@
 
 .btn-page-up {
   position: fixed;
-  bottom: -8px;
-  right: -4px;
+  bottom: 0;
+  right: 0;
   cursor: pointer;
 }

@@ -8,6 +8,7 @@ import Button from "../../components/button/Button";
 import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
 import { FaArrowUp } from "react-icons/fa";
+import useWindowDimensions from "../../shared/hooks/useWindowDimensions";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -18,12 +19,28 @@ const HomeView = () => {
   const POKEMON_TO_SHOW = 12;
   const [offset, setOffset] = useState(POKEMON_TO_SHOW);
   const [isHidden, setIsHidden] = useState(false);
+  const [showPageUp, setShowPageUp] = useState(false);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
     }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   });
+
+  const handleScroll = () => {
+    if (width < 960 && window.scrollY > 0) {
+      setShowPageUp(true);
+    } else {
+      setShowPageUp(false);
+    }
+  };
+
 
   /**
    * When the button is clicked it gets hidden and loads 12 more Pokémon
@@ -81,7 +98,7 @@ const HomeView = () => {
         className="btn-page-up"
         style={{
           transition: `transform 0.3s linear`,
-          transform: isHidden ? "translateY(0)" : "translateY(100%)",
+          transform: showPageUp ? "translateY(0)" : "translateY(100%)",
         }}
       >
         <Button
@@ -91,7 +108,7 @@ const HomeView = () => {
             border: `2px solid ${COLORS.black}`,
             background: `${COLORS.gray}`,
           }}
-          onClick={() => {}}
+          onClick={() => window.scrollTo(0, 0)}
         >
           <FaArrowUp size="30" />
         </Button>

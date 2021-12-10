@@ -1,4 +1,4 @@
-.button {
+.btn {
   background-color: var(--clr-orange);
   padding: 8px 30px;
   display: inline-block;
@@ -9,11 +9,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.button:hover {
+.btn:hover {
   background-color: var(--clr-orange-hover);
 }
 
-.button:active {
+.btn:active {
   transition: all 0.1s ease-in-out;
   transform: scale(0.95);
 }

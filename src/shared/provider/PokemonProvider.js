@@ -46,7 +46,6 @@ const PokemonProvider = ({ children }) => {
     try {
       const { data } = await PokemonAPIService.getRangeOfPokemon(AMOUNT_OF_POKEMON);
       setServerData(data.results);
-      // setCounter(0);
     } catch (error) {
       console.log("Error with API: " + error);
     }

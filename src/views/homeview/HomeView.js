@@ -7,9 +7,8 @@ import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
 import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
-import { FaArrowUp } from "react-icons/fa";
-import useWindowDimensions from "../../shared/hooks/useWindowDimensions";
 import Search from "../../components/search/Search";
+import { FaArrowUp } from "react-icons/fa";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -21,25 +20,34 @@ const HomeView = () => {
   const [offset, setOffset] = useState(POKEMON_TO_SHOW);
   const [isHidden, setIsHidden] = useState(false);
   const [showPageUp, setShowPageUp] = useState(false);
-  const { width } = useWindowDimensions();
+  const [foundPokemon, setFoundPokemon] = useState([]);
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
-      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      getFirstPokemon();
     }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    console.log(allPokemon.length);
   });
 
-  const handleScroll = () => {
-    if (width < 960 && window.scrollY > 0) {
-      setShowPageUp(true);
+  useEffect(() => {
+    getFirstPokemon();
+  }, [foundPokemon]);
+
+  const getFirstPokemon = () => {
+    if (foundPokemon.length > 0) {
+      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
+      if (foundPokemon.length <= POKEMON_TO_SHOW) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
     } else {
-      setShowPageUp(false);
+      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      setIsHidden(false);
     }
+
+    setOffset(POKEMON_TO_SHOW);
   };
 
   /**
@@ -47,6 +55,7 @@ const HomeView = () => {
    */
   const handleClick = () => {
     setIsHidden(true);
+    console.log(offset);
     loadMorePokemon();
   };
 
@@ -54,10 +63,18 @@ const HomeView = () => {
    * Loads 12 more Pokémon to the list of Pokémon
    */
   const loadMorePokemon = () => {
-    setListOfPokemon([
-      ...listOfPokemon,
-      ...allPokemon.slice(offset, offset + POKEMON_TO_SHOW),
-    ]);
+    if (foundPokemon.length > 0) {
+      setListOfPokemon([
+        ...listOfPokemon,
+        ...foundPokemon.slice(offset, offset + POKEMON_TO_SHOW),
+      ]);
+    } else {
+      setListOfPokemon([
+        ...listOfPokemon,
+        ...allPokemon.slice(offset, offset + POKEMON_TO_SHOW),
+      ]);
+    }
+
     setOffset(offset + POKEMON_TO_SHOW);
   };
 
@@ -74,6 +91,12 @@ const HomeView = () => {
         document.body.offsetHeight
     ) {
       loadMorePokemon();
+    }
+
+    if (window.scrollY > 0) {
+      setShowPageUp(true);
+    } else {
+      setShowPageUp(false);
     }
   };
 
@@ -94,39 +117,28 @@ const HomeView = () => {
 
   return (
     <div>
-      <div
+      <Button
         className="btn-page-up"
-        style={{
-          transition: `transform 0.3s linear`,
+        onClick={() => window.scrollTo(0, 0)}
+        styles={{
           transform: showPageUp ? "translateY(0)" : "translateY(100%)",
         }}
       >
-        <Button
-          styles={{
-            borderRadius: `10px 0 0 0`,
-            opacity: 0.6,
-            border: `2px solid ${COLORS.black}`,
-            background: `${COLORS.gray}`,
-          }}
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          <FaArrowUp size="30" />
-        </Button>
-      </div>
+        <FaArrowUp size="30" />
+      </Button>
       {Head("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
-      <Search />
-      <div className="pokemon-cards container" id="cards">
+      <Search setFoundPokemon={setFoundPokemon} />
+      <div className="container pokemon-cards" id="cards">
         {displayData()}
       </div>
       <div className="home-view-btn-container">
         {!isHidden && (
-          <Button
-            title="Load more Pokémon"
-            onClick={() => handleClick()}
-            color={COLORS.blue}
-            onHover={COLORS.blueHover}
-          />
+          <div>
+            <Button className="btn-load-more" onClick={() => handleClick()}>
+              Load more Pokémon
+            </Button>
+          </div>
         )}
       </div>
     </div>

@@ -27,8 +27,6 @@ const HomeView = () => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
     }
-
-    console.log(allPokemon.length);
   });
 
   useEffect(() => {
@@ -48,6 +46,7 @@ const HomeView = () => {
       setIsHidden(false);
     }
 
+
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -56,7 +55,6 @@ const HomeView = () => {
    */
   const handleClick = () => {
     setIsHidden(true);
-    console.log(offset);
     loadMorePokemon();
   };
 

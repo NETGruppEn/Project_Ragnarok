@@ -22,6 +22,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
       );
 
       if (match.length > 0) {
+        setIsPokemonFound(true);
         setFoundPokemon(match);
       } else {
         setIsPokemonFound(false);
@@ -90,7 +91,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
             <Button
               className="btn-search"
               onClick={(event) => {
-                searchForPokemon(event);
+                handleSubmit(event);
               }}
             >
               <FaSearch data-testid="search" size="30" />

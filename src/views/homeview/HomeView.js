@@ -5,10 +5,10 @@ import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
-import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
 import Search from "../../components/search/Search";
-import { FaArrowUp } from "react-icons/fa";
+import { IoIosArrowUp } from "react-icons/io";
+import DisplayError from "../../components/displayerror/DisplayError";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -21,6 +21,7 @@ const HomeView = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [showPageUp, setShowPageUp] = useState(false);
   const [foundPokemon, setFoundPokemon] = useState([]);
+  const [isPokemonFound, setIsPokemonFound] = useState(true);
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
@@ -105,41 +106,45 @@ const HomeView = () => {
    * @returns Pokémon cards if the list of Pokémon is populated,
    * otherwise a loading screen
    */
-  const displayData = () => {
+  const displayResult = () => {
     if (listOfPokemon.length < 1) {
       return <DisplayLoading />;
+    } else if (isPokemonFound) {
+      return listOfPokemon.map((pokemon, index) => (
+        <PokemonCard key={index} pokemon={pokemon} />
+      ));
     }
-
-    return listOfPokemon.map((pokemon, index) => (
-      <PokemonCard key={index} pokemon={pokemon} />
-    ));
   };
 
   return (
     <div>
-      <Button
-        className="btn-page-up"
-        onClick={() => window.scrollTo(0, 0)}
-        styles={{
-          transform: showPageUp ? "translateY(0)" : "translateY(100%)",
-        }}
-      >
-        <FaArrowUp size="30" />
-      </Button>
       {Head("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
-      <Search setFoundPokemon={setFoundPokemon} />
-      <div className="container pokemon-cards" id="cards">
-        {displayData()}
-      </div>
-      <div className="home-view-btn-container">
-        {!isHidden && (
-          <div>
+      <Search
+        setFoundPokemon={setFoundPokemon}
+        setIsPokemonFound={setIsPokemonFound}
+      />
+      <div className="container">
+        <ul className="results">{displayResult()}</ul>
+        {!isPokemonFound && <DisplayError />}
+        <div className="home-view-btn-container">
+          {!isHidden && isPokemonFound && (
             <Button className="btn-load-more" onClick={() => handleClick()}>
               Load more Pokémon
             </Button>
-          </div>
-        )}
+          )}
+        </div>
+        <Button
+          className="btn-page-up"
+          onClick={() => window.scrollTo(0, 0)}
+          styles={{
+            transform: showPageUp && "translateY(-68px)",
+          }}
+        >
+          <span className="arrow-up">
+            <IoIosArrowUp size="50" />
+          </span>
+        </Button>
       </div>
     </div>
   );

@@ -7,12 +7,19 @@ import DropDown from "../dropdown/DropDown";
 import { useFocus } from "../../shared/hooks/useFocus";
 import "./Search.css";
 
+/**
+ * Lets the user to search for Pokemon based on name and number.
+ */
 const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   const { allPokemon } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
 
+  /**
+   * Looks for a match based on the searchword and sets foundPokemon and isPokemonFound.
+   * @param {*} event
+   */
   const searchForPokemon = (event) => {
     if (searchValue.length > 0) {
       const match = allPokemon.filter(
@@ -35,6 +42,10 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
     event?.preventDefault();
   };
 
+  /**
+   * Sets searchValue and open/closes dropdown.
+   * @param {*} value
+   */
   const handleChange = (value) => {
     setSearchValue(value);
     if (value.length > 0) {

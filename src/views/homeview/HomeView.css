@@ -1,9 +1,8 @@
-.pokemon-cards {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5em 0.5em;
-  margin: 0 auto;
-  gap: 0.25em;
+.results {
+  width: 85%;
+  margin: auto;
+  /* margin-right: -100%; */
+  /* margin-left: 7.2525%; */
 }
 
 .home-view-btn-container {
@@ -13,24 +12,34 @@
 }
 
 .btn-page-up {
-  padding-block: 1.5em;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
+  background: var(--clr-gray-darker);
+  border-color: var(--clr-black);
   border-radius: 10px 0 0 0 !important;
+  border-style: solid;
+  border-width: 2px 0 0 2px;
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
   opacity: 0.6;
-  border: 2px solid var(--clr-black) !important;
-  background: var(--clr-gray);
-  transition: transform 0.3s linear;
+  padding: 0;
+  position: fixed;
+  bottom: -68px;
+  right: 0;
+  transition: all 0.2s linear;
+  z-index: 10;
 }
 
 .btn-page-up:hover {
-  background: var(--clr-gray-dark);
+  background: var(--clr-gray-darker);
+}
+
+.arrow-up {
+  margin-top: 0.25em;
 }
 
 .btn-load-more {
   background: var(--clr-blue);
+  margin: 0 auto;
 }
 
 .btn-load-more:hover {

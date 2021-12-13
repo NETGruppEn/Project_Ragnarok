@@ -24,8 +24,8 @@ const Button = ({ onClick, children, styles, className, ...props }) => {
       style={{ ...styles }}
       {...props}
     >
-      {/* {children && <div className="button-icon">{children}</div>} */}
-      {children}
+      <div className="btn-children">{children}</div>
+      {/* {children} */}
     </div>
   );
 };

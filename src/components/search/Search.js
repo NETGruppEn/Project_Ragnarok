@@ -3,27 +3,58 @@ import { FaSearch } from "react-icons/fa";
 import { COLORS } from "../../shared/global/Colors";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
+import DropDown from "../dropdown/DropDown";
+import { useFocus } from "../../shared/hooks/useFocus";
 import "./Search.css";
 
-const Search = ({ setFoundPokemon }) => {
+const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   const { allPokemon } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputRef, setInputFocus] = useFocus();
 
   const searchForPokemon = (event) => {
-    const match = allPokemon.filter(
-      (pokemon) =>
-        pokemon.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        String(pokemon.id).includes(searchValue)
-    );
+    if (searchValue.length > 0) {
+      const match = allPokemon.filter(
+        (pokemon) =>
+          pokemon.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          String(pokemon.id).includes(searchValue)
+      );
 
-    if (match.length > 0) {
-      setFoundPokemon(match);
+      if (match.length > 0) {
+        setIsPokemonFound(true);
+        setFoundPokemon(match);
+      } else {
+        setIsPokemonFound(false);
+        setFoundPokemon([]);
+      }
+
+      setSearchValue("");
     } else {
+      setIsPokemonFound(true);
       setFoundPokemon([]);
     }
-
-    setSearchValue("");
     event?.preventDefault();
+  };
+
+  const handleChange = (value) => {
+    setSearchValue(value);
+    if (value.length > 0) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    setIsOpen(false);
+    searchForPokemon(event);
+  };
+
+  const selectOption = (option) => {
+    setSearchValue(option);
+    setInputFocus();
+    setIsOpen(false);
   };
 
   return (
@@ -31,26 +62,50 @@ const Search = ({ setFoundPokemon }) => {
       <div className="container search">
         <form
           className="search-input-container"
-          onSubmit={(event) => searchForPokemon(event)}
+          onSubmit={(event) => handleSubmit(event)}
         >
-          <h2>Name or Number:</h2>
+          <label>Name or Number:</label>
           <div>
-            <input
-              className="search-input"
-              type="text"
-              value={searchValue}
-              onChange={(event) => setSearchValue(event.target.value)}
-            />
-            <Button onClick={(event) => {searchForPokemon(event)}}>
+            <div className="search-input-field">
+              <input
+                className="search-input"
+                type="text"
+                value={searchValue}
+                onChange={(event) => handleChange(event.target.value)}
+                ref={inputRef}
+              />
+              {isOpen && (
+                <DropDown
+                  options={allPokemon
+                    .filter((pokemon) =>
+                      pokemon.name
+                        .toLowerCase()
+                        .includes(searchValue.toLowerCase())
+                    )
+                    .slice(0, 5)
+                    .map((pokemon) => pokemon.name)}
+                  setSelected={selectOption}
+                />
+              )}
+            </div>
+            <Button
+              className="btn-search"
+              onClick={(event) => {
+                handleSubmit(event);
+              }}
+            >
               <FaSearch data-testid="search" size="30" />
             </Button>
           </div>
         </form>
+
         <div
           className="search-text-container"
           style={{ backgroundColor: COLORS.green }}
         >
-          <p>Search for a Pokémon by name or using its Pokédex number</p>
+          <h2>
+            Search for a Pokémon by name or using its National Pokédex number.
+          </h2>
         </div>
       </div>
     </div>

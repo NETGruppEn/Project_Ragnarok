@@ -18,8 +18,8 @@ export const Head = (label) => {
 };
 
 /**
- * Gets the css colors for the type component 
- * @param {string} the name of the type 
+ * Gets the css colors for the type component
+ * @param {string} the name of the type
  * @returns an object with correct colors.
  */
 export const getColors = (type) => {

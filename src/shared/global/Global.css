@@ -4,13 +4,15 @@
   --clr-black: #313131;
   --clr-gray-light: #f2f2f2;
   --clr-gray: #a4a4a4;
-  --clr-gray-dark: #616161;
+  --clr-gray-dark: #919191;
+  --clr-gray-darker: #616161;
   --clr-green: #4dad5b;
   --clr-green-hover: #369143;
   --clr-blue: #30a7d7;
   --clr-blue-hover: #1b82b1;
   --clr-orange: #ee6b2f;
   --clr-orange-hover: #da471b;
+  --clr-red: #e3350d;
 }
 
 @font-face {
@@ -39,8 +41,11 @@ html {
 
 body {
   font-family: "Flexo-Regular";
+  box-sizing: border-box;
 }
 
 .container {
-  max-width: 100%;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
 }

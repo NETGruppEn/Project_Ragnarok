@@ -4,55 +4,24 @@ import "./Button.css";
 /**
  * Button component to navigate between different routes
  *
- * @param {string} title    Button title
  * @param {string} onClick  A function that is responsible for the logic of the button behavior
  *                          For example: routing, search button ect
- * @param {string} color    Button's Color. Orange by default
- * @param {string} onHover  The color for when the mouse hovers over the button
+ * @param {string} syles    The style for the button
+ * @param {string} className The css class name for the button.
  * @param {object} props    The rest of the props.
  *                          ... - Destructuring assignment syntax. Makes it possible to
  *                          unpack values from arrays, or properties from objects, into distinct variables.
  *
- * * Example:
- * * <Button title="Home" onClick={() => history.push('/')} />
- *
  */
-const Button = ({
-  title,
-  onClick,
-  color,
-  onHover,
-  children,
-  styles,
-  ...props
-}) => {
-  /**
-   * When the button is hovered over the background color will
-   * be changed to the color onHover.
-   */
-  const handleMouseEnter = (event) => {
-    event.target.style.background = onHover;
-  };
-
-  /**
-   * When the mouse leaves the button the background color will
-   * be reset to the provided color.
-   */
-  const handleMouseLeave = (event) => {
-    event.target.style.background = color;
-  };
-
+const Button = ({ onClick, children, styles, className, ...props }) => {
   return (
     <div
-      className="button"
+      className={`btn ${className}`}
       onClick={() => onClick()}
-      style={{ background: color, ...styles }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      style={{ ...styles }}
       {...props}
     >
-      {children && <div className="button-icon">{children}</div>}
-      {title}
+      <div className="btn-children">{children}</div>
     </div>
   );
 };

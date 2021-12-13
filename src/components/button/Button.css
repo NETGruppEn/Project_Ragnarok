@@ -1,19 +1,27 @@
-.button {
+.btn {
   background-color: var(--clr-orange);
-  padding: 8px 30px;
+  padding: 12px 25px;
   display: inline-block;
   align-items: center;
+  justify-content: center;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  font-family: "Flexo-Demi";
 }
 
-.button:hover {
+.btn-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:hover {
   background-color: var(--clr-orange-hover);
 }
 
-.button:active {
+.btn:active {
   transition: all 0.1s ease-in-out;
   transform: scale(0.95);
 }

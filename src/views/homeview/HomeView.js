@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
-import { Head } from "../../shared/global/Functions";
+import { SetPageTitle } from "../../shared/global/Functions";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
-import { COLORS } from "../../shared/global/Colors";
 import "./HomeView.css";
-import { FaArrowUp } from "react-icons/fa";
-import useWindowDimensions from "../../shared/hooks/useWindowDimensions";
 import Search from "../../components/search/Search";
+import { IoIosArrowUp } from "react-icons/io";
+import DisplayError from "../../components/displayerror/DisplayError";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -21,25 +20,31 @@ const HomeView = () => {
   const [offset, setOffset] = useState(POKEMON_TO_SHOW);
   const [isHidden, setIsHidden] = useState(false);
   const [showPageUp, setShowPageUp] = useState(false);
-  const { width } = useWindowDimensions();
+  const [foundPokemon, setFoundPokemon] = useState([]);
+  const [isPokemonFound, setIsPokemonFound] = useState(true);
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
-      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      getFirstPokemon(allPokemon);
     }
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   });
 
-  const handleScroll = () => {
-    if (width < 960 && window.scrollY > 0) {
-      setShowPageUp(true);
+  useEffect(() => {
+    getFirstPokemon(foundPokemon);
+  }, [foundPokemon]);
+
+  /**
+   * Gets the first 12 pokemon to show
+   */
+  const getFirstPokemon = (pokemonArray) => {
+    setListOfPokemon(pokemonArray.slice(0, POKEMON_TO_SHOW));
+    if (pokemonArray.length <= POKEMON_TO_SHOW) {
+      setIsHidden(true);
     } else {
-      setShowPageUp(false);
+      setIsHidden(false);
     }
+    
+    setOffset(POKEMON_TO_SHOW);
   };
 
   /**
@@ -54,10 +59,18 @@ const HomeView = () => {
    * Loads 12 more Pokémon to the list of Pokémon
    */
   const loadMorePokemon = () => {
-    setListOfPokemon([
-      ...listOfPokemon,
-      ...allPokemon.slice(offset, offset + POKEMON_TO_SHOW),
-    ]);
+    if (foundPokemon.length > 0) {
+      setListOfPokemon([
+        ...listOfPokemon,
+        ...foundPokemon.slice(offset, offset + POKEMON_TO_SHOW),
+      ]);
+    } else {
+      setListOfPokemon([
+        ...listOfPokemon,
+        ...allPokemon.slice(offset, offset + POKEMON_TO_SHOW),
+      ]);
+    }
+
     setOffset(offset + POKEMON_TO_SHOW);
   };
 
@@ -75,6 +88,12 @@ const HomeView = () => {
     ) {
       loadMorePokemon();
     }
+
+    if (window.scrollY > 0) {
+      setShowPageUp(true);
+    } else {
+      setShowPageUp(false);
+    }
   };
 
   /**
@@ -82,52 +101,45 @@ const HomeView = () => {
    * @returns Pokémon cards if the list of Pokémon is populated,
    * otherwise a loading screen
    */
-  const displayData = () => {
+  const displayResult = () => {
     if (listOfPokemon.length < 1) {
       return <DisplayLoading />;
+    } else if (isPokemonFound) {
+      return listOfPokemon.map((pokemon, index) => (
+        <PokemonCard key={index} pokemon={pokemon} />
+      ));
     }
-
-    return listOfPokemon.map((pokemon, index) => (
-      <PokemonCard key={index} pokemon={pokemon} />
-    ));
   };
 
   return (
     <div>
-      <div
-        className="btn-page-up"
-        style={{
-          transition: `transform 0.3s linear`,
-          transform: showPageUp ? "translateY(0)" : "translateY(100%)",
-        }}
-      >
-        <Button
-          styles={{
-            borderRadius: `10px 0 0 0`,
-            opacity: 0.6,
-            border: `2px solid ${COLORS.black}`,
-            background: `${COLORS.gray}`,
-          }}
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          <FaArrowUp size="30" />
-        </Button>
-      </div>
-      {Head("Pokédex | Ragnarök")}
+      {SetPageTitle("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
-      <Search />
-      <div className="pokemon-cards container" id="cards">
-        {displayData()}
-      </div>
-      <div className="home-view-btn-container">
-        {!isHidden && (
-          <Button
-            title="Load more Pokémon"
-            onClick={() => handleClick()}
-            color={COLORS.blue}
-            onHover={COLORS.blueHover}
-          />
-        )}
+      <Search
+        setFoundPokemon={setFoundPokemon}
+        setIsPokemonFound={setIsPokemonFound}
+      />
+      <div className="container">
+        <ul className="results">{displayResult()}</ul>
+        {!isPokemonFound && <DisplayError />}
+        <div className="home-view-btn-container">
+          {!isHidden && isPokemonFound && (
+            <Button className="btn-load-more" onClick={() => handleClick()}>
+              Load more Pokémon
+            </Button>
+          )}
+        </div>
+        <Button
+          className="btn-page-up"
+          onClick={() => window.scrollTo(0, 0)}
+          styles={{
+            transform: showPageUp && "translateY(-68px)",
+          }}
+        >
+          <span className="arrow-up">
+            <IoIosArrowUp size="50" />
+          </span>
+        </Button>
       </div>
     </div>
   );

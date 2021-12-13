@@ -1,0 +1,31 @@
+.error-container {
+  border: 2px solid var(--clr-red);
+  border-radius: 8px;
+  text-align: left;
+  padding: 1em;
+}
+
+.error-container > h3 {
+  color: var(--clr-red);
+  margin-bottom: 0.5em;
+  font-size: 1.25rem;
+}
+
+.error-container > strong {
+  color: var(--clr-gray-dark);
+  font-family: "Flexo-Medium";
+}
+
+.error-tip {
+  border: none;
+  color: var(--clr-gray-dark);
+  margin: 0.5em 1em 0;
+  list-style: disc;
+}
+
+@media (min-width: 460px) {
+    .error-container {
+        width: 85%;
+        margin: 0 auto;
+    }
+}

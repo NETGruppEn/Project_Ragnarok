@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import PokemonAPIService from "../api/service/PokemonAPIService";
-import { checkName } from '../global/Functions';
+import { capitalize } from '../global/Functions';
 
 export const PokemonContext = createContext();
 
@@ -46,7 +46,6 @@ const PokemonProvider = ({ children }) => {
     try {
       const { data } = await PokemonAPIService.getRangeOfPokemon(AMOUNT_OF_POKEMON);
       setServerData(data.results);
-      // setCounter(0);
     } catch (error) {
       console.log("Error with API: " + error);
     }
@@ -85,5 +84,16 @@ const PokemonProvider = ({ children }) => {
     </PokemonContext.Provider>
   );
 };
+
+const checkName = (name) => {
+  if (name === "nidoran-f") {
+    name = name.replace("-f", "♀");
+  } else if (name === "nidoran-m") {
+    name = name.replace("-m", "♂");
+  }
+
+  return capitalize(name);
+};
+
 
 export default PokemonProvider;

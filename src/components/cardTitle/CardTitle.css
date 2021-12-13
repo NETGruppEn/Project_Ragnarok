@@ -1,8 +1,5 @@
-.card-title {
-    padding-right: 8em;
-}
-
 .id {
+    font-size: 80%;
     font-weight: bold;
     color: var(--clr-gray-dark);
 }

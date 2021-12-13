@@ -3,16 +3,16 @@ import "./Footer.css";
 import Line from "../line/Line";
 
 /**
- * Footer
+ * A basic footer
  * @returns the copyrights and the current year
  */
 const Footer = () => {
   const date = new Date();
   return (
-    <div className="footer">
+    <footer className="footer">
       <Line />
       <p className="footer-text" data-testid="footer">© {date.getFullYear()} Ragnarök inc</p>
-    </div>
+    </footer>
   );
 };
 

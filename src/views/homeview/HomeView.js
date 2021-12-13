@@ -25,23 +25,27 @@ const HomeView = () => {
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
-      getFirstPokemon(allPokemon);
+      getFirstPokemon();
     }
   });
 
   useEffect(() => {
-    getFirstPokemon(foundPokemon);
+    getFirstPokemon();
   }, [foundPokemon]);
 
   /**
    * Gets the first 12 pokemon to show
    */
-  const getFirstPokemon = (pokemonArray) => {
-    setListOfPokemon(pokemonArray.slice(0, POKEMON_TO_SHOW));
-    if (pokemonArray.length <= POKEMON_TO_SHOW) {
-      setIsHidden(true);
+  const getFirstPokemon = () => {
+    if (foundPokemon.length > 0) {
+      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW);
+      if (foundPokemon.length <= POKEMON_TO_SHOW) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
     } else {
-      setIsHidden(false);
+      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW);
     }
     
     setOffset(POKEMON_TO_SHOW);

@@ -3,6 +3,10 @@ import CardTitle from "../cardTitle/CardTitle";
 import Type from "../type/Type";
 import "./PokemonCard.css";
 
+/**
+ * Shows an image, name, id and type of a pokemon.
+ * @param {*} pokemon The pokemon to show 
+ */
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
     <li className="card" onClick={onClick}>

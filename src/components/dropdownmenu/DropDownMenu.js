@@ -1,7 +1,13 @@
 import React from "react";
-import "./DropDown.css";
+import "./DropDownMenu.css";
 
-const DropDown = ({ options, setSelected }) => {
+/**
+ * Shows options in a drop-down menu
+ * that you can select from.
+ * @param {*} options The options shown
+ * @param {*} setSelected A function that selects the chosen option
+ */
+const DropDownMenu = ({ options, setSelected }) => {
   return (
     <div className="drop-down">
       {options.map((option, index) => (
@@ -17,4 +23,4 @@ const DropDown = ({ options, setSelected }) => {
   );
 };
 
-export default DropDown;
+export default DropDownMenu;

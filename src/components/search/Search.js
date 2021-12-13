@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { COLORS } from "../../shared/global/Colors";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
-import DropDown from "../dropdown/DropDown";
+import DropDownMenu from "../dropdownmenu/DropDownMenu";
 import { useFocus } from "../../shared/hooks/useFocus";
 import "./Search.css";
 
@@ -11,7 +11,7 @@ import "./Search.css";
  * Lets the user to search for Pokemon based on name and number.
  */
 const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
-  const { allPokemon } = useContext(PokemonContext);
+  const { allPokemon} = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
@@ -54,12 +54,23 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
       setIsDropDownOpen(false);
     }
   };
-
-  const handleSubmit = (event) => {
+  
+  /**
+   * Closes DropDownMenu connected to search box
+   * Searches for pokemon
+   * @param {*} event Event fires on Submit
+   */
+    const handleSubmit = (event) => {
     setIsDropDownOpen(false);
     searchForPokemon(event);
   };
-
+  /**
+   * If user chooses an alternative from DropDownMenu to search for.
+   * Sets searchvalue to selected option
+   * Sets focus on the input field
+   * Closes the DropDownMenu
+   * @param {*} option The option that the user chooses.
+   */
   const selectOption = (option) => {
     setSearchValue(option);
     setInputFocus();
@@ -84,7 +95,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
                 ref={inputRef}
               />
               {isDropDownOpen && (
-                <DropDown
+                <DropDownMenu
                   options={allPokemon
                     .filter((pokemon) =>
                       pokemon.name

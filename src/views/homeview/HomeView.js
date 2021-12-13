@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
-import { Head } from "../../shared/global/Functions";
+import { SetPageTitle } from "../../shared/global/Functions";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
@@ -25,28 +25,25 @@ const HomeView = () => {
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
-      getFirstPokemon();
+      getFirstPokemon(allPokemon);
     }
   });
 
   useEffect(() => {
-    getFirstPokemon();
+    getFirstPokemon(foundPokemon);
   }, [foundPokemon]);
 
-  const getFirstPokemon = () => {
-    if (foundPokemon.length > 0) {
-      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
-      if (foundPokemon.length <= POKEMON_TO_SHOW) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
+  /**
+   * Gets the first 12 pokemon to show
+   */
+  const getFirstPokemon = (pokemonArray) => {
+    setListOfPokemon(pokemonArray.slice(0, POKEMON_TO_SHOW));
+    if (pokemonArray.length <= POKEMON_TO_SHOW) {
+      setIsHidden(true);
     } else {
-      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
       setIsHidden(false);
     }
-
-
+    
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -116,7 +113,7 @@ const HomeView = () => {
 
   return (
     <div>
-      {Head("Pokédex | Ragnarök")}
+      {SetPageTitle("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
       <Search
         setFoundPokemon={setFoundPokemon}

@@ -25,7 +25,6 @@ const Button = ({ onClick, children, styles, className, ...props }) => {
       {...props}
     >
       <div className="btn-children">{children}</div>
-      {/* {children} */}
     </div>
   );
 };

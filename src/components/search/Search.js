@@ -10,7 +10,7 @@ import "./Search.css";
 const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   const { allPokemon } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
 
   const searchForPokemon = (event) => {
@@ -28,8 +28,6 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
         setIsPokemonFound(false);
         setFoundPokemon([]);
       }
-
-      setSearchValue("");
     } else {
       setIsPokemonFound(true);
       setFoundPokemon([]);
@@ -40,21 +38,21 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   const handleChange = (value) => {
     setSearchValue(value);
     if (value.length > 0) {
-      setIsOpen(true);
+      setIsDropDownOpen(true);
     } else {
-      setIsOpen(false);
+      setIsDropDownOpen(false);
     }
   };
 
   const handleSubmit = (event) => {
-    setIsOpen(false);
+    setIsDropDownOpen(false);
     searchForPokemon(event);
   };
 
   const selectOption = (option) => {
     setSearchValue(option);
     setInputFocus();
-    setIsOpen(false);
+    setIsDropDownOpen(false);
   };
 
   return (
@@ -74,7 +72,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
                 onChange={(event) => handleChange(event.target.value)}
                 ref={inputRef}
               />
-              {isOpen && (
+              {isDropDownOpen && (
                 <DropDown
                   options={allPokemon
                     .filter((pokemon) =>

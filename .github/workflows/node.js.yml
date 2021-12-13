@@ -14,7 +14,7 @@ jobs:
     if: github.event_name == 'push'
     environment: 
       name: Develop
-      url: https://pokemon-develop.netlify.app/
+      url: https://github.com/NETGruppEn/Project_Ragnarok/tree/develop
     runs-on: ubuntu-latest
 
     strategy:

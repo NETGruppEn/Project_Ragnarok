@@ -1,14 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PokemonContext } from "../../shared/provider/PokemonProvider";
-import { SetPageTitle } from "../../shared/global/Functions";
+import { Head } from "../../shared/global/Functions";
+import DisplayData from "../../components/displaydata/DisplayData";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
-import DisplayLoading from "../../components/displayloading/DisplayLoading";
-import PokemonCard from "../../components/pokemoncard/PokemonCard";
-import Button from "../../components/button/Button";
-import "./HomeView.css";
-import Search from "../../components/search/Search";
-import { IoIosArrowUp } from "react-icons/io";
-import DisplayError from "../../components/displayerror/DisplayError";
+import { PokemonContext } from "../../shared/provider/PokemonProvider";
+import Pagination12 from "../../components/pagination/pagination12/Pagination12";
 
 /**
  * Homeview is a component that displays a list of Pokemon.

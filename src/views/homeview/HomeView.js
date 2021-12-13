@@ -38,14 +38,14 @@ const HomeView = () => {
    */
   const getFirstPokemon = () => {
     if (foundPokemon.length > 0) {
-      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW);
+      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
       if (foundPokemon.length <= POKEMON_TO_SHOW) {
         setIsHidden(true);
       } else {
         setIsHidden(false);
       }
     } else {
-      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW);
+      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
     }
     
     setOffset(POKEMON_TO_SHOW);

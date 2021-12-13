@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import { unmountComponentAtNode } from "react-dom";
 import Button from "./Button";
 import userEvent from "@testing-library/user-event";
-// import { toHaveStyle } from "@testing-library/jest-dom";
+import { toHaveStyle } from "@testing-library/jest-dom";
 
 let container = null;
 
@@ -55,6 +55,7 @@ it("button renders with right color", async () => {
 
   userEvent.hover(screen.getByTestId("test-btn"));
   expect(screen.getByTestId("test-btn")).toHaveStyle("background-color: red;");
+  // expect(screen.getByTestId("test-btn")).toHaveStyle("background-color: red;");
 
   render(
     <Button

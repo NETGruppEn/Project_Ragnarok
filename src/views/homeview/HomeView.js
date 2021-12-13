@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
-import { SetPageTitle } from "../../shared/global/Functions";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
@@ -9,12 +8,13 @@ import "./HomeView.css";
 import Search from "../../components/search/Search";
 import { IoIosArrowUp } from "react-icons/io";
 import DisplayError from "../../components/displayerror/DisplayError";
+import { setPageTitle } from "../../shared/global/Functions";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
  */
 const HomeView = () => {
-  const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
+  const { allPokemon } = useContext(PokemonContext);
   const [listOfPokemon, setListOfPokemon] = useState([]);
   const POKEMON_TO_SHOW = 12;
   const [offset, setOffset] = useState(POKEMON_TO_SHOW);
@@ -46,8 +46,9 @@ const HomeView = () => {
       }
     } else {
       setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      setIsHidden(false);
     }
-    
+
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -86,7 +87,6 @@ const HomeView = () => {
   window.onscroll = function () {
     if (
       isHidden &&
-      listOfPokemon.length < AMOUNT_OF_POKEMON &&
       window.innerHeight + Math.ceil(window.pageYOffset) >=
         document.body.offsetHeight
     ) {
@@ -117,7 +117,7 @@ const HomeView = () => {
 
   return (
     <div>
-      {SetPageTitle("Pokédex | Ragnarök")}
+      {setPageTitle("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
       <Search
         setFoundPokemon={setFoundPokemon}

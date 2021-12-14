@@ -6,6 +6,7 @@ describe("Test capitalize function", () => {
         ["squirtle", "Squirtle"],
         ["overgrow", "Overgrow"],
         ["chlorophyll", "Chlorophyll"],
+        ["compound-eyes", "Compound Eyes "]
     ])("Does %s become %s", (text, expectedResult) => {
         expect(capitalize(text)).toBe(expectedResult);
     });

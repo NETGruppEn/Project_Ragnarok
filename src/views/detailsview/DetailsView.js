@@ -36,18 +36,13 @@ const DetailsView = () => {
         pokemon.id
       );
       pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      if (pokemon.info.length < 4) {
-        pokemon.info = [
-          ...pokemon.info,
-          {
-            name: "Category",
-            values: [
-              data.genera[7].genus.slice(
-                0,
-                data.genera[7].genus.indexOf("Pokémon")
-              ),
-            ],
-          },
+      console.log(pokemon.info[1]);
+      if (pokemon.info.find((info) => info.name === "Category").values = []) {
+        pokemon.info.find((info) => info.name === "Category").values = [
+          data.genera[7].genus.slice(
+            0,
+            data.genera[7].genus.indexOf("Pokémon")
+          ),
         ];
       }
 

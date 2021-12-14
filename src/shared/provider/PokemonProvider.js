@@ -66,6 +66,7 @@ const PokemonProvider = ({ children }) => {
         image: data.sprites.other["official-artwork"].front_default,
         stats: data.stats,
         types: data.types,
+        description: "",
         info: [
           { name: "Height", values: [`${data.height / 10} m`] },
           {

@@ -27,27 +27,30 @@ const DetailsView = () => {
   });
 
   useEffect(() => {
-    fetchDescription();
+    fetchDescriptionAndCategory();
   }, [pokemon]);
 
-  const fetchDescription = async () => {
+  const fetchDescriptionAndCategory = async () => {
     try {
       const { data } = await PokemonAPIService.getPokemonDescription(
         pokemon.id
       );
       pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      pokemon.info = [
-        ...pokemon.info,
-        {
-          name: "Category",
-          values: [
-            data.genera[7].genus.slice(
-              0,
-              data.genera[7].genus.indexOf("Pokémon")
-            ),
-          ],
-        },
-      ];
+      if (pokemon.info.length < 4) {
+        pokemon.info = [
+          ...pokemon.info,
+          {
+            name: "Category",
+            values: [
+              data.genera[7].genus.slice(
+                0,
+                data.genera[7].genus.indexOf("Pokémon")
+              ),
+            ],
+          },
+        ];
+      }
+
       setIsFetchComplete(true);
     } catch (error) {
       console.log(error);

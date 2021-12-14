@@ -1,12 +1,12 @@
 .details-card {
-  width: 90%;
+  width: 50%;
   margin: 0 auto 50px;
   position: relative;
-  font-weight: bold;
 }
 
 .pokemon-description {
   margin-top: 3em;
+  font-size: 1.25rem;
 }
 
 .info-container {
@@ -15,7 +15,8 @@
   flex-wrap: wrap;
   margin-block: 3em;
   padding: 1em;
-  border-radius: 10px;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .types {

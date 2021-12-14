@@ -1,11 +1,27 @@
+.card-title-details {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
+
 .id {
-    font-size: 80%;
-    font-weight: bold;
-    color: var(--clr-gray-dark);
+  font-weight: bold;
+  color: var(--clr-gray-dark);
 }
 
 .name {
-    color: var(--clr-black);
-    font-size: 1.25rem;
-    margin-bottom: 0.25em;
+  color: var(--clr-black);
+}
+
+.id-pokedex {
+    font-size: 80%;
+}
+
+.name-pokedex {
+  font-size: 1.25rem;
+  margin-bottom: 0.25em;
 }

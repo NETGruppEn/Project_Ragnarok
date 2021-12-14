@@ -11,12 +11,12 @@
 
 .gauge-bar {
   background-color: #fff;
-  height: 10px;
+  height: 6px;
   width: 100%;
   border-bottom: #a4a4a4 4px solid;
   width: 100%;
 }
 
 .gauge-title {
-  font-size: 80%;
+  font-size: 60%;
 }

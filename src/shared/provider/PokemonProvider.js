@@ -68,11 +68,11 @@ const PokemonProvider = ({ children }) => {
         types: data.types,
         info: [
           { name: "Height", values: [`${data.height / 10} m`] },
-          { name: "Weight", values: [`${data.weight / 10} kg`] },
           {
             name: "Abilities",
             values: data.abilities.map((a) => a.ability.name),
           },
+          { name: "Weight", values: [`${data.weight / 10} kg`] },
         ],
       };
 

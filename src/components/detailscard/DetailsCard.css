@@ -2,4 +2,30 @@
   width: 90%;
   margin: 0 auto 50px;
   position: relative;
+  font-weight: bold;
+}
+
+.pokemon-description {
+  margin-top: 3em;
+}
+
+.info-container {
+  background: var(--clr-blue);
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 3em;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.types {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+@media (min-width: 695px) {
+  .details-card {
+    display: flex;
+  }
 }

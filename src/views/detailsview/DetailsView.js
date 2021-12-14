@@ -9,6 +9,7 @@ import RoutingPath from "../../routes/RoutingPath";
 import { setPageTitle } from "../../shared/global/Functions";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
+import "./DetailsView.css";
 
 const DetailsView = () => {
   const location = useLocation();
@@ -72,9 +73,11 @@ const DetailsView = () => {
       {pokemon && setPageTitle(`${pokemon.name} | Pokédex`)}
       <ViewTitle title="Details" />
       {displayData()}
-      <Button onClick={() => history.push(RoutingPath.homeView)}>
-        Explore More Pokémon
-      </Button>
+      <div className="btn-return">
+        <Button onClick={() => history.push(RoutingPath.homeView)}>
+          Explore More Pokémon
+        </Button>
+      </div>
     </div>
   );
 };

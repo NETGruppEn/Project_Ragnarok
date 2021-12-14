@@ -1,4 +1,5 @@
 import React from "react";
+import "./Info.css";
 // import { capitalize } from "../../shared/global/Functions";
 
 /**
@@ -9,10 +10,14 @@ import React from "react";
  */
 const Info = ({ info }) => {
   return (
-    <div>
-      <h4 data-testid="title">{info.name}</h4>
+    <div className="info">
+      <h4 className="info-title" data-testid="title">
+        {info.name}
+      </h4>
       {info.values.map((value, index) => (
-        <p key={index}>{value}</p>
+        <p className="values" key={index}>
+          {value}
+        </p>
       ))}
     </div>
   );

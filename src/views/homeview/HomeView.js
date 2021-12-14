@@ -9,6 +9,8 @@ import Search from "../../components/search/Search";
 import { IoIosArrowUp } from "react-icons/io";
 import DisplayError from "../../components/displayerror/DisplayError";
 import { setPageTitle } from "../../shared/global/Functions";
+import { useHistory } from "react-router-dom";
+import RoutingPath from "../../routes/RoutingPath";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -22,6 +24,7 @@ const HomeView = () => {
   const [showPageUp, setShowPageUp] = useState(false);
   const [foundPokemon, setFoundPokemon] = useState([]);
   const [isPokemonFound, setIsPokemonFound] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
@@ -110,7 +113,11 @@ const HomeView = () => {
       return <DisplayLoading />;
     } else if (isPokemonFound) {
       return listOfPokemon.map((pokemon, index) => (
-        <PokemonCard key={index} pokemon={pokemon} />
+        <PokemonCard
+          key={index}
+          pokemon={pokemon}
+          onClick={() => history.push(RoutingPath.detailsView, pokemon)}
+        />
       ));
     }
   };

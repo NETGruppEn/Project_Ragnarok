@@ -10,14 +10,14 @@ import "./StatisticContainer.css";
  */
 const StatisticContainer = ({ stats }) => {
   // This is a test example data for Bulbasaur pokemon
-  stats = [
-    { base_stat: 45, stat: { name: "HP" } },
-    { base_stat: 49, stat: { name: "Atatck" } },
-    { base_stat: 49, stat: { name: "Defense" } },
-    { base_stat: 65, stat: { name: "Special Attack" } },
-    { base_stat: 65, stat: { name: "Special Defense" } },
-    { base_stat: 45, stat: { name: "Speed" } },
-  ];
+  // stats = [
+  //   { base_stat: 45, stat: { name: "HP" } },
+  //   { base_stat: 49, stat: { name: "Atatck" } },
+  //   { base_stat: 49, stat: { name: "Defense" } },
+  //   { base_stat: 65, stat: { name: "Special Attack" } },
+  //   { base_stat: 65, stat: { name: "Special Defense" } },
+  //   { base_stat: 45, stat: { name: "Speed" } },
+  // ];
 
   return (
     <div className="stats-container">

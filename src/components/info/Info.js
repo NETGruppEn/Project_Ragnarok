@@ -1,5 +1,5 @@
 import React from "react";
-import { capitalize } from "../../shared/global/Functions";
+// import { capitalize } from "../../shared/global/Functions";
 
 /**
  * Shows title and value with corresponding unit.
@@ -7,13 +7,13 @@ import { capitalize } from "../../shared/global/Functions";
  * @param {int} value     The value corrensponding to the title
  * @param {string} unit   The unit of the value
  */
-export const MonoInfo = ({ title, value, unit }) => {
+const Info = ({ info }) => {
   return (
     <div>
-      <h4 data-testid="title">{title}</h4>
-      <p data-testid="value">
-        {value / 10} {unit}
-      </p>
+      <h4 data-testid="title">{info.name}</h4>
+      {info.values.map((value, index) => (
+        <p key={index}>{value}</p>
+      ))}
     </div>
   );
 };
@@ -23,15 +23,17 @@ export const MonoInfo = ({ title, value, unit }) => {
  * @param {string} title  The title of the values
  * @param {int} values    The values corrensponding to the titles
  */
-export const PolyInfo = ({ title, values }) => {
-  return (
-    <div>
-      <h4 data-testid="title">{title}</h4>
-      {values.map((val, index) => (
-        <p key={index} data-testid={`value${index}`}>
-          {capitalize(val.ability.name)}
-        </p>
-      ))}
-    </div>
-  );
-};
+// export const PolyInfo = ({ title, values }) => {
+//   return (
+//     <div>
+//       <h4 data-testid="title">{title}</h4>
+//       {values.map((val, index) => (
+//         <p key={index} data-testid={`value${index}`}>
+//           {capitalize(val.ability.name)}
+//         </p>
+//       ))}
+//     </div>
+//   );
+// };
+
+export default Info;

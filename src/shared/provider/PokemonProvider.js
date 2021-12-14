@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import PokemonAPIService from "../api/service/PokemonAPIService";
-import { capitalize } from '../global/Functions';
+import { capitalize } from "../global/Functions";
 
 export const PokemonContext = createContext();
 
@@ -44,7 +44,9 @@ const PokemonProvider = ({ children }) => {
    */
   const fetchData = async () => {
     try {
-      const { data } = await PokemonAPIService.getRangeOfPokemon(AMOUNT_OF_POKEMON);
+      const { data } = await PokemonAPIService.getRangeOfPokemon(
+        AMOUNT_OF_POKEMON
+      );
       setServerData(data.results);
     } catch (error) {
       console.log("Error with API: " + error);
@@ -53,22 +55,25 @@ const PokemonProvider = ({ children }) => {
 
   /**
    * Fetches a specific pokemon based on id and adds that pokemon to the list of pokemon.
-   * @param result  A result from the server data list of all pokémon names and urls. 
+   * @param result  A result from the server data list of all pokémon names and urls.
    */
   const fetchPokemon = async (result) => {
     try {
-      const { data } = await PokemonAPIService.getAPokemon(result.name)
+      const { data } = await PokemonAPIService.getAPokemon(result.name);
       const pokemon = {
         name: checkName(data.species.name),
         id: data.id,
         image: data.sprites.other["official-artwork"].front_default,
         stats: data.stats,
-        info: {
-          height: data.height,
-          weight: data.weight,
-          abilities: data.abilities,
-        },
-        types: data.types 
+        types: data.types,
+        info: [
+          { name: "Height", values: [`${data.height / 10} m`] },
+          { name: "Weight", values: [`${data.weight / 10} kg`] },
+          {
+            name: "Abilities",
+            values: data.abilities.map((a) => a.ability.name),
+          },
+        ],
       };
 
       setAllPokemon([...allPokemon, pokemon]);
@@ -76,10 +81,10 @@ const PokemonProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
-    <PokemonContext.Provider value={{allPokemon, AMOUNT_OF_POKEMON}}>
+    <PokemonContext.Provider value={{ allPokemon, AMOUNT_OF_POKEMON }}>
       {children}
     </PokemonContext.Provider>
   );
@@ -94,6 +99,5 @@ const checkName = (name) => {
 
   return capitalize(name);
 };
-
 
 export default PokemonProvider;

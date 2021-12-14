@@ -16,3 +16,7 @@
   border-bottom: #a4a4a4 4px solid;
   width: 100%;
 }
+
+.gauge-title {
+  font-size: 80%;
+}

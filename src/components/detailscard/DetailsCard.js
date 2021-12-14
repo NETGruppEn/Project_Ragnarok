@@ -7,9 +7,9 @@ import Type from "../type/Type";
 
 const DetailsCard = ({ pokemon }) => {
   return (
-    <div>
+    <div className="details-card">
       <CardTitle id={pokemon.id} name={pokemon.name} />
-      <img src={pokemon.image} alt={pokemon.name} />
+      <img className="card-img" src={pokemon.image} alt={pokemon.name} />
       <StatisticContainer stats={pokemon.stats} />
       <p>{pokemon.description}</p>
       <div className="info-container">

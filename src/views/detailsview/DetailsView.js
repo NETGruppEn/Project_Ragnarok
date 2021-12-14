@@ -1,23 +1,34 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router";
+import { useEffect, useState, useContext } from "react/cjs/react.development";
 import Button from "../../components/button/Button";
 import ViewTitle from "../../components/viewtitle/ViewTitle";
 import RoutingPath from "../../routes/RoutingPath";
-import { COLORS } from "../../shared/global/Colors";
+import { setPageTitle } from "../../shared/global/Functions";
+import { PokemonContext } from "../../shared/provider/PokemonProvider";
 
 const DetailsView = () => {
   const location = useLocation();
   const history = useHistory();
+  const [pokemon, setPokemon] = useState();
+  const { allPokemon } = useContext(PokemonContext);
+
+  useEffect(() => {
+    if (location.state) {
+      setPokemon(location.state);
+    } else {
+      setPokemon(allPokemon[0]);
+    }
+  });
+
   return (
     <div>
+      {pokemon && setPageTitle(`${pokemon.name} | Pokédex`)}
       <ViewTitle title="Details" />
-      <p>{location.state?.name}</p>
-      <Button
-        title="Explore More Pokémon"
-        onClick={() => history.push(RoutingPath.homeView)}
-        color={COLORS.orange}
-        onHover={COLORS.orangeHover}
-      />
+      <p>{pokemon?.name}</p>
+      <Button onClick={() => history.push(RoutingPath.homeView)}>
+        Explore More Pokémon
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HomeView from "../views/homeview/HomeView";
+import DetailsView from "../views/detailsview/DetailsView";
 import RoutingPath from "./RoutingPath";
 
 /**
@@ -18,6 +19,7 @@ export const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path={RoutingPath.detailsView} component={DetailsView} />
         <Route path={RoutingPath.homeView} component={HomeView} />
       </Switch>
     </BrowserRouter>

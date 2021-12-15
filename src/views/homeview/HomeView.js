@@ -11,6 +11,7 @@ import DisplayError from "../../components/displayerror/DisplayError";
 import { setPageTitle } from "../../shared/global/Functions";
 import { useHistory } from "react-router-dom";
 import RoutingPath from "../../routes/RoutingPath";
+import AdvancedSearch from "../../components/advancedSearch/AdvancedSearch";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -130,6 +131,8 @@ const HomeView = () => {
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
       />
+      <AdvancedSearch/>
+
       <div className="content">
         <ul className="results">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}

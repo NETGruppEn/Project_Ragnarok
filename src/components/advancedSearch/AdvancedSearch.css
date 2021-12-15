@@ -1,0 +1,11 @@
+.advanced-search-container{
+    background: var(--clr-gray-darker);
+    height: 2em;
+    position: relative;
+}
+
+.advanced-search-content{
+    overflow-y: hidden;
+    height:2em;
+    transition: max-height 0.2s ease-in;
+}

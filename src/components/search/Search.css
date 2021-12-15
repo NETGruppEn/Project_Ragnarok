@@ -72,10 +72,10 @@
   padding: 0;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 460px) {
   .search-container {
     flex-direction: row;
-    width: 85%;
+    width: 80%;
     max-width: 876px;
     gap: 1.5em;
   }

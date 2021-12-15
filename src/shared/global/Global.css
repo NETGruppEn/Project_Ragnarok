@@ -67,7 +67,7 @@ img {
 
 @media (min-width: 460px) {
   .content {
-    width: 85%;
+    width: 80%;
     max-width: 876px;
     margin: auto;
   }

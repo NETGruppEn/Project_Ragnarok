@@ -42,11 +42,11 @@
   margin-top: 1em;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 960px) {
   .details-card {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 0.8em;
   }
 
   .details-left-column,

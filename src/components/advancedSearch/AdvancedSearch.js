@@ -8,7 +8,7 @@ import Divider from "../divider/Divider";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import "./AdvancedSearch.css";
 
-const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
+const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound, isAdvancedClosed, setIsAdvancedClosed }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [lowerNumberRange, setLowerNumberRange] = useState(1);
@@ -33,6 +33,13 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     fetchTypes();
   }, []);
 
+  useEffect(() => {
+    if (isAdvancedClosed) {
+      setIsReset(true);
+      setIsExpanded(false);
+    }
+  }, [isAdvancedClosed])
+
   /**
    * If the reset button is clicked, all states are set to default
    */
@@ -42,6 +49,11 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     setHigherNumberRange(AMOUNT_OF_POKEMON);
     setIsReset(false);
   }, [isReset]);
+
+  const handleExpand = () => {
+    setIsAdvancedClosed(false);
+    setIsExpanded(true);
+  }
 
   /**
    * When the search button is clicked, this function tries to find matching
@@ -163,7 +175,7 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
           </span>
         ) : (
           <span
-            onClick={() => setIsExpanded(true)}
+            onClick={() => handleExpand()}
             className="advanced-search-expand"
           >
             <p>Show Advanced Search</p>

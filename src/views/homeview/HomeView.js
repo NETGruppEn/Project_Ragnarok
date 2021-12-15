@@ -26,6 +26,7 @@ const HomeView = () => {
   const [showPageUp, setShowPageUp] = useState(false);
   const [foundPokemon, setFoundPokemon] = useState([]);
   const [isPokemonFound, setIsPokemonFound] = useState(true);
+  const [isAdvancedClosed, setIsAdvancedClosed] = useState();
   const history = useHistory();
 
   /**
@@ -146,10 +147,13 @@ const HomeView = () => {
       <Search
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
+        setIsAdvancedClosed={setIsAdvancedClosed}
       />
       <AdvancedSearch
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
+        isAdvancedClosed={isAdvancedClosed}
+        setIsAdvancedClosed={setIsAdvancedClosed}
       />
 
       <div className="content">

@@ -10,7 +10,7 @@ import "./Search.css";
 /**
  * Lets the user to search for Pokemon based on name and number.
  */
-const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
+const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => {
   const { allPokemon } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -63,6 +63,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   const handleSubmit = (event) => {
     setIsDropDownOpen(false);
     searchForPokemon(event);
+    setIsAdvancedClosed(true);
   };
   /**
    * If user chooses an alternative from DropDownMenu to search for.

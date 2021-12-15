@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
+  --clr-black-dark: #1f1f1f;
   --clr-black: #313131;
   --clr-gray-light: #f2f2f2;
   --clr-gray: #a4a4a4;
@@ -42,6 +43,7 @@ html {
 body {
   font-family: "Flexo-Regular";
   box-sizing: border-box;
+  background: var(--clr-black) url("https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png");
 }
 
 img {
@@ -50,6 +52,22 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
+  position: relative;
+  background: #fff url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+}
+
+.content {
+  padding: 3em 1em;
+  background: #fff;
+  position: relative;
+}
+
+@media (min-width: 460px) {
+  .content {
+    width: 85%;
+    max-width: 876px;
+    margin: auto;
+  }
 }

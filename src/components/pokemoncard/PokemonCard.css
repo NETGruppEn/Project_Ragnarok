@@ -35,6 +35,18 @@
   }
 }
 
+@media (min-width: 770px) {
+  .card {
+    width: 31%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .card {
+    width: 23%;
+  }
+}
+
 @keyframes bounce {
   0% {
     transform: translateY(0);

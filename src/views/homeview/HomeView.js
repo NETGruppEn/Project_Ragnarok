@@ -123,14 +123,14 @@ const HomeView = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {setPageTitle("Pokédex | Ragnarök")}
       <ViewTitle title="Pokédex" />
       <Search
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
       />
-      <div className="container">
+      <div className="content">
         <ul className="results">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}
         <div className="home-view-btn-container">
@@ -140,18 +140,18 @@ const HomeView = () => {
             </Button>
           )}
         </div>
-        <Button
-          className="btn-page-up"
-          onClick={() => window.scrollTo(0, 0)}
-          styles={{
-            transform: showPageUp && "translateY(-68px)",
-          }}
-        >
-          <span className="arrow-up">
-            <IoIosArrowUp size="50" />
-          </span>
-        </Button>
       </div>
+      <Button
+        className="btn-page-up"
+        onClick={() => window.scrollTo(0, 0)}
+        styles={{
+          transform: showPageUp && "translateY(-68px)",
+        }}
+      >
+        <span className="arrow-up">
+          <IoIosArrowUp size="50" />
+        </span>
+      </Button>
     </div>
   );
 };

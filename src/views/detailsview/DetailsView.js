@@ -37,7 +37,7 @@ const DetailsView = () => {
       );
       pokemon.description = getDescriptionEntry(data.flavor_text_entries);
       console.log(pokemon.info[1]);
-      if (pokemon.info.find((info) => info.name === "Category").values = []) {
+      if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
         pokemon.info.find((info) => info.name === "Category").values = [
           data.genera[7].genus.slice(
             0,
@@ -67,14 +67,16 @@ const DetailsView = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {pokemon && setPageTitle(`${pokemon.name} | Pokédex`)}
       <ViewTitle title="Details" />
-      {displayData()}
-      <div className="btn-return">
-        <Button onClick={() => history.push(RoutingPath.homeView)}>
-          Explore More Pokémon
-        </Button>
+      <div className="content">
+        {displayData()}
+        <div className="btn-return">
+          <Button onClick={() => history.push(RoutingPath.homeView)}>
+            Explore More Pokémon
+          </Button>
+        </div>
       </div>
     </div>
   );

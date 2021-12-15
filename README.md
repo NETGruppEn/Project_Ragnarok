@@ -1,3 +1,4 @@
+Information about GitHub Wiki
 <img src="WikiIMG/wiki-1.png">
 <img src="WikiIMG/wiki-2.png">
 <img src="WikiIMG/wiki-3.png">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { capitalize } from "../../shared/global/Functions";
 import "./CardTitle.css";
 import Star from "../star/Star";
@@ -18,11 +18,12 @@ const format = (id) => {
  * @param name  The name of the pokemon as a string
  */
 const CardTitle = ({ id, name }) => {
+
   return (
     <div className="card-title">
       <p className="id" data-testid="id">{format(id)}</p>
       <h3 className="name" data-testid="name">{capitalize(name)}</h3>
-      <Star id={id}/>
+      <Star id={id} name={name}/>
     </div>
   );
 };

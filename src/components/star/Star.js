@@ -16,20 +16,18 @@ const Star = ({ id, name }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const getItem = localStorage.getItem(name);
-    for(let index = 0; index < localStorage.length; index++){
+    const getItem = localStorage.getItem(id);
       if(getItem != null)
         setIsFavorite(true);
-    };
-  }, [name]);
+  }, [id]);
 
   const handleClick = () => {
     if (isFavorite) {
       setIsFavorite(!isFavorite);
-      localStorage.removeItem(name, JSON.stringify({ id, name }));
+      localStorage.removeItem(id, JSON.stringify(name));
     } else {
       setIsFavorite([isFavorite, id]);
-      localStorage.setItem(name, JSON.stringify({ id, name }));
+      localStorage.setItem(id, JSON.stringify(name));
     }
   };
 

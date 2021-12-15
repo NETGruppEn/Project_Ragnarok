@@ -23,6 +23,7 @@ const AdvancedSearch = () => {
             value={lowerNumberRange}
             onChange={(event) => setLowerNumberRange(event.target.value)}
           />
+          {" - "}
           <input
             type="text"
             value={higherNumberRange}

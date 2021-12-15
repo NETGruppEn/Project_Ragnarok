@@ -5,7 +5,7 @@ import "./Header.css";
 
 /**
  * Basic header for pokemon react app
- * @returns A pokemon logo
+ * @returns A pokemon logo and a thin gray line.
  */
 const Header = () => {
   return (

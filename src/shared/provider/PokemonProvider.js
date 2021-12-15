@@ -95,6 +95,11 @@ const PokemonProvider = ({ children }) => {
   );
 };
 
+/**
+ * If the Pokémon is a Nidoran, the gender letter 
+ * is replaced for a gender symbol
+ * @param {string } name 
+ */
 const checkName = (name) => {
   if (name === "nidoran-f") {
     name = name.replace("-f", "♀");
@@ -105,6 +110,11 @@ const checkName = (name) => {
   return capitalize(name);
 };
 
+/**
+ * Turns centimeter into fett and inches.
+ * @param {number} cm 
+ * @returns a string of feet and inches. For example: 5' 4"
+ */
 const centimetersToFeetAndInches = (cm) => {
   let inches = Math.round(cm / 2.54);
   let feet = 0;
@@ -115,6 +125,11 @@ const centimetersToFeetAndInches = (cm) => {
   return `${feet}' ${inches}"`;
 }
 
+/**
+ * Turns kilo into pounds
+ * @param {number} kg 
+ * @returns a string of pounds. For example: 199 lbs
+ */
 const kilosToPounds = (kg) => {
   return `${(kg * 2.2046).toFixed(1)} lbs`; 
 }

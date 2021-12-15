@@ -4,7 +4,6 @@ import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
-import "./HomeView.css";
 import Search from "../../components/search/Search";
 import { IoIosArrowUp } from "react-icons/io";
 import DisplayError from "../../components/displayerror/DisplayError";
@@ -13,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import RoutingPath from "../../routes/RoutingPath";
 import AdvancedSearch from "../../components/advancedSearch/AdvancedSearch";
 import $ from "jquery";
+import "./HomeView.css";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -28,12 +28,18 @@ const HomeView = () => {
   const [isPokemonFound, setIsPokemonFound] = useState(true);
   const history = useHistory();
 
+  /**
+   * Gets the first 12 pokemon to show
+   */
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
     }
   });
 
+  /**
+   * Gets first pokemon to show after a search has been done.
+   */
   useEffect(() => {
     getFirstPokemon();
   }, [foundPokemon]);
@@ -106,6 +112,9 @@ const HomeView = () => {
     }
   };
 
+  /**
+   * Scrolls down to the pokemon cards
+   */
   const scrollToPokemon = () => {
     const top = $("#results").offset().top;
     window.scrollTo({ top: top - 25, left: 0 });

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import "./AdvancedSearch.css";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
 import { FaSearch, FaStar } from "react-icons/fa";
@@ -7,7 +6,7 @@ import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
 import AdvancedType from "../advancedtype/AdvancedType";
 import Divider from "../divider/Divider";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { COLORS } from "../../shared/global/Colors";
+import "./AdvancedSearch.css";
 
 const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -19,6 +18,9 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [isFavorites, setIsFavorites] = useState(false);
   const [isReset, setIsReset] = useState(false);
 
+  /**
+   * Fetches description and category for the active pokemon
+   */
   useEffect(() => {
     const fetchTypes = async () => {
       try {
@@ -31,6 +33,9 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     fetchTypes();
   }, []);
 
+  /**
+   * If the reset button is clicked, all states are set to default
+   */
   useEffect(() => {
     setSelectedTypes([]);
     setLowerNumberRange(1);
@@ -38,6 +43,10 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     setIsReset(false);
   }, [isReset]);
 
+  /**
+   * When the search button is clicked, this function tries to find matching
+   * Pokémon based on the number range and types selected
+   */
   const handleSearch = () => {
     const pokemonInRange = allPokemon.slice(
       lowerNumberRange - 1,
@@ -65,7 +74,6 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     } else {
       pokemonOfTypes.push(...pokemonInRange);
     }
-
 
     if (pokemonOfTypes.length > 0) {
       setFoundPokemon(pokemonOfTypes);

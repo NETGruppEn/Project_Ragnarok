@@ -7,6 +7,12 @@ import "./AdvancedType.css";
 const AdvancedType = ({ type, selectedTypes, setSelectedTypes, isReset }) => {
   const [isSelected, setIsSelected] = useState(false);
 
+  /**
+   * If a type is selected/deselected it gets added/removed 
+   * from the list of selected types.
+   * If the reset button is clicked the type is deselected 
+   * and removed from the list selected types
+   */
   useEffect(() => {
     if (isSelected) {
       setSelectedTypes([...selectedTypes, type]);

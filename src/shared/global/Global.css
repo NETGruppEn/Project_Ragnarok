@@ -44,6 +44,7 @@ body {
   font-family: "Flexo-Regular";
   box-sizing: border-box;
   background: var(--clr-black) url("https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png");
+  height: 100%;
 }
 
 img {
@@ -52,8 +53,8 @@ img {
 
 .container {
   width: 100%;
-  min-height: 80vh;
   max-width: 1280px;
+  min-height: 100%;
   margin: 0 auto;
   position: relative;
   background: #fff url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");

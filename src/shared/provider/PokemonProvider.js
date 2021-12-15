@@ -112,7 +112,7 @@ const centimetersToFeetAndInches = (cm) => {
     feet += 1;
     inches -= 12;
   }
-  return `${feet}' 0${inches}"`;
+  return `${feet}' ${inches}"`;
 }
 
 const kilosToPounds = (kg) => {

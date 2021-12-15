@@ -55,16 +55,18 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
         <div className="advanced-search-content">
           <h3 className="advanced-search-title">Number Range</h3>
           <input
+            className="advanced-search-number-range-input"
             value={lowerNumberRange}
             onChange={(event) => setLowerNumberRange(event.target.value)}
           />
           {" - "}
           <input
+            className="advanced-search-number-range-input"
             value={higherNumberRange}
             onChange={(event) => setHigherNumberRange(event.target.value)}
           />
         </div>
-        <div className="advanced-search-content">
+        <div className="advanced-search-content advanced-search-btns">
           <Button
             className="advanced-search-btn-reset"
             onClick={() => handleClick()}

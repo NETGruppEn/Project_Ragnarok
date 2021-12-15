@@ -17,7 +17,7 @@ const Button = ({ onClick, children, styles, className, ...props }) => {
   return (
     <div
       className={`btn ${className}`}
-      onClick={() => onClick()}
+      onClick={onClick}
       style={{ ...styles }}
       {...props}
     >

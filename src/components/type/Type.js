@@ -9,11 +9,11 @@ import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
  * @param name    The name of the type
  * @param size    The size of the type ex. small or large
  */
-const Type = ({ name, size }) => {
+const Type = ({ name, className }) => {
   return (
     <div
       data-testid="type"
-      className={`type type-${size}`}
+      className={`type type-${className}`}
       style={getColors(name)}
     >
       {capitalize(name)}

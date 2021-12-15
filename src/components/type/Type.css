@@ -10,3 +10,8 @@
   padding-block: 6px;
   border-radius: 5px;
 }
+
+.type-advanced-search {
+  margin-bottom: 0.5em;
+  border: 1px solid var(--clr-gray-light);
+}

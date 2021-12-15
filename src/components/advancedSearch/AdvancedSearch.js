@@ -4,6 +4,7 @@ import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
 import { FaSearch } from "react-icons/fa";
 import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
+import Type from "../type/Type";
 
 const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,9 +43,9 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
         style={{ maxHeight: isExpanded ? "100em" : 0 }}
       >
         <div>
-            {
-                typeTitles.map((title) => (<p>{title}</p>))
-            }
+          {typeTitles.map((title) => (
+            <Type name={title} className={"advanced-search"}></Type>
+          ))}
         </div>
         <div>
           <h3>Number Range</h3>

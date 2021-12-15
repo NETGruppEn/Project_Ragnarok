@@ -39,20 +39,21 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   return (
     <div className="advanced-search-container">
       <div
-        className="advanced-search-content"
+        className="advanced-search-content-container"
         style={{ maxHeight: isExpanded ? "100em" : 0 }}
       >
-        <div className="advanced-search-types-container">
-        {types.map((type, index) => {
-            if (type !== "shadow" && type !== "unknown") {
-              return (
-                <AdvancedType key={index} type={type} />
-              );
-            }
-          })}
+        <div className="advanced-search-content">
+          <h3 className="advanced-search-title">Type</h3>
+          <div className="advanced-search-types">
+            {types.map((type, index) => {
+              if (type !== "shadow" && type !== "unknown") {
+                return <AdvancedType key={index} type={type} />;
+              }
+            })}
+          </div>
         </div>
-        <div>
-          <h3>Number Range</h3>
+        <div className="advanced-search-content">
+          <h3 className="advanced-search-title">Number Range</h3>
           <input
             value={lowerNumberRange}
             onChange={(event) => setLowerNumberRange(event.target.value)}
@@ -63,15 +64,23 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
             onChange={(event) => setHigherNumberRange(event.target.value)}
           />
         </div>
-        <Button onClick={() => handleClick()}>
-          <span>
-            <FaSearch size="12" />
-            {" Search"}
-          </span>
-        </Button>
+        <div className="advanced-search-content">
+          <Button
+            className="advanced-search-btn-reset"
+            onClick={() => handleClick()}
+          >
+            Reset
+          </Button>{" "}
+          <Button onClick={() => handleClick()}>
+            <span>
+              <FaSearch size="12" />
+              {" Search"}
+            </span>
+          </Button>
+        </div>
       </div>
       <div
-        className="advanced-search-btn"
+        className="advanced-search-btn-expand"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         Click me!

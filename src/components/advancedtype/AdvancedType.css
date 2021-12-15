@@ -1,19 +1,18 @@
 .advanced-type-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5em;
-    border: 1px solid pink;
-    width: 49%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  width: 49%;
 }
 
 .advanced-checkbox {
-    --size: 25px;
-    border-radius: 50%;
-    width: var(--size);
-    height: var(--size);
-    background: #fff;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    line-height: 1.5;
+  --size: 25px;
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.5;
 }

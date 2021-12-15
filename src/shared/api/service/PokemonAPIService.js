@@ -12,7 +12,6 @@ const PokemonAPIService = {};
 }
 
 /**
- * 
  * @param identifier  The name or id of a pokémon
  * @returns The endpoint to get a specific pokemon with more info
  */
@@ -20,10 +19,17 @@ const PokemonAPIService = {};
   return http.get(`/pokemon/${identifier}`);
 }
 
+/**
+ * @param {*} identifier 
+ * @returns the endpoint to fetch description and category
+ */
 PokemonAPIService.getPokemonDescription = (identifier) => {
   return http.get(`/pokemon-species/${identifier}`);
 }
 
+/**
+ * @returns the endpoint to fetch all Pokémon types.
+ */
 PokemonAPIService.getTypes = () =>{
   return http.get("/type/");
 }

@@ -5,7 +5,6 @@ import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
 
 /**
  * Renders a pokémon type with correszponding text and colors.
- *
  * @param name    The name of the type
  * @param size    The size of the type ex. small or large
  */

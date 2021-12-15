@@ -5,7 +5,7 @@ import "./Info.css";
 
 /**
  * Shows info title and values.
- * @param {object} info The info object to show  
+ * @param {object} info The info to show  
  */
 const Info = ({ info }) => {
   return (

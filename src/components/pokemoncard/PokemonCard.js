@@ -4,8 +4,7 @@ import Type from "../type/Type";
 import "./PokemonCard.css";
 
 /**
- * Shows an image, name, id and type of a pokemon.
- * @param {*} pokemon The pokemon to show 
+ * Shows an image, name, id and type of a Pokémon.
  */
 const PokemonCard = ({ pokemon, onClick }) => {
   return (

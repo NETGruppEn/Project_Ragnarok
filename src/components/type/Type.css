@@ -12,7 +12,7 @@
 }
 
 .type-advanced {
-  border: 2px solid var(--clr-gray);
+  border: 2px solid var(--clr-gray-dark);
   padding-block: 4px;
   border-radius: 5px;
   width: 6em;

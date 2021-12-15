@@ -2,9 +2,13 @@ import React from "react";
 import CardTitle from "../cardTitle/CardTitle";
 import StatisticContainer from "../statistic/StatisticContainer";
 import Info from "../info/Info";
-import "./DetailsCard.css";
 import Type from "../type/Type";
+import "./DetailsCard.css";
 
+/**
+ * A large card containing details about the Pokémon
+ * @param {object} pokemon 
+ */
 const DetailsCard = ({ pokemon }) => {
   return (
     <section className="details-card-container">

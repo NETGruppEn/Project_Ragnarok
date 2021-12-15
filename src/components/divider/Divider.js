@@ -1,10 +1,14 @@
 import React from "react";
 import "./Divider.css";
 
-const Divider = () => {
+/**
+ * A divider between sections.
+ * @returns an aesthetically pleasing notch with some space around  
+ */
+const Divider = ({className, children}) => {
   return (
-    <div className="divider">
-      <div className="notch" />
+    <div className={`divider-${className}`}>
+      <div className={`notch-${className}`}>{children}</div>
     </div>
   );
 };

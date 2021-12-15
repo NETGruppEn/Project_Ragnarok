@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.card:hover {
+  animation: bounce 0.25s ease;
+}
+
 .card-img {
   background: var(--clr-gray-light);
   border-radius: 5px;
@@ -28,5 +32,29 @@
 @media (min-width: 510px) {
   .card {
     width: 48%;
+  }
+}
+
+@media (min-width: 770px) {
+  .card {
+    width: 31%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .card {
+    width: 23%;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

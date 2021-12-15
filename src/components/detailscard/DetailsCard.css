@@ -1,21 +1,39 @@
-.details-card {
-  width: 90%;
-  margin: 0 auto 50px;
+.details-card-container {
+  width: 100%;
+  background: #fff;
   position: relative;
-  font-weight: bold;
+}
+
+.details-card {
+  position: relative;
+  margin: 0 auto 50px;
+}
+
+.details {
+  margin-bottom: 3em;
+}
+
+.details-img {
+  background: var(--clr-gray-light);
+  border-radius: 5px;
 }
 
 .pokemon-description {
-  margin-top: 3em;
+  font-size: 1.25rem;
+  padding-top: 0.5em;
 }
 
 .info-container {
   background: var(--clr-blue);
   display: flex;
   flex-wrap: wrap;
-  margin-block: 3em;
-  padding: 1em;
-  border-radius: 10px;
+  padding: 1.25em;
+  border-radius: 8px;
+}
+
+.type-container > h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 
 .types {
@@ -24,8 +42,15 @@
   margin-top: 1em;
 }
 
-@media (min-width: 695px) {
+@media (min-width: 1025px) {
   .details-card {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  .details-left-column,
+  .details-right-column {
+    width: 49%;
   }
 }

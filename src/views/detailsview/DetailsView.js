@@ -27,27 +27,25 @@ const DetailsView = () => {
   });
 
   useEffect(() => {
-    fetchDescription();
+    fetchDescriptionAndCategory();
   }, [pokemon]);
 
-  const fetchDescription = async () => {
+  const fetchDescriptionAndCategory = async () => {
     try {
       const { data } = await PokemonAPIService.getPokemonDescription(
         pokemon.id
       );
       pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      pokemon.info = [
-        ...pokemon.info,
-        {
-          name: "Category",
-          values: [
-            data.genera[7].genus.slice(
-              0,
-              data.genera[7].genus.indexOf("Pokémon")
-            ),
-          ],
-        },
-      ];
+      console.log(pokemon.info[1]);
+      if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
+        pokemon.info.find((info) => info.name === "Category").values = [
+          data.genera[7].genus.slice(
+            0,
+            data.genera[7].genus.indexOf("Pokémon")
+          ),
+        ];
+      }
+
       setIsFetchComplete(true);
     } catch (error) {
       console.log(error);
@@ -69,14 +67,16 @@ const DetailsView = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {pokemon && setPageTitle(`${pokemon.name} | Pokédex`)}
       <ViewTitle title="Details" />
-      {displayData()}
-      <div className="btn-return">
-        <Button onClick={() => history.push(RoutingPath.homeView)}>
-          Explore More Pokémon
-        </Button>
+      <div className="content">
+        {displayData()}
+        <div className="btn-return">
+          <Button onClick={() => history.push(RoutingPath.homeView)}>
+            Explore More Pokémon
+          </Button>
+        </div>
       </div>
     </div>
   );

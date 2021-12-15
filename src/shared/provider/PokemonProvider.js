@@ -66,13 +66,18 @@ const PokemonProvider = ({ children }) => {
         image: data.sprites.other["official-artwork"].front_default,
         stats: data.stats,
         types: data.types,
+        description: "",
         info: [
-          { name: "Height", values: [`${data.height / 10} m`] },
+          { name: "Height", values: [centimetersToFeetAndInches(data.height * 10)] },
+          {
+            name: "Category",
+            values: []
+          },
+          { name: "Weight", values: [kilosToPounds(data.weight / 10)] },
           {
             name: "Abilities",
             values: data.abilities.map((a) => a.ability.name),
           },
-          { name: "Weight", values: [`${data.weight / 10} kg`] },
         ],
       };
 
@@ -99,5 +104,19 @@ const checkName = (name) => {
 
   return capitalize(name);
 };
+
+const centimetersToFeetAndInches = (cm) => {
+  let inches = Math.round(cm / 2.54);
+  let feet = 0;
+  while (inches - 12 >= 0) {
+    feet += 1;
+    inches -= 12;
+  }
+  return `${feet}' 0${inches}"`;
+}
+
+const kilosToPounds = (kg) => {
+  return `${(kg * 2.2046).toFixed(1)} lbs`; 
+}
 
 export default PokemonProvider;

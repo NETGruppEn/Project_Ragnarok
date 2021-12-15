@@ -12,7 +12,7 @@ const PokemonCard = ({ pokemon, onClick }) => {
     <li className="card" onClick={onClick}>
       <img className="card-img" src={pokemon.image} alt={pokemon.name} />
       <div className="card-info">
-        <CardTitle id={pokemon.id} name={pokemon.name} />
+        <CardTitle id={pokemon.id} name={pokemon.name} className="pokedex" />
       </div>
       <div className="card-types">
         {pokemon.types.map((value, index) => {

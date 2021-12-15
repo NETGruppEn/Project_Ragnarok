@@ -1,4 +1,17 @@
-.viewtitle {
-    color: var(--clr-gray-dark);
-    padding: 0.5em;
+.view-title {
+  margin: 0 auto;
+  background: #fff;
+  padding: 1em 1em;
+}
+
+.view-title-text {
+  margin-left: 1em;
+  color: var(--clr-gray-dark);
+}
+
+@media (min-width: 460px) {
+  .view-title {
+    width: 85%;
+    max-width: 876px;
+  }
 }

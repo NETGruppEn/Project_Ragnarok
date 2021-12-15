@@ -109,7 +109,7 @@ const centimetersToFeetAndInches = (cm) => {
   let inches = Math.round(cm / 2.54);
   let feet = 0;
   while (inches - 12 >= 0) {
-    feet += 1;
+    feet++;
     inches -= 12;
   }
   return `${feet}' ${inches}"`;

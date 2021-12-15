@@ -103,6 +103,15 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
             </div>
           </div>
           <div className="advanced-search-content">
+            <h3 className="advanced-search-title">Favorites</h3>
+            <FaStar
+              size="50"
+              onClick={() => setIsFavorites(!isFavorites)}
+              color={isFavorites ? "orange" : "lightgray"}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+          <div className="advanced-search-content">
             <h3 className="advanced-search-title">Number Range</h3>
             <input
               className="advanced-search-number-range-input"
@@ -116,16 +125,7 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
               onChange={(event) => setHigherNumberRange(event.target.value)}
             />
           </div>
-          <div className="advanced-search-content">
-            <h3 className="advanced-search-title">Favorites</h3>
-            <FaStar
-              size="50"
-              onClick={() => setIsFavorites(!isFavorites)}
-              color={isFavorites ? "orange" : "lightgray"}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-          <div className="advanced-search-content">
+          <div className="advanced-search-content advanced-search-btns">
             <Button
               onClick={() => handleSearch()}
               className="advanced-search-btn"

@@ -20,9 +20,7 @@
   margin: 0 auto;
   padding-bottom: 3em;
   margin: 0 auto;
-  border: 1px dashed red;
   color: #fff;
-  position: relative;
 }
 
 .advanced-search-number-range-input {
@@ -74,4 +72,28 @@
   background: #fff;
   color: var(--clr-black);
   border-radius: 50%;
+}
+
+@media (min-width: 460px) {
+  .advanced-search-content-container {
+    height: 55em;
+  }
+
+  .advanced-search-btns {
+    display: flex;
+    gap: 1em;
+    height: 4em;
+  }
+}
+
+@media (min-width: 960px) {
+  .advanced-search-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 40em;
+  }
+
+  .advanced-search-content {
+    width: 40%;
+  }
 }

@@ -13,9 +13,9 @@ const AdvancedType = ({ type }) => {
       <div
         className="advanced-checkbox"
         onClick={() => setIsClicked(!isClicked)}
-        style={isClicked ? { background: COLORS.blue } : { background: "#fff" }}
+        style={isClicked ? { background: COLORS.green } : { background: "#fff" }}
       >
-          {isClicked ? <FaCheck /> : ""}
+          {isClicked ? <FaCheck color="#fff"/> : ""}
       </div>
     </div>
   );

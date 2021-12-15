@@ -48,7 +48,7 @@ it("button renders with right color", async () => {
     <Button
       children="Click me!"
       onClick={() => console.log("clicked")}
-      styles={{backgroundColor: "red"}}
+      styles={{ backgroundColor: "red" }}
       data-testid="test-btn"
     />
   );
@@ -60,7 +60,7 @@ it("button renders with right color", async () => {
     <Button
       children="Click me!"
       onClick={() => console.log("clicked")}
-      styles={{backgroundColor: "green"}}
+      styles={{ backgroundColor: "green" }}
       data-testid="test-btn2"
     />
   );

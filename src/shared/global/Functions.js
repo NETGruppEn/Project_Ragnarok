@@ -8,9 +8,9 @@ export const capitalize = (text) => {
 };
 
 /**
- *
- * @param {label} string label of the page
+ * Sets the title of the page
+ * @param {string} title 
  */
-export const SetPageTitle = (label) => {
-  document.title = label;
-};
+export const setPageTitle = (title) => {
+  document.title = title;
+}

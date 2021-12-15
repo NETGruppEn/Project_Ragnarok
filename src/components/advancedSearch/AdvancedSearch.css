@@ -5,6 +5,6 @@
 
 .advanced-search-content {
   overflow-y: hidden;
-  height: 12em;
+  height: 40em;
   transition: max-height 0.2s;
 }

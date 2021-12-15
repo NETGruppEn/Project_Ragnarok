@@ -1,14 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./AdvancedSearch.css";
 import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
 import { FaSearch } from "react-icons/fa";
+import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
 
 const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [lowerNumberRange, setLowerNumberRange] = useState(1);
   const [higherNumberRange, setHigherNumberRange] = useState(AMOUNT_OF_POKEMON);
+  const [typeTitles, setTypeTitle] = useState([]);
+
+  useEffect(() => {
+    const fetchTypes = async () => {
+      try {
+        const { data } = await PokemonAPIService.getTypes();
+        setTypeTitle(data.results.map((result) => result.name).sort());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchTypes();
+  }, []);
 
   const handleClick = () => {
     const match = allPokemon.slice(lowerNumberRange - 1, higherNumberRange);
@@ -27,6 +41,11 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
         className="advanced-search-content"
         style={{ maxHeight: isExpanded ? "100em" : 0 }}
       >
+        <div>
+            {
+                typeTitles.map((title) => (<p>{title}</p>))
+            }
+        </div>
         <div>
           <h3>Number Range</h3>
           <input

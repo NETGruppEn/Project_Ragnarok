@@ -24,4 +24,8 @@ PokemonAPIService.getPokemonDescription = (identifier) => {
   return http.get(`/pokemon-species/${identifier}`);
 }
 
+PokemonAPIService.getTypes = () =>{
+  return http.get("/type/");
+}
+
 export default PokemonAPIService;

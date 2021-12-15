@@ -15,7 +15,9 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [lowerNumberRange, setLowerNumberRange] = useState(1);
   const [higherNumberRange, setHigherNumberRange] = useState(AMOUNT_OF_POKEMON);
   const [types, setTypes] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [isFavorites, setIsFavorites] = useState(false);
+  const [isReset, setIsReset] = useState(false);
 
   useEffect(() => {
     const fetchTypes = async () => {
@@ -29,11 +31,44 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
     fetchTypes();
   }, []);
 
-  const handleClick = () => {
-    const match = allPokemon.slice(lowerNumberRange - 1, higherNumberRange);
-    
-    if (match.length > 0) {
-      setFoundPokemon(match);
+  useEffect(() => {
+    setSelectedTypes([]);
+    setLowerNumberRange(1);
+    setHigherNumberRange(AMOUNT_OF_POKEMON);
+    setIsReset(false);
+  }, [isReset]);
+
+  const handleSearch = () => {
+    const pokemonInRange = allPokemon.slice(
+      lowerNumberRange - 1,
+      higherNumberRange
+    );
+    const pokemonOfTypes = [];
+    if (selectedTypes.length > 0) {
+      let counter = 0;
+      pokemonInRange.map((pokemon) => {
+        pokemon.types.forEach((t) => {
+          if (selectedTypes.includes(t.type.name)) {
+            counter++;
+          }
+        });
+
+        if (
+          counter === selectedTypes.length &&
+          !pokemonOfTypes.includes(pokemon)
+        ) {
+          pokemonOfTypes.push(pokemon);
+        }
+
+        counter = 0;
+      });
+    } else {
+      pokemonOfTypes.push(...pokemonInRange);
+    }
+
+
+    if (pokemonOfTypes.length > 0) {
+      setFoundPokemon(pokemonOfTypes);
       setIsPokemonFound(true);
     } else {
       setFoundPokemon([]);
@@ -54,7 +89,15 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
             <div className="advanced-search-types">
               {types.map((type, index) => {
                 if (type !== "shadow" && type !== "unknown") {
-                  return <AdvancedType key={index} type={type} />;
+                  return (
+                    <AdvancedType
+                      key={index}
+                      type={type}
+                      selectedTypes={selectedTypes}
+                      setSelectedTypes={setSelectedTypes}
+                      isReset={isReset}
+                    />
+                  );
                 }
               })}
             </div>
@@ -79,12 +122,12 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
               size="50"
               onClick={() => setIsFavorites(!isFavorites)}
               color={isFavorites ? "orange" : "lightgray"}
-              style={{cursor: "pointer"}}
+              style={{ cursor: "pointer" }}
             />
           </div>
           <div className="advanced-search-content">
             <Button
-              onClick={() => handleClick()}
+              onClick={() => handleSearch()}
               className="advanced-search-btn"
             >
               <span>
@@ -94,7 +137,7 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
             </Button>{" "}
             <Button
               className="advanced-search-btn advanced-search-btn-reset"
-              onClick={() => handleClick()}
+              onClick={() => setIsReset(true)}
             >
               Reset
             </Button>

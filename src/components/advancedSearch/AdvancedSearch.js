@@ -4,20 +4,20 @@ import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import Button from "../button/Button";
 import { FaSearch } from "react-icons/fa";
 import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
-import Type from "../type/Type";
+import AdvancedType from "../advancedtype/AdvancedType";
 
 const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [lowerNumberRange, setLowerNumberRange] = useState(1);
   const [higherNumberRange, setHigherNumberRange] = useState(AMOUNT_OF_POKEMON);
-  const [typeTitles, setTypeTitle] = useState([]);
+  const [types, setTypes] = useState([]);
 
   useEffect(() => {
     const fetchTypes = async () => {
       try {
         const { data } = await PokemonAPIService.getTypes();
-        setTypeTitle(data.results.map((result) => result.name).sort());
+        setTypes(data.results.map((result) => result.name).sort());
       } catch (error) {
         console.log(error);
       }
@@ -42,10 +42,14 @@ const AdvancedSearch = ({ setFoundPokemon, setIsPokemonFound }) => {
         className="advanced-search-content"
         style={{ maxHeight: isExpanded ? "100em" : 0 }}
       >
-        <div>
-          {typeTitles.map((title) => (
-            <Type name={title} className={"advanced-search"}></Type>
-          ))}
+        <div className="advanced-search-types-container">
+        {types.map((type, index) => {
+            if (type !== "shadow" && type !== "unknown") {
+              return (
+                <AdvancedType key={index} type={type} />
+              );
+            }
+          })}
         </div>
         <div>
           <h3>Number Range</h3>

@@ -8,3 +8,13 @@
   height: 40em;
   transition: max-height 0.2s;
 }
+
+.advanced-search-types-container {
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.advanced-search-btn {
+    cursor: pointer;
+}

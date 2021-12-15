@@ -1,0 +1,23 @@
+import React, { useState } from "react";
+import { COLORS } from "../../shared/global/Colors";
+import Type from "../type/Type";
+import "./AdvancedType.css";
+
+const AdvancedType = ({ type }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  return (
+    <div className="advanced-type-container">
+      <Type name={type} className={"advanced"} />
+      <div
+        className="advanced-checkbox"
+        onClick={() => setIsClicked(!isClicked)}
+        style={isClicked ? { background: COLORS.blue } : { background: "#fff" }}
+      >
+        T
+      </div>
+    </div>
+  );
+};
+
+export default AdvancedType;

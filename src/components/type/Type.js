@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { capitalize } from "../../shared/global/Functions";
 import "./Type.css";
 import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
@@ -10,11 +10,14 @@ import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
  * @param size    The size of the type ex. small or large
  */
 const Type = ({ name, className }) => {
+  const colors = getColors(name);
+
   return (
     <div
       data-testid="type"
       className={`type type-${className}`}
       style={getColors(name)}
+      style={{ color: colors.color, background: colors.background }}
     >
       {capitalize(name)}
     </div>

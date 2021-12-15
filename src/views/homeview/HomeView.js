@@ -131,7 +131,10 @@ const HomeView = () => {
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
       />
-      <AdvancedSearch/>
+      <AdvancedSearch
+        setFoundPokemon={setFoundPokemon}
+        setIsPokemonFound={setIsPokemonFound}
+      />
 
       <div className="content">
         <ul className="results">{displayResult()}</ul>

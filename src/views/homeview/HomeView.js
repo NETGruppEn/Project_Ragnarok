@@ -12,6 +12,7 @@ import { setPageTitle } from "../../shared/global/Functions";
 import { useHistory } from "react-router-dom";
 import RoutingPath from "../../routes/RoutingPath";
 import AdvancedSearch from "../../components/advancedSearch/AdvancedSearch";
+import $ from "jquery";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -53,6 +54,7 @@ const HomeView = () => {
       setIsHidden(false);
     }
 
+    scrollToPokemon()
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -104,6 +106,11 @@ const HomeView = () => {
     }
   };
 
+  const scrollToPokemon = () => {
+    const top = $("#results").offset().top;
+    window.scrollTo({ top: top - 25, left: 0 });
+  }; 
+
   /**
    * Decides what kind of data to display
    * @returns Pokémon cards if the list of Pokémon is populated,
@@ -137,7 +144,7 @@ const HomeView = () => {
       />
 
       <div className="content">
-        <ul className="results">{displayResult()}</ul>
+        <ul id="results" className="results">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}
         <div className="home-view-btn-container">
           {!isHidden && isPokemonFound && (

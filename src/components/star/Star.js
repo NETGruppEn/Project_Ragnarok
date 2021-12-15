@@ -16,31 +16,26 @@ import Button from "../button/Button";
  *
  * example of usage:  <Star isFavorite={isFavorite} size="1.5em" onClick={() => setIsFavorite(!isFavorite)}/>
  */
-const Star = ({ id, favorites, setFavorites }) => {
-  //const [listOfFavorites, setListOfFavorites] = useState([]);
+const Star = ({ id }) => {
+  const [listOfFavorites, setListOfFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
-  const listOfFavorites = [localStorage.getItem('pokemonFavorites')];
 
   useEffect(() => {
-    if (listOfFavorites?.includes(id)) {
+    if (listOfFavorites.includes(id)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
     }
-    console.log(favorites)
-  });
-
-  useEffect(() => {
-    localStorage.setItem('pokemonFavorites', favorites)
-  },[favorites]);
+    console.log(listOfFavorites)
+  }, [listOfFavorites]);
 
   const handleClick = () => {
     if (isFavorite) {
-      //setListOfFavorites(listOfFavorites.filter((x) => x != id));
-      setFavorites(favorites.filter((x) => x !== id));
+      console.log(listOfFavorites.filter((x) => x != id));
+      setListOfFavorites(listOfFavorites.filter((x) => x != id));
     } else {
-      //setListOfFavorites([...listOfFavorites, id]);
-      setFavorites([...favorites, id]);
+      console.log([...listOfFavorites, id]);
+      setListOfFavorites([...listOfFavorites, id]);
     }
   };
 

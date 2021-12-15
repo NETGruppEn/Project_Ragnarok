@@ -1,11 +1,7 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import "./Star.css";
-import { COLORS } from "../../shared/global/Colors";
-import react from "react";
-import PropTypes from "prop-types";
-import Button from "../button/Button";
 
 /**
  * Renders a star icon that can be clicked.
@@ -17,24 +13,23 @@ import Button from "../button/Button";
  * example of usage:  <Star isFavorite={isFavorite} size="1.5em" onClick={() => setIsFavorite(!isFavorite)}/>
  */
 const Star = ({ id, name }) => {
-  const [favorite, setFavorite] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (favorite) {
-      setIsFavorite(false);
-    } else {
-      setIsFavorite(true);
-    }
-  }, [favorite, id]);
+    const getItem = localStorage.getItem(name);
+    for(let index = 0; index < localStorage.length; index++){
+      if(getItem != null)
+        setIsFavorite(true);
+    };
+  }, [name]);
 
   const handleClick = () => {
     if (isFavorite) {
       setIsFavorite(!isFavorite);
-      localStorage.removeItem(name, JSON.stringify([...favorite, {id, name}]));
+      localStorage.removeItem(name, JSON.stringify({ id, name }));
     } else {
       setIsFavorite([isFavorite, id]);
-      localStorage.setItem(name, JSON.stringify([...favorite, {id, name}]));
+      localStorage.setItem(name, JSON.stringify({ id, name }));
     }
   };
 

@@ -17,8 +17,13 @@ const Star = ({ id, name }) => {
 
   useEffect(() => {
     const getItem = localStorage.getItem(id);
-      if(getItem != null)
+      if(getItem != null) {
         setIsFavorite(true);
+      }
+
+      return () => {
+        setIsFavorite(false);
+      }
   }, [id]);
 
   const handleClick = () => {

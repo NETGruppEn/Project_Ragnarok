@@ -89,7 +89,7 @@ const PokemonProvider = ({ children }) => {
     if (counter < serverData.length) {
       fetchPokemon(serverData[counter]);
     }
-  }, [serverData, counter, allPokemon]);
+  }, [serverData, counter]);
 
   const checkName = (name) => {
     if (name === "nidoran-f") {

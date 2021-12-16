@@ -22,37 +22,19 @@ const HomeView = () => {
   const [offset, setOffset] = useState(POKEMON_TO_SHOW);
   const [isHidden, setIsHidden] = useState(false);
   const [showPageUp, setShowPageUp] = useState(false);
-  const [foundPokemon, setFoundPokemon] = useState();
+  const [foundPokemon, setFoundPokemon] = useState([]);
   const [isPokemonFound, setIsPokemonFound] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
-    /**
-     * Gets the first 12 pokemon to show
-     */
-    const getFirstPokemon = () => {
-      if (foundPokemon?.length > 0) {
-        setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
-        if (foundPokemon.length <= POKEMON_TO_SHOW) {
-          setIsHidden(true);
-        } else {
-          setIsHidden(false);
-        }
-      } else {
-        setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
-        setIsHidden(false);
-      }
-
-      setOffset(POKEMON_TO_SHOW);
-    };
-
-    if (
-      (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) ||
-      foundPokemon
-    ) {
+    if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
     }
-  }, [foundPokemon, allPokemon, listOfPokemon.length]);
+  });
+
+  useEffect(() => {
+    getFirstPokemon();
+  }, [foundPokemon])
 
   /**
    * When the button is clicked it gets hidden and loads 12 more Pokémon
@@ -60,6 +42,25 @@ const HomeView = () => {
   const handleClick = () => {
     setIsHidden(true);
     loadMorePokemon();
+  };
+
+  /**
+   * Gets the first 12 pokemon to show
+   */
+  const getFirstPokemon = () => {
+    if (foundPokemon.length > 0) {
+      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
+      if (foundPokemon.length <= POKEMON_TO_SHOW) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+    } else {
+      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      setIsHidden(false);
+    }
+
+    setOffset(POKEMON_TO_SHOW);
   };
 
   /**

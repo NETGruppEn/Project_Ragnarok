@@ -52,8 +52,8 @@ const HomeView = () => {
     ) {
       getFirstPokemon();
     }
-  }, [foundPokemon, allPokemon]);
-  
+  }, [foundPokemon, allPokemon, listOfPokemon.length]);
+
   /**
    * When the button is clicked it gets hidden and loads 12 more Pokémon
    */

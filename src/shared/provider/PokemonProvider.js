@@ -11,7 +11,7 @@ export const PokemonContext = createContext();
  * @param amountOfPokemon The amount of pokémon to fetch.
  * @returns PokemonContext provider with the global values serverData and loading so they can be reached from other components.
  */
-const PokemonProvider = ({ children }) => {
+const PokemonProvider = ({children}) => {
   const [serverData, setServerData] = useState([]);
   const [counter, setCounter] = useState(0);
   const [allPokemon, setAllPokemon] = useState([]);
@@ -26,7 +26,7 @@ const PokemonProvider = ({ children }) => {
   }, []);
 
   /**
-   * Is firts triggered when the server data is populated and then each time
+   * Is first triggered when the server data is populated and then each time
    * the sounter is updated.
    */
   useEffect(() => {
@@ -84,7 +84,7 @@ const PokemonProvider = ({ children }) => {
       setAllPokemon([...allPokemon, pokemon]);
       setCounter(counter + 1);
     } catch (error) {
-      console.log(error);
+      console.log("Error with fetching a pokemon. " + error);
     }
   };
 

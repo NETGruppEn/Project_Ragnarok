@@ -49,7 +49,6 @@ const DetailsView = () => {
         pokemon.id
       );
       pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      console.log(pokemon.info[1]);
       if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
         pokemon.info.find((info) => info.name === "Category").values = [
           data.genera[7].genus.slice(
@@ -61,7 +60,7 @@ const DetailsView = () => {
 
       setIsFetchComplete(true);
     } catch (error) {
-      console.log(error);
+      console.log("Error with fetching description. " + error);
     }
   };
 

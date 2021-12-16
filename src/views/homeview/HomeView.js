@@ -61,7 +61,7 @@ const HomeView = () => {
       setIsHidden(false);
     }
 
-    scrollToPokemon()
+    // scrollToPokemon();
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -116,10 +116,10 @@ const HomeView = () => {
   /**
    * Scrolls down to the pokemon cards
    */
-  const scrollToPokemon = () => {
-    const top = $("#results").offset().top;
-    window.scrollTo({ top: top - 25, left: 0 });
-  }; 
+  // const scrollToPokemon = () => {
+  //   const top = $("#results").offset().top;
+  //   window.scrollTo({ top: top - 25, left: 0 });
+  // }; 
 
   /**
    * Decides what kind of data to display

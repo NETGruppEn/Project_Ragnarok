@@ -7,5 +7,5 @@ const date = new Date();
 it("renders correctly with right title", () => {
     const div = document.createElement("div");
     render(<Footer />, div);
-    expect(screen.getByTestId("footer").textContent).toBe(`© ${date.getFullYear()} Ragnarök inc`);
+    expect(screen.getByTestId("footer").textContent).toBe(`© ${date.getFullYear()} Ragnarök inc.`);
 });

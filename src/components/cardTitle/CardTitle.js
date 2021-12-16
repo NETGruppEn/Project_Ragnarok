@@ -17,7 +17,6 @@ const format = (id) => {
  * @param id    The id of the pokemon as a number
  * @param name  The name of the pokemon as a string
  */
-
 const CardTitle = ({ id, name, className }) => {
   return (
     <div className={`card-title-${className}`}>

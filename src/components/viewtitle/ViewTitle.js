@@ -14,4 +14,3 @@ const ViewTitle = ({ title }) => {
 };
 
 export default ViewTitle;
-S

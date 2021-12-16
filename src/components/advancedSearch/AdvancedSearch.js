@@ -49,9 +49,10 @@ const AdvancedSearch = ({
    * If the reset button is clicked, all states are set to default
    */
   useEffect(() => {
-    setSelectedTypes([]);
     setLowerNumberRange(1);
     setHigherNumberRange(AMOUNT_OF_POKEMON);
+    setSelectedTypes([]);
+    setIsFavorites(false);
     setIsReset(false);
   }, [isReset]);
 

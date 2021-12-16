@@ -32,8 +32,6 @@ const Star = ({ id, name }) => {
   };
 
   return (
-    //<FaStar className="star" data-testid="star" size={size} color={isFavorite ? "orange" : "lightgray"} onClick={onClick}/>
-
     <FaStar
       className="star"
       data-testid="star"

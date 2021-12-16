@@ -3,6 +3,7 @@ import PokemonProvider from "./shared/provider/PokemonProvider";
 import "./shared/global/Global.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import Divider from "./components/divider/Divider";
 
 /**
  * <PokemonProvider> wraps <Routes> and <Navigation> so they can access is possible.
@@ -15,6 +16,7 @@ function App() {
     <PokemonProvider>
       <Header />
       <Routes />
+      <Divider />
       <Footer />
     </PokemonProvider>
   );

@@ -1,0 +1,37 @@
+.divider {
+  background: transparent;
+  display: block;
+  height: 3em;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.notch {
+  background: #fff;
+  height: 6px;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.notch::before,
+.notch::after {
+  content: "";
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+}
+
+.notch::before {
+  background: transparent
+    url("https://assets.pokemon.com/static2/_ui/img/chrome/notches/notch-top-left.png");
+  left: -11px;
+}
+
+.notch::after {
+  background: transparent
+    url("https://assets.pokemon.com/static2/_ui/img/chrome/notches/notch-top-right.png");
+  right: -11px;
+}

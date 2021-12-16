@@ -15,6 +15,11 @@
   background: var(--clr-gray-light);
   border-radius: 5px;
   width: 100%;
+  cursor: pointer;
+}
+
+.card-img:hover {
+  animation: bounce 0.25s ease;
 }
 
 .card-info {

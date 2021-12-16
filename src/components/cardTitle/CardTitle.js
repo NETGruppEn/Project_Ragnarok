@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { capitalize } from "../../shared/global/Functions";
 import Star from "../star/Star";
 import "./CardTitle.css";
-import Star from "../star/Star";
 
 /**
  * Formats the input

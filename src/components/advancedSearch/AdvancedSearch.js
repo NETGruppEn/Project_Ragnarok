@@ -91,12 +91,18 @@ const AdvancedSearch = ({
 
     const pokemonOfFavorites = [];
     if (isFavorites) {
-      // check each pokemon if its found in the list of pokemon from localstorage
+      pokemonOfTypes.forEach((pokemon) => {
+        const getItem = localStorage.getItem(pokemon.id);
+        if (getItem != null) {
+          pokemonOfFavorites.push(pokemon);
+        }
+      });
     } else {
       pokemonOfFavorites.push(...pokemonOfTypes);
     }
+
     if (pokemonOfFavorites.length > 0) {
-      setFoundPokemon(pokemonOfTypes);
+      setFoundPokemon(pokemonOfFavorites);
       setIsPokemonFound(true);
     } else {
       setFoundPokemon([]);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useHistory, useLocation } from "react-router";
-import { useEffect, useState, useContext } from "react/cjs/react.development";
 import Button from "../../components/button/Button";
 import DetailsCard from "../../components/detailscard/DetailsCard";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";

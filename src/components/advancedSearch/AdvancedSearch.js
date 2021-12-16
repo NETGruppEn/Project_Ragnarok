@@ -79,10 +79,7 @@ const AdvancedSearch = ({
           }
         });
 
-        if (
-          counter === selectedTypes.length &&
-          !pokemonOfTypes.includes(pokemon)
-        ) {
+        if (counter === selectedTypes.length) {
           pokemonOfTypes.push(pokemon);
         }
 
@@ -92,7 +89,13 @@ const AdvancedSearch = ({
       pokemonOfTypes.push(...pokemonInRange);
     }
 
-    if (pokemonOfTypes.length > 0) {
+    const pokemonOfFavorites = [];
+    if (isFavorites) {
+      // check each pokemon if its found in the list of pokemon from localstorage
+    } else {
+      pokemonOfFavorites.push(...pokemonOfTypes);
+    }
+    if (pokemonOfFavorites.length > 0) {
       setFoundPokemon(pokemonOfTypes);
       setIsPokemonFound(true);
     } else {

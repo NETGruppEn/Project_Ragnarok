@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css";
-import Line from "../line/Line";
 
 /**
  * A basic footer

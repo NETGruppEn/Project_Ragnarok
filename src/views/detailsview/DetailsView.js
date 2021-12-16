@@ -24,33 +24,35 @@ const DetailsView = () => {
     } else {
       setPokemon(allPokemon[0]);
     }
-  });
+  }, [location.state, allPokemon]);
 
   useEffect(() => {
+    const fetchDescriptionAndCategory = async () => {
+      try {
+        const { data } = await PokemonAPIService.getPokemonDescription(
+          pokemon.id
+        );
+        pokemon.description = getDescriptionEntry(data.flavor_text_entries);
+        console.log(pokemon.info[1]);
+        if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
+          pokemon.info.find((info) => info.name === "Category").values = [
+            data.genera[7].genus.slice(
+              0,
+              data.genera[7].genus.indexOf("Pokémon")
+            ),
+          ];
+        }
+  
+        setIsFetchComplete(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchDescriptionAndCategory();
   }, [pokemon]);
 
-  const fetchDescriptionAndCategory = async () => {
-    try {
-      const { data } = await PokemonAPIService.getPokemonDescription(
-        pokemon.id
-      );
-      pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      console.log(pokemon.info[1]);
-      if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
-        pokemon.info.find((info) => info.name === "Category").values = [
-          data.genera[7].genus.slice(
-            0,
-            data.genera[7].genus.indexOf("Pokémon")
-          ),
-        ];
-      }
-
-      setIsFetchComplete(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   const getDescriptionEntry = (entries) => {
     const lang = "en";

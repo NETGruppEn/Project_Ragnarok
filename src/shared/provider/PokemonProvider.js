@@ -11,7 +11,7 @@ export const PokemonContext = createContext();
  * @param amountOfPokemon The amount of pokémon to fetch.
  * @returns PokemonContext provider with the global values serverData and loading so they can be reached from other components.
  */
-const PokemonProvider = ({children}) => {
+const PokemonProvider = ({ children }) => {
   const [serverData, setServerData] = useState([]);
   const [counter, setCounter] = useState(0);
   const [allPokemon, setAllPokemon] = useState([]);

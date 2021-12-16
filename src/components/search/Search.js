@@ -11,7 +11,7 @@ import "./Search.css";
  * Lets the user to search for Pokemon based on name and number.
  */
 const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
-  const { allPokemon} = useContext(PokemonContext);
+  const { allPokemon } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
@@ -54,13 +54,13 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
       setIsDropDownOpen(false);
     }
   };
-  
+
   /**
    * Closes DropDownMenu connected to search box
    * Searches for pokemon
    * @param {*} event Event fires on Submit
    */
-    const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     setIsDropDownOpen(false);
     searchForPokemon(event);
   };
@@ -78,17 +78,16 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
   };
 
   return (
-    <div className="search-wrapper" style={{ backgroundColor: COLORS.black }}>
-      <div className="container search">
+    <div className="search-wrapper">
+      <div className="search-container">
         <form
           className="search-input-container"
           onSubmit={(event) => handleSubmit(event)}
         >
           <label>Name or Number:</label>
-          <div>
+          <div className="search-input-row">
             <div className="search-input-field">
               <input
-                className="search-input"
                 type="text"
                 value={searchValue}
                 onChange={(event) => handleChange(event.target.value)}
@@ -123,9 +122,9 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
           className="search-text-container"
           style={{ backgroundColor: COLORS.green }}
         >
-          <h2>
+          <h3>
             Search for a Pokémon by name or using its National Pokédex number.
-          </h2>
+          </h3>
         </div>
       </div>
     </div>

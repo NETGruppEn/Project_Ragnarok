@@ -1,4 +1,5 @@
 import React from "react";
+import { capitalize } from "../../shared/global/Functions";
 import "./Gauge.css";
 
 /**
@@ -43,7 +44,7 @@ const Gauge = ({ title, value }) => {
   return (
     <div className="gauge-container">
       <div className="gauge-bars">{renderBars()}</div>
-      <p className="gauge-title">{title}</p>
+      <p className="gauge-title">{capitalize(title)}</p>
     </div>
   );
 };

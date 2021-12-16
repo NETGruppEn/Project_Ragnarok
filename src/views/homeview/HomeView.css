@@ -1,5 +1,6 @@
 .results {
-  width: 85%;
+  position: relative;
+  width: 90%;
   margin: auto;
 }
 
@@ -37,9 +38,15 @@
 
 .btn-load-more {
   background: var(--clr-blue);
-  margin: 0 auto;
+  margin: 3em auto 1em;
 }
 
 .btn-load-more:hover {
   background: var(--clr-blue-hover);
+}
+
+@media (min-width: 460px) {
+  .results {
+    width: 100%;
+  }
 }

@@ -3,9 +3,13 @@ import CardTitle from "../cardTitle/CardTitle";
 import Type from "../type/Type";
 import "./PokemonCard.css";
 
-const PokemonCard = ({ pokemon, onClick, ...props }) => {
+/**
+ * Shows an image, name, id and type of a pokemon.
+ * @param {*} pokemon The pokemon to show 
+ */
+const PokemonCard = ({ pokemon, onClick }) => {
   return (
-    <div className="card" onClick={onClick}>
+    <li className="card" onClick={onClick}>
       <img className="card-img" src={pokemon.image} alt={pokemon.name} />
       <div className="card-info">
         <CardTitle id={pokemon.id} name={pokemon.name} />
@@ -15,7 +19,7 @@ const PokemonCard = ({ pokemon, onClick, ...props }) => {
           return <Type key={index} name={value.type.name} size="small" />;
         })}
       </div>
-    </div>
+    </li>
   );
 };
 

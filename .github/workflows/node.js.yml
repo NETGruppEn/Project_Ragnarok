@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Staging
-      url: https://pokemonstage.netlify.app/
+      url: https://pokemon-staging.netlify.app/
     steps:
       - name: Staging
         run: echo "Staging"
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: https://pokemonmain.netlify.app/
+      url: https://pokemon-ragnarok.netlify.app/
     steps:
       - name: Deploy
         run: echo "Deploying"

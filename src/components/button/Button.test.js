@@ -24,7 +24,7 @@ afterEach(() => {
 it("button renders with right title", () => {
   render(
     <Button
-      title="Click me!"
+      children="Click me!"
       onClick={() => console.log("clicked")}
       color="red"
       data-testid="test-btn"
@@ -34,7 +34,7 @@ it("button renders with right title", () => {
 
   render(
     <Button
-      title="Home"
+      children="Home"
       onClick={() => console.log("clicked")}
       color="red"
       data-testid="test-btn2"
@@ -46,9 +46,9 @@ it("button renders with right title", () => {
 it("button renders with right color", async () => {
   render(
     <Button
-      title="Click me!"
+      children="Click me!"
       onClick={() => console.log("clicked")}
-      color="red"
+      styles={{ backgroundColor: "red" }}
       data-testid="test-btn"
     />
   );
@@ -58,9 +58,9 @@ it("button renders with right color", async () => {
 
   render(
     <Button
-      title="Click me!"
+      children="Click me!"
       onClick={() => console.log("clicked")}
-      color="green"
+      styles={{ backgroundColor: "green" }}
       data-testid="test-btn2"
     />
   );

@@ -1,12 +1,17 @@
-import React from 'react'
-import './ViewTitle.css';
+import React from "react";
+import "./ViewTitle.css";
 
-const ViewTitle = ({title}) => {
-    return (
-        <h1 className="viewtitle">
-            {title}
-        </h1>
-    )
-}
+/**
+ * Shows a title 
+ * @param {string} title The title to show
+ */
+const ViewTitle = ({ title }) => {
+  return (
+    <div className="container">
+      <h1 className="viewtitle ">{title}</h1>
+    </div>
+  );
+};
 
-export default ViewTitle
+export default ViewTitle;
+S

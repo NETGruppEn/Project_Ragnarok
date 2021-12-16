@@ -1,0 +1,19 @@
+.drop-down {
+  display: block !important;
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  margin-top: 2px;
+  z-index: 100;
+}
+
+.drop-down-item {
+  color: var(--clr-gray-dark);
+  padding: 10px;
+}
+
+.drop-down-item:hover {
+  background: #1b53ba;
+  color: #ccc;
+}

@@ -15,7 +15,6 @@ const Type = ({ name, className }) => {
     <div
       data-testid="type"
       className={`type type-${className}`}
-      style={getColors(name)}
       style={{ color: colors.color, background: colors.background }}
     >
       {capitalize(name)}

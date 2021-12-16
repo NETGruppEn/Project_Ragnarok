@@ -81,6 +81,7 @@
 
   .advanced-search-btns {
     display: flex;
+    flex-direction: row-reverse;
     gap: 1em;
     height: 4em;
   }

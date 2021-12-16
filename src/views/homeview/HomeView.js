@@ -11,7 +11,6 @@ import { setPageTitle } from "../../shared/global/Functions";
 import { useHistory } from "react-router-dom";
 import RoutingPath from "../../routes/RoutingPath";
 import AdvancedSearch from "../../components/advancedSearch/AdvancedSearch";
-import $ from "jquery";
 import "./HomeView.css";
 
 /**
@@ -61,7 +60,7 @@ const HomeView = () => {
       setIsHidden(false);
     }
 
-    // scrollToPokemon();
+    scrollToPokemon();
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -115,11 +114,13 @@ const HomeView = () => {
 
   /**
    * Scrolls down to the pokemon cards
+   * Found some code for this at https://usefulangle.com/post/179/jquery-offset-vanilla-javascript
    */
-  // const scrollToPokemon = () => {
-  //   const top = $("#results").offset().top;
-  //   window.scrollTo({ top: top - 25, left: 0 });
-  // }; 
+  const scrollToPokemon = () => {
+    const rect = document.querySelector("#results").getBoundingClientRect();
+    const top = rect.top + window.scrollY;
+    window.scrollTo({ top: top -25, left: 0 });
+  }; 
 
   /**
    * Decides what kind of data to display

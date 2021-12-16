@@ -1,36 +1,38 @@
 import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import { MonoInfo, PolyInfo } from "./Info";
+import Info from "./Info";
 
-const abilities = [
-  {
-    ability: {
-      name: "overgrow",
-    },
-  },
-  {
-    ability: {
-      name: "chlorophyll",
-    },
-  },
-];
+const height = {
+  name: "Height",
+  values: ["0.7 m"]
+}
+
+const weight = {
+  name: "Weight",
+  values: ["6.9 kg"]
+}
+
+const abilities = {
+  name: "Abilities",
+  values: ["overgrow", "chlorophyll"]
+}
 
 afterEach(cleanup);
 
 it("renders correctly with right title, height", () => {
-  render(<MonoInfo title="Height" value="7" unit="m" />);
+  render(<Info info={height} />);
   expect(screen.getByTestId("title").textContent).toBe("Height");
-  expect(screen.getByTestId("value").textContent).toBe("0.7 m");
+  expect(screen.getByTestId("value0").textContent).toBe("0.7 m");
 });
 
 it("renders correctly with right title, weight", () => {
-  render(<MonoInfo title="Weight" value="69" unit="kg" />);
+  render(<Info info={weight} />);
   expect(screen.getByTestId("title").textContent).toBe("Weight");
-  expect(screen.getByTestId("value").textContent).toBe("6.9 kg");
+  expect(screen.getByTestId("value0").textContent).toBe("6.9 kg");
 });
 
 it("renders correctly with right title, abilities", () => {
-  render(<PolyInfo title="Abilities" values={abilities} />);
+  render(<Info info={abilities} />);
   expect(screen.getByTestId("title").textContent).toBe("Abilities");
   expect(screen.getByTestId("value0").textContent).toBe("Overgrow");
   expect(screen.getByTestId("value1").textContent).toBe("Chlorophyll");

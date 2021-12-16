@@ -4,11 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em;
 }
 
 .spinner {
-  --size: 60px;
+  --size: 45px;
   background: url("https://assets.pokemon.com/static2/_ui/img/chrome/loaders/pokeball_gray.png")
     center center no-repeat;
   background-size: var(--size);

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css";
-import Line from "../line/Line";
 
 /**
  * A basic footer
@@ -10,8 +9,7 @@ const Footer = () => {
   const date = new Date();
   return (
     <footer className="footer">
-      <Line />
-      <p className="footer-text" data-testid="footer">© {date.getFullYear()} Ragnarök inc</p>
+      <p className="footer-text" data-testid="footer">© {date.getFullYear()} Ragnarök inc.</p>
     </footer>
   );
 };

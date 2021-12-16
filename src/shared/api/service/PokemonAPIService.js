@@ -17,7 +17,11 @@ const PokemonAPIService = {};
  * @returns The endpoint to get a specific pokemon with more info
  */
  PokemonAPIService.getAPokemon = (identifier) => {
-  return http.get(`pokemon/${identifier}`);
+  return http.get(`/pokemon/${identifier}`);
+}
+
+PokemonAPIService.getPokemonDescription = (identifier) => {
+  return http.get(`/pokemon-species/${identifier}`);
 }
 
 export default PokemonAPIService;

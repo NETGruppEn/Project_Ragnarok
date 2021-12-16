@@ -17,12 +17,12 @@ const format = (id) => {
  * @param id    The id of the pokemon as a number
  * @param name  The name of the pokemon as a string
  */
-const CardTitle = ({ id, name }) => {
 
+const CardTitle = ({ id, name, className }) => {
   return (
-    <div className="card-title">
-      <p className="id" data-testid="id">{format(id)}</p>
-      <h3 className="name" data-testid="name">{capitalize(name)}</h3>
+    <div className={`card-title-${className}`}>
+      <p className={`id id-${className}`}data-testid="id">{format(id)}</p>
+      <h3 className={`name name-${className}`} data-testid="name">{capitalize(name)}</h3>
       <Star id={id} name={name}/>
     </div>
   );

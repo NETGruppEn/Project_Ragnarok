@@ -1,0 +1,14 @@
+.info {
+  width: 50%;
+  margin-bottom: 1em;
+}
+
+.info-title {
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+
+
+.values {
+  font-size: 1.25rem;
+}

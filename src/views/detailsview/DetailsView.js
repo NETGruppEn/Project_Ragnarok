@@ -13,10 +13,15 @@ import "./DetailsView.css";
 const DetailsView = () => {
   const location = useLocation();
   const history = useHistory();
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState();
   const { allPokemon } = useContext(PokemonContext);
   const [isFetchComplete, setIsFetchComplete] = useState(false);
 
+  /**
+   * If we get to this view from clicking on a pokemonCard
+   * the pokemon is sent with the location state. Otherwise 
+   * the pokemon will be set to the first pokemon in allPokemon
+   */
   useEffect(() => {
     if (location.state) {
       setPokemon(location.state);
@@ -25,7 +30,16 @@ const DetailsView = () => {
     }
   }, [location.state, allPokemon]);
 
+  /**
+   * Fetches the description and category for the Pokémon
+   * when the view is mounted.
+   */
   useEffect(() => {
+    
+  /**
+   * Fetches description and category for the active pokemon.
+   * Then marks the fetch to be complete by setting isFetchComplete to true
+   */
     const fetchDescriptionAndCategory = async () => {
       try {
         const { data } = await PokemonAPIService.getPokemonDescription(
@@ -51,16 +65,22 @@ const DetailsView = () => {
     fetchDescriptionAndCategory();
   }, [pokemon]);
 
-  
-
+ /**
+   * Turns the entries into an english description
+   * @param {*} entries 
+   */
   const getDescriptionEntry = (entries) => {
     const lang = "en";
     const entry = entries.find((entry) => entry.language.name === lang);
     return entry.flavor_text.replace("\f", " ");
   };
 
+  /**
+   * If the fetch is complete, the DetailsCard will be shown.
+   * Otherwise a loading spinner will be shown
+   */
   const displayData = () => {
-    if (pokemon && isFetchComplete) {
+    if (isFetchComplete) {
       return <DetailsCard pokemon={pokemon} />;
     }
 

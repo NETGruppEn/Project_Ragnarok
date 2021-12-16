@@ -4,13 +4,14 @@ import ViewTitle from "../../components/viewtitle/ViewTitle";
 import DisplayLoading from "../../components/displayloading/DisplayLoading";
 import PokemonCard from "../../components/pokemoncard/PokemonCard";
 import Button from "../../components/button/Button";
-import "./HomeView.css";
 import Search from "../../components/search/Search";
 import { IoIosArrowUp } from "react-icons/io";
 import DisplayError from "../../components/displayerror/DisplayError";
 import { setPageTitle } from "../../shared/global/Functions";
 import { useHistory } from "react-router-dom";
 import RoutingPath from "../../routes/RoutingPath";
+import AdvancedSearch from "../../components/advancedSearch/AdvancedSearch";
+import "./HomeView.css";
 
 /**
  * Homeview is a component that displays a list of Pokemon.
@@ -24,14 +25,21 @@ const HomeView = () => {
   const [showPageUp, setShowPageUp] = useState(false);
   const [foundPokemon, setFoundPokemon] = useState([]);
   const [isPokemonFound, setIsPokemonFound] = useState(true);
+  const [isAdvancedClosed, setIsAdvancedClosed] = useState();
   const history = useHistory();
 
+  /**
+   * Gets the first 12 pokemon to show
+   */
   useEffect(() => {
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
     }
   });
 
+  /**
+   * Gets first pokemon to show after a search has been done.
+   */
   useEffect(() => {
     getFirstPokemon();
   }, [foundPokemon])
@@ -60,6 +68,7 @@ const HomeView = () => {
       setIsHidden(false);
     }
 
+    scrollToPokemon();
     setOffset(POKEMON_TO_SHOW);
   };
 
@@ -104,6 +113,16 @@ const HomeView = () => {
   };
 
   /**
+   * Scrolls down to the pokemon cards
+   * Found some code for this at https://usefulangle.com/post/179/jquery-offset-vanilla-javascript
+   */
+  const scrollToPokemon = () => {
+    const rect = document.querySelector("#results").getBoundingClientRect();
+    const top = rect.top + window.scrollY;
+    window.scrollTo({ top: top -25, left: 0 });
+  }; 
+
+  /**
    * Decides what kind of data to display
    * @returns Pokémon cards if the list of Pokémon is populated,
    * otherwise a loading screen
@@ -129,9 +148,16 @@ const HomeView = () => {
       <Search
         setFoundPokemon={setFoundPokemon}
         setIsPokemonFound={setIsPokemonFound}
+        setIsAdvancedClosed={setIsAdvancedClosed}
+      />
+      <AdvancedSearch
+        setFoundPokemon={setFoundPokemon}
+        setIsPokemonFound={setIsPokemonFound}
+        isAdvancedClosed={isAdvancedClosed}
+        setIsAdvancedClosed={setIsAdvancedClosed}
       />
       <div className="content">
-        <ul className="results">{displayResult()}</ul>
+        <ul id="results" className="results">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}
         <div className="home-view-btn-container">
           {!isHidden && isPokemonFound && (

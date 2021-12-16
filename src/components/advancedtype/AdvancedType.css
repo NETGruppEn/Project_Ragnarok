@@ -1,0 +1,19 @@
+.advanced-type-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  width: 49%;
+}
+
+.advanced-checkbox {
+  --size: 20px;
+  border-radius: 5px;
+  width: var(--size);
+  height: var(--size);
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid var(--clr-gray-dark);
+  line-height: 1.5;
+}

@@ -16,7 +16,7 @@ function App() {
     <PokemonProvider>
       <Header />
       <Routes />
-      <Divider />
+      <Divider className="footer" />
       <Footer />
     </PokemonProvider>
   );

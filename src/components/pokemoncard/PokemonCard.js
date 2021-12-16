@@ -8,8 +8,8 @@ import "./PokemonCard.css";
  */
 const PokemonCard = ({ pokemon, onClick }) => {
   return (
-    <li className="card" onClick={onClick}>
-      <img className="card-img" src={pokemon.image} alt={pokemon.name} />
+    <li className="card" >
+      <img className="card-img" src={pokemon.image} alt={pokemon.name} onClick={onClick} />
       <div className="card-info">
         <CardTitle id={pokemon.id} name={pokemon.name} className="pokedex" />
       </div>

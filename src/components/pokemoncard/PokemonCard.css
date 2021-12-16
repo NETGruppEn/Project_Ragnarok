@@ -4,17 +4,17 @@
   margin: 0 1% 50px;
   width: 100%;
   list-style: none;
-  cursor: pointer;
-}
-
-.card:hover {
-  animation: bounce 0.25s ease;
 }
 
 .card-img {
   background: var(--clr-gray-light);
   border-radius: 5px;
   width: 100%;
+  cursor: pointer;
+}
+
+.card-img:hover {
+  animation: bounce 0.25s ease;
 }
 
 .card-info {

@@ -42,7 +42,15 @@ const HomeView = () => {
    */
   useEffect(() => {
     getFirstPokemon();
-  }, [foundPokemon]);
+  }, [foundPokemon])
+
+  /**
+   * When the button is clicked it gets hidden and loads 12 more Pokémon
+   */
+  const handleClick = () => {
+    setIsHidden(true);
+    loadMorePokemon();
+  };
 
   /**
    * Gets the first 12 pokemon to show
@@ -62,14 +70,6 @@ const HomeView = () => {
 
     scrollToPokemon();
     setOffset(POKEMON_TO_SHOW);
-  };
-
-  /**
-   * When the button is clicked it gets hidden and loads 12 more Pokémon
-   */
-  const handleClick = () => {
-    setIsHidden(true);
-    loadMorePokemon();
   };
 
   /**
@@ -156,7 +156,6 @@ const HomeView = () => {
         isAdvancedClosed={isAdvancedClosed}
         setIsAdvancedClosed={setIsAdvancedClosed}
       />
-
       <div className="content">
         <ul id="results" className="results">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}

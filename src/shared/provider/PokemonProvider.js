@@ -22,6 +22,24 @@ const PokemonProvider = ({children}) => {
    * ? Better way to explain useEffect in this case?
    */
   useEffect(() => {
+    /**
+     * Sets loading to true before the data is retrieved and to false after the data is tetrieved.
+     * serverData is set to the data from the pokeapi.
+     * If the api fetch is NO succes an error is logged.
+     * ! Async is a feature that is put on fetchData() function to tell the rest of the program that they should NOT wait for it, but run under the meantime. The function runs asynchronously.
+     * ! Await means that the asynchronous code must wait for pokeapi call to be completed before the remaining code is executed in the block. Code outside the function is still running.
+     */
+    const fetchData = async () => {
+      try {
+        const { data } = await PokemonAPIService.getRangeOfPokemon(
+          AMOUNT_OF_POKEMON
+        );
+        setServerData(data.results);
+      } catch (error) {
+        console.log("Error with API: " + error);
+      }
+    };
+
     fetchData();
   }, []);
 
@@ -30,87 +48,64 @@ const PokemonProvider = ({children}) => {
    * the sounter is updated.
    */
   useEffect(() => {
+    /**
+     * Fetches a specific pokemon based on id and adds that pokemon to the list of pokemon.
+     * @param result  A result from the server data list of all pokémon names and urls.
+     */
+    const fetchPokemon = async (result) => {
+      try {
+        const { data } = await PokemonAPIService.getAPokemon(result.name);
+        const pokemon = {
+          name: checkName(data.species.name),
+          id: data.id,
+          image: data.sprites.other["official-artwork"].front_default,
+          stats: data.stats,
+          types: data.types,
+          description: "",
+          info: [
+            {
+              name: "Height",
+              values: [centimetersToFeetAndInches(data.height * 10)],
+            },
+            {
+              name: "Category",
+              values: [],
+            },
+            { name: "Weight", values: [kilosToPounds(data.weight / 10)] },
+            {
+              name: "Abilities",
+              values: data.abilities.map((a) => a.ability.name),
+            },
+          ],
+        };
+
+        setAllPokemon([...allPokemon, pokemon]);
+        setCounter(counter + 1);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     if (counter < serverData.length) {
       fetchPokemon(serverData[counter]);
     }
   }, [serverData, counter]);
 
   /**
-   * Sets loading to true before the data is retrieved and to false after the data is tetrieved.
-   * serverData is set to the data from the pokeapi.
-   * If the api fetch is NO succes an error is logged.
-   * ! Async is a feature that is put on fetchData() function to tell the rest of the program that they should NOT wait for it, but run under the meantime. The function runs asynchronously.
-   * ! Await means that the asynchronous code must wait for pokeapi call to be completed before the remaining code is executed in the block. Code outside the function is still running.
-   */
-  const fetchData = async () => {
-    try {
-      const { data } = await PokemonAPIService.getRangeOfPokemon(
-        AMOUNT_OF_POKEMON
-      );
-      setServerData(data.results);
-    } catch (error) {
-      console.log("Error with API: " + error);
+  * Check if Pokemon is nidoran,
+  * replace gender letter for gender symbol
+  */
+  const checkName = (name) => {
+    if (name === "nidoran-f") {
+      name = name.replace("-f", "♀");
+    } else if (name === "nidoran-m") {
+      name = name.replace("-m", "♂");
     }
+  
+    return capitalize(name);
   };
-
+  
   /**
-   * Fetches a specific pokemon based on id and adds that pokemon to the list of pokemon.
-   * @param result  A result from the server data list of all pokémon names and urls.
-   */
-  const fetchPokemon = async (result) => {
-    try {
-      const { data } = await PokemonAPIService.getAPokemon(result.name);
-      const pokemon = {
-        name: checkName(data.species.name),
-        id: data.id,
-        image: data.sprites.other["official-artwork"].front_default,
-        stats: data.stats,
-        types: data.types,
-        description: "",
-        info: [
-          { name: "Height", values: [centimetersToFeetAndInches(data.height * 10)] },
-          {
-            name: "Category",
-            values: []
-          },
-          { name: "Weight", values: [kilosToPounds(data.weight / 10)] },
-          {
-            name: "Abilities",
-            values: data.abilities.map((a) => a.ability.name),
-          },
-        ],
-      };
-
-      setAllPokemon([...allPokemon, pokemon]);
-      setCounter(counter + 1);
-    } catch (error) {
-      console.log("Error with fetching a pokemon. " + error);
-    }
-  };
-
-  return (
-    <PokemonContext.Provider value={{ allPokemon, AMOUNT_OF_POKEMON }}>
-      {children}
-    </PokemonContext.Provider>
-  );
-};
-
-/**
- * If the Pokémon is a Nidoran, the gender letter 
- * is replaced for a gender symbol
- * @param {string } name 
- */
-const checkName = (name) => {
-  if (name === "nidoran-f") {
-    name = name.replace("-f", "♀");
-  } else if (name === "nidoran-m") {
-    name = name.replace("-m", "♂");
-  }
-
-  return capitalize(name);
-};
-
-/**
  * Turns centimeter into fett and inches.
  * @param {number} cm 
  * @returns a string of feet and inches. For example: 5' 4"
@@ -133,5 +128,12 @@ const centimetersToFeetAndInches = (cm) => {
 const kilosToPounds = (kg) => {
   return `${(kg * 2.2046).toFixed(1)} lbs`; 
 }
+  
+  return (
+    <PokemonContext.Provider value={{ allPokemon, AMOUNT_OF_POKEMON }}>
+      {children}
+    </PokemonContext.Provider>
+  );
+};
 
 export default PokemonProvider;

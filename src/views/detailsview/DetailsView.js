@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory, useLocation } from "react-router";
 import { useEffect, useState, useContext } from "react/cjs/react.development";
 import Button from "../../components/button/Button";
@@ -29,42 +29,44 @@ const DetailsView = () => {
     } else {
       setPokemon(allPokemon[0]);
     }
-  });
+  }, [location.state, allPokemon]);
 
   /**
    * Fetches the description and category for the Pokémon
    * when the view is mounted.
    */
   useEffect(() => {
-    fetchDescriptionAndCategory();
-  }, [pokemon]);
-
+    
   /**
    * Fetches description and category for the active pokemon.
    * Then marks the fetch to be complete by setting isFetchComplete to true
    */
-  const fetchDescriptionAndCategory = async () => {
-    try {
-      const { data } = await PokemonAPIService.getPokemonDescription(
-        pokemon.id
-      );
-      pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-      if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
-        pokemon.info.find((info) => info.name === "Category").values = [
-          data.genera[7].genus.slice(
-            0,
-            data.genera[7].genus.indexOf("Pokémon")
-          ),
-        ];
+    const fetchDescriptionAndCategory = async () => {
+      try {
+        const { data } = await PokemonAPIService.getPokemonDescription(
+          pokemon.id
+        );
+        pokemon.description = getDescriptionEntry(data.flavor_text_entries);
+        console.log(pokemon.info[1]);
+        if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
+          pokemon.info.find((info) => info.name === "Category").values = [
+            data.genera[7].genus.slice(
+              0,
+              data.genera[7].genus.indexOf("Pokémon")
+            ),
+          ];
+        }
+  
+        setIsFetchComplete(true);
+      } catch (error) {
+        console.log(error);
       }
+    };
 
-      setIsFetchComplete(true);
-    } catch (error) {
-      console.log("Error with fetching description. " + error);
-    }
-  };
+    fetchDescriptionAndCategory();
+  }, [pokemon]);
 
-  /**
+ /**
    * Turns the entries into an english description
    * @param {*} entries 
    */

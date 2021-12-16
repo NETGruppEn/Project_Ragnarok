@@ -14,7 +14,7 @@ import "./DetailsView.css";
 const DetailsView = () => {
   const location = useLocation();
   const history = useHistory();
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState(null);
   const { allPokemon } = useContext(PokemonContext);
   const [isFetchComplete, setIsFetchComplete] = useState(false);
 

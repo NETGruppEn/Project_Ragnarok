@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { capitalize } from "../../shared/global/Functions";
 import "./Type.css";
 import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";

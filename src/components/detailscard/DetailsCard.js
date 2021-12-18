@@ -33,7 +33,7 @@ const DetailsCard = ({ pokemon }) => {
             <h3>Type</h3>
             <div className="types">
               {pokemon.types.map((t, index) => (
-                <Type name={t.type.name} className="details" />
+                <Type key={index} name={t.type.name} className="details" />
               ))}
             </div>
           </div>

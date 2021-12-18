@@ -50,7 +50,7 @@ const HomeView = () => {
   });
 
   /**
-   * Gets first pokemon to show after a search has been done.
+   * Gets first 12 pokemon to show after a search has been done.
    */
   useEffect(() => {
     const getFirstFoundPokemon = () => {
@@ -68,7 +68,7 @@ const HomeView = () => {
     if (foundPokemon.length > 0) {
       getFirstFoundPokemon();
     }
-  }, [foundPokemon])
+  }, [foundPokemon]);
 
   /**
    * When the button is clicked it gets hidden and loads 12 more Pokémon

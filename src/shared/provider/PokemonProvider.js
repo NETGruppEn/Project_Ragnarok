@@ -40,8 +40,10 @@ const PokemonProvider = ({ children }) => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (serverData.length < 1) {
+      fetchData();
+    }
+  }, [serverData]);
 
   /**
    * Is first triggered when the server data is populated and then each time
@@ -92,9 +94,9 @@ const PokemonProvider = ({ children }) => {
   }, [serverData, counter]);
 
   /**
-  * Check if Pokemon is nidoran,
-  * replace gender letter for gender symbol
-  */
+   * If the Pokémon is Nidoran, the gender letter 
+   * will be replaced for a gender symbol 
+   */
   const checkName = (name) => {
     if (name === "nidoran-f") {
       name = name.replace("-f", "♀");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { capitalize } from "../../shared/global/Functions";
 import "./CardTitle.css";
 import Star from "../star/Star";

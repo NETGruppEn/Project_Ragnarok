@@ -30,7 +30,12 @@ const AdvancedSearch = ({
     const fetchTypes = async () => {
       try {
         const { data } = await PokemonAPIService.getTypes();
-        setTypes(data.results.map((result) => result.name).sort());
+        setTypes(
+          data.results
+            .map((result) => result.name)
+            .sort()
+            .filter((t) => t !== "shadow" && t !== "unknown" && t !== "dark")
+        );
       } catch (error) {
         console.log(error);
       }
@@ -40,7 +45,7 @@ const AdvancedSearch = ({
 
   /**
    * If user searches for Pokémon with normal search
-   * then that overrides the advanced search which gets 
+   * then that overrides the advanced search which gets
    * reset and closed
    */
   useEffect(() => {
@@ -59,7 +64,7 @@ const AdvancedSearch = ({
     setSelectedTypes([]);
     setIsFavorites(false);
     setIsReset(false);
-  }, [isReset]);
+  }, [isReset, AMOUNT_OF_POKEMON]);
 
   const handleExpand = () => {
     setIsAdvancedClosed(false);
@@ -78,7 +83,7 @@ const AdvancedSearch = ({
     const pokemonOfTypes = [];
     if (selectedTypes.length > 0) {
       let counter = 0;
-      pokemonInRange.map((pokemon) => {
+      pokemonInRange.forEach((pokemon) => {
         pokemon.types.forEach((t) => {
           if (selectedTypes.includes(t.type.name)) {
             counter++;
@@ -128,17 +133,15 @@ const AdvancedSearch = ({
             <h3 className="advanced-search-title">Type</h3>
             <div className="advanced-search-types">
               {types.map((type, index) => {
-                if (type !== "shadow" && type !== "unknown") {
-                  return (
-                    <AdvancedType
-                      key={index}
-                      type={type}
-                      selectedTypes={selectedTypes}
-                      setSelectedTypes={setSelectedTypes}
-                      isReset={isReset}
-                    />
-                  );
-                }
+                return (
+                  <AdvancedType
+                    key={index}
+                    type={type}
+                    selectedTypes={selectedTypes}
+                    setSelectedTypes={setSelectedTypes}
+                    isReset={isReset}
+                  />
+                );
               })}
             </div>
           </div>

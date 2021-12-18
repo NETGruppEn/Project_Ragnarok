@@ -81,7 +81,7 @@ const PokemonProvider = ({ children }) => {
           ],
         };
 
-        setAllPokemon([...allPokemon, pokemon]);
+        setAllPokemon(a => [...a, pokemon]);
         setCounter(counter + 1);
       } catch (error) {
         console.log(error);

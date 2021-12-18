@@ -10,6 +10,9 @@ import { PokemonContext } from "../../shared/provider/PokemonProvider";
 import PokemonAPIService from "../../shared/api/service/PokemonAPIService";
 import "./DetailsView.css";
 
+/**
+ * Displays detaild information of a specific Pokémon
+ */
 const DetailsView = () => {
   const location = useLocation();
   const history = useHistory();
@@ -17,6 +20,10 @@ const DetailsView = () => {
   const { allPokemon } = useContext(PokemonContext);
   const [isFetchComplete, setIsFetchComplete] = useState(false);
 
+  /**
+   * Sets the pokemon. If a Pokémon is clicked i home view then that Pokémon will
+   * come from location.state otherwise the Pokémon will be the first one from allPokemon.
+   */
   useEffect(() => {
     if (location.state) {
       setPokemon(location.state);
@@ -25,6 +32,9 @@ const DetailsView = () => {
     }
   }, [location.state, allPokemon]);
 
+  /**
+   * Fetches the description and category of a specific Pokémon.
+   */
   useEffect(() => {
     const fetchDescriptionAndCategory = async () => {
       try {
@@ -32,8 +42,9 @@ const DetailsView = () => {
           pokemon.id
         );
         pokemon.description = getDescriptionEntry(data.flavor_text_entries);
-        console.log(pokemon.info[1]);
-        if ((pokemon.info.find((info) => info.name === "Category").values = [])) {
+        if (
+          (pokemon.info.find((info) => info.name === "Category").values = [])
+        ) {
           pokemon.info.find((info) => info.name === "Category").values = [
             data.genera[7].genus.slice(
               0,
@@ -41,17 +52,17 @@ const DetailsView = () => {
             ),
           ];
         }
-  
+
         setIsFetchComplete(true);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchDescriptionAndCategory();
+    if (pokemon) {
+      fetchDescriptionAndCategory();
+    }
   }, [pokemon]);
-
-  
 
   const getDescriptionEntry = (entries) => {
     const lang = "en";

@@ -106,7 +106,7 @@ const PokemonProvider = ({ children }) => {
   };
   
   /**
- * Turns centimeter into fett and inches.
+ * Turns centimeter into feet and inches.
  * @param {number} cm 
  * @returns a string of feet and inches. For example: 5' 4"
  */

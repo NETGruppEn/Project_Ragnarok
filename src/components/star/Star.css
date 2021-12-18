@@ -1,4 +1,5 @@
 .star {
     align-self: center;
     justify-self: right;
+    cursor: pointer;
 }

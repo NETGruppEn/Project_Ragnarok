@@ -1,6 +1,7 @@
 import React from "react";
 import { capitalize } from "../../shared/global/Functions";
 import "./CardTitle.css";
+import Star from "../star/Star";
 
 /**
  * Formats the input
@@ -20,7 +21,8 @@ const CardTitle = ({ id, name, className }) => {
   return (
     <div className={`card-title-${className}`}>
       <p className={`id id-${className}`}data-testid="id">{format(id)}</p>
-    <h3 className={`name name-${className}`} data-testid="name">{capitalize(name)}</h3>
+      <h3 className={`name name-${className}`} data-testid="name">{capitalize(name)}</h3>
+      <Star id={id} name={name}/>
     </div>
   );
 };

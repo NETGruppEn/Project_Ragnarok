@@ -38,6 +38,11 @@ const AdvancedSearch = ({
     fetchTypes();
   }, []);
 
+  /**
+   * If user searches for Pokémon with normal search
+   * then that overrides the advanced search which gets 
+   * reset and closed
+   */
   useEffect(() => {
     if (isAdvancedClosed) {
       setIsReset(true);

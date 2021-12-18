@@ -1,15 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import "./Star.css";
 
 /**
  * Renders a star icon that can be clicked.
- *
  * @param {boolean} isFavorite  If the Pokémon is a favorite or not
  * @param {function} onClick    A function that sets isFavorite to true or false
  * @param {string} size         Determines the size of the star in em
- *
  * example of usage:  <Star isFavorite={isFavorite} size="1.5em" onClick={() => setIsFavorite(!isFavorite)}/>
  */
 const Star = ({ id, name }) => {

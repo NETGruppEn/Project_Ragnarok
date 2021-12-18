@@ -40,8 +40,10 @@ const PokemonProvider = ({ children }) => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (serverData.length < 1) {
+      fetchData();
+    }
+  }, [serverData]);
 
   /**
    * Is firts triggered when the server data is populated and then each time
@@ -91,6 +93,10 @@ const PokemonProvider = ({ children }) => {
     }
   }, [serverData, counter]);
 
+  /**
+   * If the Pokémon is Nidoran, the gender letter 
+   * will be replaced for a gender symbol 
+   */
   const checkName = (name) => {
     if (name === "nidoran-f") {
       name = name.replace("-f", "♀");
@@ -101,6 +107,10 @@ const PokemonProvider = ({ children }) => {
     return capitalize(name);
   };
   
+  /**
+   * Converts cm into feet and inches
+   * @returns feet and inches formatted
+   */
   const centimetersToFeetAndInches = (cm) => {
     let inches = Math.round(cm / 2.54);
     let feet = 0;
@@ -111,6 +121,10 @@ const PokemonProvider = ({ children }) => {
     return `${feet}' 0${inches}"`;
   };
   
+  /**
+   * Converts kg into punds
+   * @returns pounds formatted
+   */
   const kilosToPounds = (kg) => {
     return `${(kg * 2.2046).toFixed(1)} lbs`;
   };
@@ -121,7 +135,5 @@ const PokemonProvider = ({ children }) => {
     </PokemonContext.Provider>
   );
 };
-
-
 
 export default PokemonProvider;

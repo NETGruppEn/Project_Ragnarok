@@ -107,13 +107,13 @@ const Search = ({ setFoundPokemon, setIsPokemonFound }) => {
                 />
               )}
             </div>
-            <Button
+            <Button data-testid="search"
               className="btn-search"
               onClick={(event) => {
                 handleSubmit(event);
               }}
             >
-              <FaSearch data-testid="search" size="30" />
+              <FaSearch  size="30" />
             </Button>
           </div>
         </form>

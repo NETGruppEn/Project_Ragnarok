@@ -131,7 +131,7 @@ const HomeView = () => {
         setIsPokemonFound={setIsPokemonFound}
       />
       <div className="content">
-        <ul className="results">{displayResult()}</ul>
+        <ul className="results" testId = "">{displayResult()}</ul>
         {!isPokemonFound && <DisplayError />}
         <div className="home-view-btn-container">
           {!isHidden && isPokemonFound && (

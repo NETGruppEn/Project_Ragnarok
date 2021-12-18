@@ -62,7 +62,9 @@ const DetailsView = () => {
       }
     };
 
-    fetchDescriptionAndCategory();
+    if (pokemon) {
+      fetchDescriptionAndCategory();
+    };
   }, [pokemon]);
 
  /**

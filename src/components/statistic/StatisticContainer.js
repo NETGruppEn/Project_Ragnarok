@@ -4,9 +4,7 @@ import "./StatisticContainer.css";
 
 /**
  * Renders StatsComponent with strength bars
- *
  * @param {array} stats Object with values and titles
- *
  */
 const StatisticContainer = ({ stats }) => {
   return (

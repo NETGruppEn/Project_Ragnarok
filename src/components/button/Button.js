@@ -11,13 +11,12 @@ import "./Button.css";
  * @param {object} props    The rest of the props.
  *                          ... - Destructuring assignment syntax. Makes it possible to
  *                          unpack values from arrays, or properties from objects, into distinct variables.
- *
  */
 const Button = ({ onClick, children, styles, className, ...props }) => {
   return (
     <div
       className={`btn ${className}`}
-      onClick={() => onClick()}
+      onClick={onClick}
       style={{ ...styles }}
       {...props}
     >

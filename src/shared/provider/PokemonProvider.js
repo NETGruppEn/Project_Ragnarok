@@ -46,7 +46,7 @@ const PokemonProvider = ({ children }) => {
   }, [serverData]);
 
   /**
-   * Is firts triggered when the server data is populated and then each time
+   * Is first triggered when the server data is populated and then each time
    * the sounter is updated.
    */
   useEffect(() => {
@@ -81,7 +81,7 @@ const PokemonProvider = ({ children }) => {
           ],
         };
 
-        setAllPokemon([...allPokemon, pokemon]);
+        setAllPokemon(a => [...a, pokemon]);
         setCounter(counter + 1);
       } catch (error) {
         console.log(error);
@@ -108,27 +108,29 @@ const PokemonProvider = ({ children }) => {
   };
   
   /**
-   * Converts cm into feet and inches
-   * @returns feet and inches formatted
-   */
-  const centimetersToFeetAndInches = (cm) => {
-    let inches = Math.round(cm / 2.54);
-    let feet = 0;
-    while (inches - 12 >= 0) {
-      feet += 1;
-      inches -= 12;
-    }
-    return `${feet}' 0${inches}"`;
-  };
-  
-  /**
-   * Converts kg into punds
-   * @returns pounds formatted
-   */
-  const kilosToPounds = (kg) => {
-    return `${(kg * 2.2046).toFixed(1)} lbs`;
-  };
+ * Turns centimeter into feet and inches.
+ * @param {number} cm 
+ * @returns a string of feet and inches. For example: 5' 4"
+ */
+const centimetersToFeetAndInches = (cm) => {
+  let inches = Math.round(cm / 2.54);
+  let feet = 0;
+  while (inches - 12 >= 0) {
+    feet++;
+    inches -= 12;
+  }
+  return `${feet}' ${inches}"`;
+}
 
+/**
+ * Turns kilo into pounds
+ * @param {number} kg 
+ * @returns a string of pounds. For example: 199 lbs
+ */
+const kilosToPounds = (kg) => {
+  return `${(kg * 2.2046).toFixed(1)} lbs`; 
+}
+  
   return (
     <PokemonContext.Provider value={{ allPokemon, AMOUNT_OF_POKEMON }}>
       {children}

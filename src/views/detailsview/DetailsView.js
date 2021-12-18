@@ -16,7 +16,7 @@ import "./DetailsView.css";
 const DetailsView = () => {
   const location = useLocation();
   const history = useHistory();
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState();
   const { allPokemon } = useContext(PokemonContext);
   const [isFetchComplete, setIsFetchComplete] = useState(false);
 
@@ -33,7 +33,8 @@ const DetailsView = () => {
   }, [location.state, allPokemon]);
 
   /**
-   * Fetches the description and category of a specific Pokémon.
+   * Fetches the description and category for the Pokémon
+   * when the view is mounted.
    */
   useEffect(() => {
     const fetchDescriptionAndCategory = async () => {
@@ -61,17 +62,25 @@ const DetailsView = () => {
 
     if (pokemon) {
       fetchDescriptionAndCategory();
-    }
+    };
   }, [pokemon]);
 
+ /**
+   * Turns the entries into an english description
+   * @param {*} entries 
+   */
   const getDescriptionEntry = (entries) => {
     const lang = "en";
     const entry = entries.find((entry) => entry.language.name === lang);
     return entry.flavor_text.replace("\f", " ");
   };
 
+  /**
+   * If the fetch is complete, the DetailsCard will be shown.
+   * Otherwise a loading spinner will be shown
+   */
   const displayData = () => {
-    if (pokemon && isFetchComplete) {
+    if (isFetchComplete) {
       return <DetailsCard pokemon={pokemon} />;
     }
 

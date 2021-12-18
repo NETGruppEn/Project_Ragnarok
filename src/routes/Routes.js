@@ -19,7 +19,7 @@ export const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={RoutingPath.detailsView} component={DetailsView} />
+        <Route exact path={RoutingPath.detailsView} component={DetailsView} />
         <Route path={RoutingPath.homeView} component={HomeView} />
       </Switch>
     </BrowserRouter>

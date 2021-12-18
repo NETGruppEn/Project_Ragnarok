@@ -6,7 +6,15 @@
   max-width: 10em;
 }
 
-.type-large {
+.type-details {
   padding-block: 6px;
   border-radius: 5px;
+}
+
+.type-advanced {
+  border: 2px solid var(--clr-gray-dark);
+  padding-block: 4px;
+  border-radius: 5px;
+  width: 6em;
+  margin-right: 0.5em;
 }

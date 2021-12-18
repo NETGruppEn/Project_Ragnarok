@@ -1,4 +1,4 @@
-.divider {
+.divider-footer {
   background: transparent;
   display: block;
   height: 3em;
@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 
-.notch {
+.notch-footer {
   background: #fff;
   height: 6px;
   width: 85%;
@@ -15,23 +15,66 @@
   position: relative;
 }
 
-.notch::before,
-.notch::after {
-  content: "";
+.notch-footer::before,
+.notch-footer::after {
+  content: " ";
   height: 6px;
   position: absolute;
   bottom: 0;
   width: 12px;
 }
 
-.notch::before {
+.notch-footer::before {
   background: transparent
     url("https://assets.pokemon.com/static2/_ui/img/chrome/notches/notch-top-left.png");
   left: -11px;
 }
 
-.notch::after {
+.notch-footer::after {
   background: transparent
     url("https://assets.pokemon.com/static2/_ui/img/chrome/notches/notch-top-right.png");
   right: -11px;
+}
+
+.divider-advanced-search {
+  background: #fff;
+  display: block;
+  height: 3em;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.notch-advanced-search {
+  background: var(--clr-gray-darkest);
+  height: 16px;
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.notch-advanced-search::before,
+.notch-advanced-search::after {
+  content: " ";
+  background: transparent
+    url("https://assets.pokemon.com/static2/_ui/img/chrome/notches/large-notch-darkgray.png");
+  height: 18px;
+  position: absolute;
+  bottom: 0;
+  width: 36px;
+}
+
+.notch-advanced-search::before {
+    transform: scaleY(-1);
+    left: -36px;
+}
+
+.notch-advanced-search::after {
+  transform: rotate(180deg);  
+  right: -36px;
+}
+
+@media (min-width: 960px) {
+  .notch-advanced-search {
+    width: 42%;
+  }
 }

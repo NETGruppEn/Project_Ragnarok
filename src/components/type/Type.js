@@ -5,16 +5,17 @@ import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
 
 /**
  * Renders a pokémon type with correszponding text and colors.
- *
  * @param name    The name of the type
  * @param size    The size of the type ex. small or large
  */
-const Type = ({ name, size }) => {
+const Type = ({ name, className }) => {
+  const colors = getColors(name);
+
   return (
     <div
       data-testid="type"
-      className={`type type-${size}`}
-      style={getColors(name)}
+      className={`type type-${className}`}
+      style={{ color: colors.color, background: colors.background }}
     >
       {capitalize(name)}
     </div>

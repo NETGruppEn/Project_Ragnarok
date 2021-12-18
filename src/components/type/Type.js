@@ -1,7 +1,7 @@
 import React from "react";
 import { capitalize } from "../../shared/global/Functions";
-import "./Type.css";
 import { TYPE_COLORS, COLORS } from "../../shared/global/Colors";
+import "./Type.css";
 
 /**
  * Renders a pokémon type with correszponding text and colors.

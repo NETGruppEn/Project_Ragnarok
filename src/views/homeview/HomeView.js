@@ -32,16 +32,42 @@ const HomeView = () => {
    * Gets the first 12 pokemon to show
    */
   useEffect(() => {
+    const getFirstPokemon = () => {
+      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
+      setIsHidden(false);
+      scrollToPokemon();
+      setOffset(POKEMON_TO_SHOW);
+    };
+    
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
     }
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   });
 
   /**
    * Gets first pokemon to show after a search has been done.
    */
   useEffect(() => {
-    getFirstPokemon();
+    const getFirstFoundPokemon = () => {
+      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
+      if (foundPokemon.length <= POKEMON_TO_SHOW) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      scrollToPokemon();
+      setOffset(POKEMON_TO_SHOW);
+    };
+            
+    if (foundPokemon.length > 0) {
+      getFirstFoundPokemon();
+    }
   }, [foundPokemon])
 
   /**
@@ -50,26 +76,6 @@ const HomeView = () => {
   const handleClick = () => {
     setIsHidden(true);
     loadMorePokemon();
-  };
-
-  /**
-   * Gets the first 12 pokemon to show
-   */
-  const getFirstPokemon = () => {
-    if (foundPokemon.length > 0) {
-      setListOfPokemon(foundPokemon.slice(0, POKEMON_TO_SHOW));
-      if (foundPokemon.length <= POKEMON_TO_SHOW) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
-    } else {
-      setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
-      setIsHidden(false);
-    }
-
-    scrollToPokemon();
-    setOffset(POKEMON_TO_SHOW);
   };
 
   /**
@@ -96,7 +102,7 @@ const HomeView = () => {
    * If the button is clicked, then every time you scroll to the bottom of the
    * screen, 12 more Pokémon gets added to the list of Pokémon
    */
-  window.onscroll = function () {
+  const handleScroll = () => {
     if (
       isHidden &&
       window.innerHeight + Math.ceil(window.pageYOffset) >=

@@ -15,15 +15,15 @@ const AdvancedType = ({ type, selectedTypes, setSelectedTypes, isReset }) => {
    */
   useEffect(() => {
     if (isSelected) {
-      setSelectedTypes([...selectedTypes, type]);
+      setSelectedTypes(s => [...s, type]);
     } else {
-      setSelectedTypes(selectedTypes.filter((t) => t !== type));
+      setSelectedTypes(s => s.filter((t) => t !== type));
     }
 
     if (isReset) {
       setIsSelected(false);
     }
-  }, [isSelected, isReset]);
+  }, [isSelected, isReset, type, setSelectedTypes]);
 
   return (
     <div className="advanced-type-container">

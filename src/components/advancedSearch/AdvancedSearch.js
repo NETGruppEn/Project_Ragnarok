@@ -172,6 +172,7 @@ const AdvancedSearch = ({
             <Button
               onClick={() => handleSearch()}
               className="advanced-search-btn"
+              data-testid="advanced-search-btn"
             >
               <span>
                 <FaSearch size="14" />

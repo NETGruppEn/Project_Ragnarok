@@ -20,7 +20,7 @@ const Star = ({ id, name }) => {
 
       return () => {
         setIsFavorite(false);
-      }
+      };
   }, [id]);
 
   const handleClick = () => {

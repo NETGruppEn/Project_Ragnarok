@@ -79,7 +79,6 @@ const PokemonProvider = ({ children }) => {
             },
           ],
         };
-
         setAllPokemon((a) => [...a, pokemon]);
         setCounter(counter + 1);
       } catch (error) {
@@ -91,7 +90,7 @@ const PokemonProvider = ({ children }) => {
       fetchPokemon(serverData[counter]);
     }
   }, [serverData, counter]);
-
+  
   return (
     <PokemonContext.Provider value={{ allPokemon, AMOUNT_OF_POKEMON }}>
       {children}

@@ -89,6 +89,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
           <div className="search-input-row">
             <div className="search-input-field">
               <input
+                data-testid="search-input"
                 type="text"
                 value={searchValue}
                 onChange={(event) => handleChange(event.target.value)}
@@ -109,12 +110,13 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
               )}
             </div>
             <Button
+              data-testid="search-btn"
               className="btn-search"
               onClick={(event) => {
                 handleSubmit(event);
               }}
             >
-              <FaSearch data-testid="search" size="30" />
+              <FaSearch size="30" />
             </Button>
           </div>
         </form>

@@ -23,7 +23,7 @@ test("Search - integration test", () => {
 
   // When searchValue is empty these three calls will fire.
   expect(setFoundPokemonSpy).toHaveBeenCalledTimes(1);
-  expect(setFoundPokemonSpy).toHaveBeenCalledWith([]);
+  expect(setFoundPokemonSpy).toHaveBeenCalledWith(allPokemon);
   expect(setIsPokemonFoundSpy).toHaveBeenCalledTimes(1);
   expect(setIsPokemonFoundSpy).toHaveBeenCalledWith(true); 
   expect(setIsAdvancedClosedSpy).toHaveBeenCalledTimes(1);

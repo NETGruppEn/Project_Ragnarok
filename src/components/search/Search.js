@@ -37,7 +37,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
       }
     } else {
       setIsPokemonFound(true);
-      setFoundPokemon([]);
+      setFoundPokemon(allPokemon);
     }
     event?.preventDefault();
   };

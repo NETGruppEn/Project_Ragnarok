@@ -9,7 +9,7 @@ Mobilversion:
 - Via mobil appen när man shiftar view tar sidan en inte upp till toppen
 - Tydligare "up to top"-knapp
 - Lägga till 1-150 innan man bommar
-- Innan man trycker på sök visa användaren att man max kan gå till 151 (898) eller att den korrigerar till max antalet.. Eller att det (visas finns ej)
+- Innan man trycker på sök visa användaren att man max kan gå till 151 (898) eller att den korrigerar till max antalet.
 
 Desktopversion:
 

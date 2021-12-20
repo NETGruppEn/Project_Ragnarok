@@ -30,6 +30,7 @@ const DetailsView = () => {
     } else {
       setPokemon(allPokemon[0]);
     }
+    window.scrollTo({ top: 0, left: 0 })
   }, [location.state, allPokemon]);
 
   /**

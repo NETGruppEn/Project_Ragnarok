@@ -37,11 +37,6 @@ const DetailsView = () => {
    * when the view is mounted.
    */
   useEffect(() => {
-    
-  /**
-   * Fetches description and category for the active pokemon.
-   * Then marks the fetch to be complete by setting isFetchComplete to true
-   */
     const fetchDescriptionAndCategory = async () => {
       try {
         const { data } = await PokemonAPIService.getPokemonDescription(

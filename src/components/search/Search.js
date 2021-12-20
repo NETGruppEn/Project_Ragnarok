@@ -11,7 +11,7 @@ import "./Search.css";
  * Lets the user to search for Pokemon based on name and number.
  */
 const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => {
-  const { allPokemon } = useContext(PokemonContext);
+  const { allPokemon, AMOUNT_OF_POKEMON } = useContext(PokemonContext);
   const [searchValue, setSearchValue] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
@@ -37,7 +37,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
       }
     } else {
       setIsPokemonFound(true);
-      setFoundPokemon([]);
+      setFoundPokemon(allPokemon);
     }
     event?.preventDefault();
   };
@@ -89,6 +89,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
           <div className="search-input-row">
             <div className="search-input-field">
               <input
+                data-testid="search-input"
                 type="text"
                 value={searchValue}
                 onChange={(event) => handleChange(event.target.value)}
@@ -109,12 +110,13 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
               )}
             </div>
             <Button
+              data-testid="search-btn"
               className="btn-search"
               onClick={(event) => {
                 handleSubmit(event);
               }}
             >
-              <FaSearch data-testid="search" size="30" />
+              <FaSearch size="30" />
             </Button>
           </div>
         </form>
@@ -124,7 +126,7 @@ const Search = ({ setFoundPokemon, setIsPokemonFound, setIsAdvancedClosed }) => 
           style={{ backgroundColor: COLORS.green }}
         >
           <h3>
-            Search for a Pokémon by name or using its National Pokédex number.
+            Search for a Pokémon by name or using its National Pokédex number 1-{AMOUNT_OF_POKEMON}.
           </h3>
         </div>
       </div>

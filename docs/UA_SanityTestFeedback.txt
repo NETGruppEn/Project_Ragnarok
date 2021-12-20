@@ -1,4 +1,4 @@
-Feedback från UserAcceptance Test:
+Feedback från UserAcceptance Test#1:
 
 Mobilversion:
 
@@ -19,7 +19,22 @@ Desktopversion:
 - Gladare färg önskas
 - Logotypet kan bli större
 
+Feedback från UserAcceptance Test#2:
 
+Roligt att bilderna bouncar när man för musen över dem på huvudsidan.
+Det är lätt att favorisera Pokémon.
+Sökfunktionen är tydlig förutom att det är lite otydligt med typerna.
+Tyckte det va skönt att bara behöva trycka på Load More Pokémon en gång och att det sedan gick på scroll.
+Tillbaka till toppen-knappen är bra men såg den först inte. Kanske skulle va en annan färg så man såg den bättre. Särkilt på datorn
+Gillar att det blir en hand när man för musen över bilderna och stjärnan. Det hjälpte till så man förstod att man kunde trycka där. 
+Gillar staplarna i stats-rutan på detaljsidan.
+Tycker om att knapparna byter färg när jag för musen över dem.
+Ser lite tomt ut i advanced search. Kanske kan byta plats på number range så den hamnar ovanför favorites.
+Checkrutorna vid types gör det tydligt att man ska trycka där för att välja en type.
+Layou för mobilen känns klumpig och inte anpassad för iPhone 7
+Hade velat att jag kunde söka på olika typer och då få tillbaka alla Pokémon som är av någon av typerna jag valt, tex ghost och steel och få tillbaka Gengar och Magnimite.
+Vill komma tillbaka till den Pokémon jag var på i listan när jag trycker på ”Explorer more Pokémon” inne på detaljsidan, inte att de går tillbaka till de första 12 igen.
+Loggan känns lite på datorn. Skulle kunna vara större.
 
 
 Sanity test #1 2021-12-20:

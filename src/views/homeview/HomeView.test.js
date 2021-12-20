@@ -25,7 +25,7 @@ describe("integration test 1", () => {
       () => {
         expect(spinnerText).not.toBeInTheDocument();
       },
-      { timeout: 5000 }
+      { timeout: 10000 }
     );
     expect(screen.getByAltText("Bulbasaur")).toBeInTheDocument();
     expect(screen.getByAltText("Ivysaur")).toBeInTheDocument();

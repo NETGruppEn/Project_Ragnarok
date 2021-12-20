@@ -24,4 +24,4 @@ Desktopversion:
 
 Sanity tests:
 
-Vi i gruppen har utfört sanity test kontinuerligt under hela projektet, dock har vi inte dokumenterat.
+

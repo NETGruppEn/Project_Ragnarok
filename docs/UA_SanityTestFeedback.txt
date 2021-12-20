@@ -18,3 +18,10 @@ Desktopversion:
 - Search- och Resetknappen i Advanced Search bör flytta till längre upp så att man slipper scrolla ner för att komma åt knapperna när man har en mindre skärm.
 - Gladare färg önskas
 - Logotypet kan bli större
+
+
+
+
+Sanity tests:
+
+Vi i gruppen har utfört sanity test kontinuerligt under hela projektet, dock har vi inte dokumenterat.

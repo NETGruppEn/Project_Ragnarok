@@ -10,9 +10,8 @@ The integration tests make sure that the search function calls the correct compo
 We tried out much of the functionality of the page, and to make sure that there were no critical bugs. We tried to use the page as an user would, and fixed the issues we could find.
 <h3>User Acceptance Testing</h3>
 We invited a few persons to get their impressions about the page, and used their feedback for some improvements.
-
-
-Information about GitHub Wiki
+<br/><br/>
+<h1>Information about GitHub Wiki</h1>
 <img src="docs/wikiimg/wiki-1.png">
 <img src="docs/wikiimg/wiki-2.png">
 <img src="docs/wikiimg/wiki-3.png">

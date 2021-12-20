@@ -22,6 +22,52 @@ Desktopversion:
 
 
 
-Sanity tests:
+Sanity test #1 2021-12-20:
+  Sanity test 2021-12-20
+  Av: Emil Örjes, David Ström, Sammy Wong, Gustaf Malmsten
 
+  Vi gick in på sidan https://pokemons-ragnarok.netlify.app 
+  Sidan renderas som den ska. Samtliga funktioner visas som de ska.
 
+  Testa sökruta:
+  Vi skriver in ”bla” i sökrutan och ”Blastoise” returneras i dropdown-rutan.
+  Vi klickar på ”Blastoise” i dropdown-rutan, och ”Blastoise” fylls i sökrutan.
+  Input-rutan sätts i fokus, vi trycker på enter för att söka, och sökresultatet ”Blastoise” returneras.
+  Vi tömde sökrutan, trycker enter, varpå alla pokemons dyker upp igen.
+
+  Testa favorite-funktionen 
+  Klickar i stjärnan vid Bulbasaur, vilket gör att den fylls i, och blir en så kallad ”favourite”.
+  I sökrutan söker vi på ”char”, och skickar in det som sökförslag, varpå 3 sökresultat presenteras på skärmen.
+  Vi klcikar in på Charmander, och den detaljerade vyn renderas korrekt.
+  Vi sätter Charmander som favourite, klickar på stjärnan som renderas korrekt.
+  Vi klickar på explore pokemon, och ser att ”Bulbasaur” och ”Charmander” fortfarande är markerade som ”Favourites” stjärnorna är ifyllda/markerade.
+
+  Test med adressfältet:
+  Vi skrev https://pokemons-ragnarok.netlify.app/details i adressfältet, och vi kom in på ”Bulbasaur” vilket vi förväntade oss eftersom det är den första pokemon i listan. ”Bulbasaur” var fortfarande ”favourite” då stjärnan var ifylld.
+  Vi testar att skriva https://pokemons-ragnarok.netlify.app/abc , och vi kom tillbaka till index som vi förväntade oss.
+
+  Ladda fler pokemons:
+  Vi testar om det fungerar att ladda in pokemon, och klickar på knappen ”Load more pokemon”.
+  Vi scrollar längst ner, och alla pokemon längs vägen renderas korrekt.
+  Vi klickar på ”Top-top”-pilen, och vi scrollas mjukt till överst på sidan.
+
+  Testa advanced search:
+  Vi klickar på fliken och det avancerade sökfältet renderas korrekt.
+  Vi ändrar Number Range till att vara 50 – 60. Vi klickar på search, och pokemon nr. 50-60 (inklusivt) renderas korrekt.
+  Vi lägger till sökfiltret ”ground”, sedan search igen.
+  Vi ser att två pokemons mellan 50-60, som är av typen ground (#50-51, ”Diglett, Dugtrio”) renderas korrekt. Diglett markeras med favourite.
+  Vi lägger till att filtrera på favourites, varpå endast #50 ”Diglett” visas.
+  Vi lägger till ytterligare filter, pokemons som är av typen, och felmeddelande visas eftersom det inte finns några pokemons mellan (50-60) som är ground och water och favorite.
+  Vi väljer reset, och alla fälten återställs. Vi väljer search och alla pokemons visas korrekt.
+  Om vi trycker in number range 20 – 151 och electric, sedan väljer search så får vi 9 träffar, varav en är #25 ”Pikachu” som vi sätter som favorite. Vi lägger till favourite som sökkriterium, väljer search, och får bara ”Pikachu” som sökresultat.
+  Vi går till grundläggande sökrutan, och söker på ”123”, sedan search. Fliken med advanced search kollapsade, avancerade sökfilter återställdes, och det returnerades endast en pokemon med id 123.
+  Vi sökte på ”15”, och fick sökresultaten med id ”#015”, ”#115”,”#150” och ”#151”.
+  Vi testar söka på ”abc” i sökrutan och inga sökresultat presenterades.
+  Utan att ta bort ”abc”, går vi in i favorites-fliken, klickar i ”Favorites” och sedan klickar i search. Fyra sökresultat som vi angett som favoriter presenteras (”Bulbasaur”, ”Charmander”, ”Pikachu” och ”Diglett”).
+
+  Responsivitet
+  Vi testar att minska skärmstorlek från desktop till mobil, och noterar att sidan anpassar innehållet allteftersom, t.ex. visar färre pokemons i sidled och till slut att endast en pokemon per rad.
+  När man går in i eller ut ur en details-vy, så scrollas inte dokumentet till top, vilket vi behöver åtgärda. Detta lades till som Issue#64.
+
+Sanity test #2 2021-12-20
+Issue#64 löst, dokumentet scrollar till toppen som det ska.

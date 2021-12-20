@@ -1,0 +1,20 @@
+Feedback från UserAcceptance Test:
+
+Mobilversion:
+
+- Ger snabbt svar
+- Laggar inte
+- Byt ut Stats mot Status i DetailCard
+- Grammatiskt fel i texten av beskrivning av Pikachu i DetailCard - can (instead of could) build.
+- Via mobil appen när man shiftar view tar sidan en inte upp till toppen
+- Tydligare "up to top"-knapp
+- Lägga till 1-150 innan man bommar
+- Innan man trycker på sök visa användaren att man max kan gå till 151 (898) eller att den korrigerar till max antalet.. Eller att det (visas finns ej)
+
+Desktopversion:
+
+- Indikation på hur många pokemon det finns (t.ex. i det gröna fältet)
+- "Up to top"-knappen bör vara tydligare
+- Search- och Resetknappen i Advanced Search bör flytta till längre upp så att man slipper scrolla ner för att komma åt knapperna när man har en mindre skärm.
+- Gladare färg önskas
+- Logotypet kan bli större

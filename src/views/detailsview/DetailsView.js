@@ -30,7 +30,6 @@ const DetailsView = () => {
     } else {
       setPokemon(allPokemon[0]);
     }
-    window.scrollTo({ top: 0, left: 0 })
   }, [location.state, allPokemon]);
 
   /**
@@ -82,6 +81,7 @@ const DetailsView = () => {
    */
   const displayData = () => {
     if (isFetchComplete) {
+      window.scrollTo({ top: 0, left: 0 })
       return <DetailsCard pokemon={pokemon} />;
     }
 

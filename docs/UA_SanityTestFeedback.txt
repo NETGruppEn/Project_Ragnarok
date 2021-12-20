@@ -22,7 +22,7 @@ Desktopversion:
 
 
 
-Sanity tests:
+Sanity test #1 2021-12-20:
   Sanity test 2021-12-20
   Av: Emil Örjes, David Ström, Sammy Wong, Gustaf Malmsten
 
@@ -68,3 +68,6 @@ Sanity tests:
   Responsivitet
   Vi testar att minska skärmstorlek från desktop till mobil, och noterar att sidan anpassar innehållet allteftersom, t.ex. visar färre pokemons i sidled och till slut att endast en pokemon per rad.
   När man går in i eller ut ur en details-vy, så scrollas inte dokumentet till top, vilket vi behöver åtgärda. Detta lades till som Issue#64.
+
+Sanity test #2 2021-12-20
+Issue#64 löst, dokumentet scrollar till toppen som det ska.

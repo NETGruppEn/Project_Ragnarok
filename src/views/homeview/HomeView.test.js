@@ -4,11 +4,17 @@ import {
   fireEvent,
   screen,
   waitFor,
+  cleanup,
 } from "@testing-library/react";
 import React from "react";
 import HomeView from "./HomeView";
 import PokemonProvider from "../../shared/provider/PokemonProvider";
 import "@testing-library/jest-dom";
+import { unmountComponentAtNode } from "react-dom";
+
+// solution taken from https://qiita.com/akameco/items/0edfdae02507204b24c8
+const noop = () => {};
+Object.defineProperty(window, "scrollTo", { value: noop, writable: true });
 
 describe("integration test 1", () => {
   jest.setTimeout(20000);

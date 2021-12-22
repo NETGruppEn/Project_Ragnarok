@@ -82,19 +82,12 @@ const AdvancedSearch = ({
     );
     const pokemonOfTypes = [];
     if (selectedTypes.length > 0) {
-      let counter = 0;
       pokemonInRange.forEach((pokemon) => {
         pokemon.types.forEach((t) => {
-          if (selectedTypes.includes(t.type.name)) {
-            counter++;
+          if (selectedTypes.includes(t.type.name) && !pokemonOfTypes.includes(pokemon)) {
+            pokemonOfTypes.push(pokemon);
           }
         });
-
-        if (counter === selectedTypes.length) {
-          pokemonOfTypes.push(pokemon);
-        }
-
-        counter = 0;
       });
     } else {
       pokemonOfTypes.push(...pokemonInRange);

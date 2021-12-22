@@ -61,6 +61,7 @@ const DetailsView = () => {
     };
 
     if (pokemon) {
+      window.scrollTo({ top: 0, left: 0 })
       fetchDescriptionAndCategory();
     };
   }, [pokemon]);
@@ -81,7 +82,6 @@ const DetailsView = () => {
    */
   const displayData = () => {
     if (isFetchComplete) {
-      window.scrollTo({ top: 0, left: 0 })
       return <DetailsCard pokemon={pokemon} />;
     }
 

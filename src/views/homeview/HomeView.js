@@ -35,12 +35,12 @@ const HomeView = () => {
     const getFirstPokemon = () => {
       setListOfPokemon(allPokemon.slice(0, POKEMON_TO_SHOW));
       setIsHidden(false);
-      scrollToPokemon();
       setOffset(POKEMON_TO_SHOW);
     };
     
     if (listOfPokemon.length < 1 && allPokemon.length >= POKEMON_TO_SHOW) {
       getFirstPokemon();
+      window.scrollTo({ top: 0, left: 0 })
     }
     
     window.addEventListener("scroll", handleScroll);
